@@ -2,15 +2,13 @@ import { auth } from "../config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 
-
-export const Auth = () => {
+const EmailRegister = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const handleSignIn = async () => {
         try {
-            const user = await createUserWithEmailAndPassword(auth, email, password);
-            console.log(user)
+            await createUserWithEmailAndPassword(auth, email, password);
         } catch (error) {
             console.log(error);
         }
@@ -31,3 +29,5 @@ export const Auth = () => {
         </div>
     )
 }
+
+export default EmailRegister
