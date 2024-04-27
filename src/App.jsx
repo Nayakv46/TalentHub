@@ -7,7 +7,8 @@ function App() {
   return (
     <>
       <Auth />
-      <EmailRegister />
+      <EmailRegister userType='candidate' />
+      <EmailRegister userType='employer' />
     </>
   )
 }
