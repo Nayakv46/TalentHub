@@ -1,14 +1,15 @@
 import './App.css'
 import EmailRegister from './components/EmailRegister/EmailRegister'
-import { Auth } from './components/auth'
+import GoogleAuth from './components/GoogleAuth/GoogleAuth'
 
 function App() {
 
   return (
     <>
-      <Auth />
       <EmailRegister userType='candidate' />
       <EmailRegister userType='employer' />
+      <GoogleAuth userType='candidate' />
+      <GoogleAuth userType='employer' />
     </>
   )
 }

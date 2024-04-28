@@ -1,10 +1,13 @@
-import { auth } from "../config/firebase";
+import { auth } from "../../config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { db } from "../config/firebase";
+import { db } from "../../config/firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 
 const EmailRegister = ({ userType }) => {
+
+    const userTypeUpper = userType.charAt(0).toUpperCase() + userType.slice(1);
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -50,7 +53,7 @@ const EmailRegister = ({ userType }) => {
                 type="password"
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <button onClick={handleSignIn}>Sign In</button>
+            <button onClick={handleSignIn}>Sign In as {userTypeUpper}</button>
         </div>
     )
 }
