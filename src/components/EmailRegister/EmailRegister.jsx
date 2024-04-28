@@ -13,6 +13,8 @@ const EmailRegister = ({ userType }) => {
 
     const usersCollectionRef = collection(db, 'users');
 
+    const [showLoader, setShowLoader] = useState(false);
+
     const handleUserType = async () => {
         try{
             // get all users
@@ -34,6 +36,7 @@ const EmailRegister = ({ userType }) => {
     }
 
     const handleSignIn = async () => {
+        setShowLoader(true);
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             handleUserType();
@@ -42,6 +45,8 @@ const EmailRegister = ({ userType }) => {
             if(error.code == "auth/email-already-in-use") {
                 console.log("Email already exists");
             }
+        } finally {
+            setShowLoader(false);
         }
     }
 
@@ -57,6 +62,7 @@ const EmailRegister = ({ userType }) => {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <button onClick={handleSignIn}>Sign In as {userTypeUpper}</button>
+            {showLoader && <div className="loader"></div>}
         </div>
     )
 }
