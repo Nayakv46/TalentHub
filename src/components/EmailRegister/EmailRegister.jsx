@@ -38,7 +38,10 @@ const EmailRegister = ({ userType }) => {
             await createUserWithEmailAndPassword(auth, email, password);
             handleUserType();
         } catch (error) {
-            console.log(error);
+            console.error(error);
+            if(error.code == "auth/email-already-in-use") {
+                console.log("Email already exists");
+            }
         }
     }
 
