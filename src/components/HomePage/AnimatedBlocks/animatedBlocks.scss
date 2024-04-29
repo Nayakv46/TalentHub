@@ -1,0 +1,67 @@
+.animatedBlocks{
+    position: relative;
+    right: -2rem;
+    top: -9.8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    min-width: calc(50% + 2rem);
+    height: calc(100% - 9.8rem);
+    min-height: calc(60rem - 9.8rem);
+    // border: 0.1rem solid red;
+    border-radius: 0 0 0 4rem;
+    background-color: var(--white700);
+    overflow: hidden;
+    z-index: 0;
+
+    &__column{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+        max-height: 60rem;
+        animation: sliding 12s infinite;
+
+        &:nth-child(2){
+            justify-content: flex-end;
+            animation: sliding2 9s infinite ease-in-out;
+        }
+    }
+
+    &__box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 25rem;
+        min-height: 15rem;
+        background-color: rgba(255,0,0,0.3);
+        border-radius: 2rem;
+        z-index: 1;
+        overflow: hidden;
+    }
+}
+
+@keyframes sliding {
+    0% {
+        transform: translateY(3rem);
+    }
+    50% {
+        transform: translateY(-25%);
+    }
+    100% {
+        transform: translateY(3rem);
+    }
+}
+
+@keyframes sliding2 {
+    0% {
+        transform: translateY(3rem);
+    }
+    50% {
+        transform: translateY(25%);
+    }
+    100% {
+        transform: translateY(3rem);
+    }
+}

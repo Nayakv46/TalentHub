@@ -26,14 +26,14 @@ const Navbar = () => {
     <>
         <nav className="navbar">
             <div className='navbar__content'>
-                <Link to='/'>TalentHub</Link>
+                <Link to='/' className='navbar__logo gradient-color blue'>TalentHub</Link>
 
                 <ul className='navbar__links'>
                     <Menu />
                 </ul>
 
                 <FaBarsStaggered
-                    className='navbar__mobileIcon'
+                    className='navbar__mobile-icon'
                     onClick={() => setToggleMenu(!toggleMenu)}
                 />
             </div>

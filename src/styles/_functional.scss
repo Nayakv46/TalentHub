@@ -1,6 +1,28 @@
-// filler
-@media screen and (min-width: 991px){
-    #root {
-        background-color: rgba(0,0,0,0);
+.gradient-color{
+    -webkit-text-fill-color: transparent;
+    
+    &.blue {
+        background: linear-gradient(0deg, #002fff 0%, #00aeff 70%);
+        -webkit-background-clip: text;
+    }
+    &.green {
+        background: linear-gradient(0deg, #40dd40 0%, #60ee60 70%);
+        -webkit-background-clip: text;
+    }
+    &.red {
+        background: linear-gradient(0deg, #ff4040 0%, #ff6060 70%);
+        -webkit-background-clip: text;
+    }
+    &.purple {
+        background: linear-gradient(0deg, #800080 0%, #9f009f 70%);
+        -webkit-background-clip: text;
+    }
+    &.yellow {
+        background: linear-gradient(0deg, #ccdd00 0%, #ddee00 70%);
+        -webkit-background-clip: text;
+    }
+    &.orange {
+        background: linear-gradient(0deg, #ffa500 0%, #ffb800 70%);
+        -webkit-background-clip: text;
     }
 }

@@ -7,10 +7,14 @@
     align-items: center;
     width: 100%;
     padding: 1rem 2rem;
-    background-color: rgba(0,0,0,0.07);
-    box-shadow: 0 0 1.5rem 0.3rem rgba(17,17,17,0.3);
+    background-color: var(--blue100);
+    box-shadow: 0 0 1.5rem 0.3rem rgba(17,17,17,0.25);
     z-index: 100;
 
+    &__logo {
+        font-size: 2.4rem;
+        font-weight: 700;
+    }
 
     &__content {
         display: flex;
@@ -26,7 +30,8 @@
         list-style: none;
     }
 
-    &__mobileIcon {
+    &__mobile-icon {
+        display: none;
         font-size: 2.4rem;
         cursor: pointer;
         transition: var(--transition);
@@ -45,7 +50,7 @@
     height: 100vh;
     height: 100dvh;
     padding: 4rem 2rem;
-    background-color: var(--white600);
+    background-color: var(--blue100);
     transition: var(--transition);
     z-index: 101;
 
@@ -91,7 +96,7 @@
             display: none;
         }
 
-        &__mobileIcon{
+        &__mobile-icon{
             display: flex;
         }
     }
