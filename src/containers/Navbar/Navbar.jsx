@@ -2,6 +2,7 @@ import './navbar.scss';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBarsStaggered } from 'react-icons/fa6';
+import useMountTransition from '../../utils/useMountTransition';
 
 const Menu = () => {
   return (
@@ -19,6 +20,7 @@ const Menu = () => {
 const Navbar = () => {
 
     const [toggleMenu, setToggleMenu] = useState(false);
+    const hasTransitionedIn = useMountTransition(toggleMenu, 250);
 
   return (
     <>
@@ -43,7 +45,7 @@ const Navbar = () => {
             </ul>
         </div>
 
-        {toggleMenu && <div className="menu-overlay" onClick={() => setToggleMenu(false)}></div>}
+        {(hasTransitionedIn || toggleMenu) && <div className={`menu-overlay ${hasTransitionedIn && 'in'} ${toggleMenu && 'visible'}`} onClick={() => setToggleMenu(false)}></div>}
         
     </>
   )
