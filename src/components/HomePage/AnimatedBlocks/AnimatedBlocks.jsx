@@ -13,14 +13,20 @@ const AnimatedBlocks = () => {
             <div className='animatedBlocks__box'>
                 <img src={officeImg1} alt='office' className='animatedBlocks__img'/>
             </div>
-            <div className='animatedBlocks__box'>
-
+            <div className='animatedBlocks__box animatedBlocks__box--blue'>
+                <div className="box__content">
+                    <p className='box__text'>1,000+</p>
+                    <p className='box__text'>employed</p>
+                </div>
             </div>
             <div className='animatedBlocks__box'>
                 <img src={officeImg2} alt='office' className='animatedBlocks__img'/>
             </div>
-            <div className='animatedBlocks__box'>
-
+            <div className='animatedBlocks__box animatedBlocks__box--red'>
+                <div className="box__content">
+                    <p className='box__text'>7+</p>
+                    <p className='box__text'>years of experience</p>
+                </div>
             </div>
             <div className='animatedBlocks__box'>
                 <img src={officeImg6} alt='office' className='animatedBlocks__img'/>
@@ -31,14 +37,20 @@ const AnimatedBlocks = () => {
             <div className='animatedBlocks__box'>
                 <img src={officeImg5} alt='office' className='animatedBlocks__img'/>
             </div>
-            <div className='animatedBlocks__box'>
-                <p>HELLO, MY NAME IS</p>
+            <div className='animatedBlocks__box animatedBlocks__box--purple'>
+                <div className="box__content">
+                    <p className='box__text'>200+</p>
+                    <p className='box__text'>employers</p>
+                </div>
             </div>
             <div className='animatedBlocks__box'>
                 <img src={officeImg3} alt='office' className='animatedBlocks__img'/>
             </div>
-            <div className='animatedBlocks__box'>
-                <p>MY NAME IS WHAT</p>
+            <div className='animatedBlocks__box animatedBlocks__box--green'>
+                <div className="box__content">
+                    <p className='box__text'>10,000+</p>
+                    <p className='box__text'>registered</p>
+                </div>
             </div>
             <div className='animatedBlocks__box'>
                 <img src={officeImg4} alt='office' className='animatedBlocks__img'/>
