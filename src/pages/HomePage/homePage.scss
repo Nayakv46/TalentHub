@@ -1,0 +1,17 @@
+.home{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: var(--wrapper-padding);
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        max-width: var(--max-width);
+        width: 100%;
+    }
+}

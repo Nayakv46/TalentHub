@@ -1,18 +1,19 @@
 import './App.css'
-import EmailRegister from './components/EmailRegister/EmailRegister'
-import GoogleAuth from './components/GoogleAuth/GoogleAuth'
-import Logout from './components/Logout/Logout'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import HomePage from './pages/HomePage/HomePage';
+import Navbar from './containers/Navbar/Navbar';
 
 function App() {
 
   return (
     <>
-      <EmailRegister userType='candidate' />
-      <EmailRegister userType='employer' />
-      <GoogleAuth userType='candidate' />
-      <GoogleAuth userType='employer' />
-      <br/><br/>
-      <Logout />
+
+      <Router>
+      <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </Router>
     </>
   )
 }
