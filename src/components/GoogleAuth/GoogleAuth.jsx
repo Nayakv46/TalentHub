@@ -2,6 +2,8 @@ import { auth, googleProvider } from '../../config/firebase';
 import { signInWithPopup } from 'firebase/auth';
 import { db } from "../../config/firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
+import { useState } from 'react';
+import Loader from '../Loader/Loader';
 
 
 const GoogleAuth = ({ userType }) => {
@@ -9,6 +11,8 @@ const GoogleAuth = ({ userType }) => {
     const userTypeUpper = userType.charAt(0).toUpperCase() + userType.slice(1);
 
     const usersCollectionRef = collection(db, 'users');
+
+    const [showLoader, setShowLoader] = useState(false);
 
     const handleUserType = async (email) => {
         try{
@@ -31,12 +35,15 @@ const GoogleAuth = ({ userType }) => {
     }
 
     const handleSignInWithGoogle = async () => {
+        setShowLoader(true);
         try {
             const user = await signInWithPopup(auth, googleProvider);
             const email = user?.user?.email;
             handleUserType(email);
         } catch (error) {
             console.log(error);
+        } finally {
+            setShowLoader(false);
         }
     }
 
@@ -44,6 +51,7 @@ const GoogleAuth = ({ userType }) => {
     <>
         <h2>Google {userTypeUpper}</h2>
         <button onClick={handleSignInWithGoogle}>Sign In With Google</button>
+        {showLoader && <Loader />}
     </>
   )
 }

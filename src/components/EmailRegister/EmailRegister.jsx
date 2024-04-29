@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { db } from "../../config/firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
+import Loader from "../Loader/Loader";
 
 const EmailRegister = ({ userType }) => {
 
@@ -62,7 +63,7 @@ const EmailRegister = ({ userType }) => {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <button onClick={handleSignIn}>Sign In as {userTypeUpper}</button>
-            {showLoader && <div className="loader"></div>}
+            {showLoader && <Loader />}
         </div>
     )
 }
