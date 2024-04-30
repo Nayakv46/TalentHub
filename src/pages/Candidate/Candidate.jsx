@@ -2,6 +2,9 @@ import './candidate.scss';
 import { useState, useEffect } from 'react';
 import loginPic1 from '../../assets/LoginImages/login-pic1.jpg';
 import loginPic2 from '../../assets/LoginImages/login-pic2.jpg';
+import loginPic3 from '../../assets/LoginImages/login-pic3.jpg';
+import loginPic4 from '../../assets/LoginImages/login-pic4.jpg';
+import loginPic5 from '../../assets/LoginImages/login-pic5.jpg';
 import EmailRegister from '../../components/EmailRegister/EmailRegister';
 import GoogleAuth from '../../components/GoogleAuth/GoogleAuth';
 
@@ -12,7 +15,7 @@ const Candidate = () => {
 
     useEffect(() => {
         // random number between 0 and 2
-        const randomNumber = Math.floor(Math.random() * 3);
+        const randomNumber = Math.floor(Math.random() * 5);
 
         switch(randomNumber){
             case 0:
@@ -20,7 +23,11 @@ const Candidate = () => {
             case 1:
                 return setToggleImage(loginPic2);
             case 2:
-                return setToggleImage(loginPic1);
+                return setToggleImage(loginPic3);
+            case 3:
+                return setToggleImage(loginPic4);
+            case 4:
+                return setToggleImage(loginPic5);
         }
     }, []);
 
@@ -41,10 +48,11 @@ const Candidate = () => {
                     <div className='candidate__login'>
                         <h4 className='candidate__title'>Log into an account</h4>
                         <EmailRegister userType='candidate'/>
+                        <p>or</p>
                         <GoogleAuth userType='candidate'/>
 
                         <button
-                            className='candidate__swap'
+                            className='candidate__swap-btn'
                             onClick={() => setFormState(!formState)}
                         >
                             Create an account
@@ -54,10 +62,11 @@ const Candidate = () => {
                     <div className='candidate__register'>
                         <h4 className='candidate__title'>Register an account</h4>
                         <EmailRegister userType='candidate'/>
+                        <p>or</p>
                         <GoogleAuth userType='candidate'/>
 
                         <button
-                            className='candidate__swap'
+                            className='candidate__swap-btn'
                             onClick={() => setFormState(!formState)}
                         >
                             Already have an account?

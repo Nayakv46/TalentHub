@@ -5,6 +5,7 @@ import { useState } from "react";
 import { db } from "../../config/firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import Loader from "../Loader/Loader";
+import useMountTransition from '../../utils/useMountTransition';
 
 const EmailRegister = ({ userType }) => {
 
@@ -13,9 +14,14 @@ const EmailRegister = ({ userType }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const [emailExists, setEmailExists] = useState(false);
+    const [missingPassword, setMissingPassword] = useState(false);
+
     const usersCollectionRef = collection(db, 'users');
 
     const [showLoader, setShowLoader] = useState(false);
+
+    const hasTransitionedIn = useMountTransition(emailExists, 1000);
 
     const handleUserType = async () => {
         try{
@@ -46,6 +52,16 @@ const EmailRegister = ({ userType }) => {
             console.error(error);
             if(error.code == "auth/email-already-in-use") {
                 console.log("Email already exists");
+                setEmailExists(true);
+                setTimeout(() => {
+                    setEmailExists(false);
+                }, 5000);
+            } else if (error.code == "auth/missing-password") {
+                console.log("Password is required");
+                setMissingPassword(true);
+                setTimeout(() => {
+                    setMissingPassword(false);
+                }, 5000);
             }
         } finally {
             setShowLoader(false);
@@ -54,24 +70,53 @@ const EmailRegister = ({ userType }) => {
 
     return (
         <div className="email-register">
-            <input
-                placeholder="Enter email"
-                className='email-register__input'
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-                placeholder="Enter password"
-                type="password"
-                className='email-register__input'
-                onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className='input-wrapper'>
+
+                <input
+                    id="register-email"
+                    required
+                    className={`email-register__input ${emailExists && `email-register__input--error`}`}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+
+                <label
+                    htmlFor="register-email"
+                    className='email-register__label'
+                >
+                    Enter email
+                </label>
+
+                {(hasTransitionedIn || emailExists) && <div className={`email-register__error ${hasTransitionedIn && `in`} ${emailExists && `visible`}`}>Email already exists</div>}
+            </div>
+
+
+            <div className='input-wrapper'>
+                <input
+                    id="register-password"
+                    type="password"
+                    required
+                    className={`email-register__input ${missingPassword && `email-register__input--error`}`}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+
+                <label
+                    htmlFor="register-password"
+                    className='email-register__label'
+                >
+                    Enter password
+                </label>
+
+                {missingPassword && <span className='email-register__error'>Password is required</span>}
+            </div>
+
+
 
             <div className='email-register__confirm'>
                 <button
                     className='email-register__button'
                     onClick={handleSignIn}
                 >
-                    Sign In as {userTypeUpper}
+                    Sign in as {userTypeUpper}
                 </button>
                 {showLoader && <Loader />}
             </div>

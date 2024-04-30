@@ -5,11 +5,12 @@ import { db } from "../../config/firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { useState } from 'react';
 import Loader from '../Loader/Loader';
+import { FcGoogle } from 'react-icons/fc';
 
 
 const GoogleAuth = ({ userType }) => {
 
-    const userTypeUpper = userType.charAt(0).toUpperCase() + userType.slice(1);
+    // const userTypeUpper = userType.charAt(0).toUpperCase() + userType.slice(1);
 
     const usersCollectionRef = collection(db, 'users');
 
@@ -55,7 +56,7 @@ const GoogleAuth = ({ userType }) => {
             className='google-auth__button'
             onClick={handleSignInWithGoogle}
         >
-            Sign In With Google
+           <FcGoogle className='icon--google'/> Sign in with Google
         </button>
         {showLoader && <Loader />}
     </div>

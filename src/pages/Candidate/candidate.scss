@@ -59,9 +59,10 @@
         display: flex;
         // flex-direction: column;
         // justify-content: center;
+        align-items: center;
         gap: 2rem;
         width: 40rem;
-        height: 50rem;
+        min-height: 50rem;
         padding: 2rem;
         background: var(--white700);
         border-radius: 2.5rem;
@@ -75,7 +76,8 @@
         position: relative;
         display: flex;
         gap: 4rem;
-        min-width: 76rem;
+        // min-width: 76rem;
+        min-width: calc(200% + 4rem);
         height: 100%;
         transition: var(--transition);
 
@@ -85,18 +87,43 @@
         }
     }
 
+    &__swap-btn {
+        display: flex;
+        justify-content: center;
+        // width: fit-content;
+        margin: 0 auto;
+        padding: 0.2rem 0.5rem;
+        background: none;
+        border: none;
+        font-size: 1.4rem;
+        outline: none;
+        transition: var(--transition);
+
+        &:hover,
+        &:focus,
+        &:focus-visible,
+        &:active {
+            outline: none;
+            border: none;
+            color: var(--lightblue700);
+        }
+    }
+
     &__register {
         display: flex;
         flex-direction: column;
         justify-content: center;
         gap: 2rem;
         width: 100%;
+        text-align: center;
     }
 
     &__login {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        // align-items: center;
+        text-align: center;
         gap: 2rem;
         width: 100%;
     }
@@ -118,6 +145,16 @@
     .candidate {
         &__form {
             width: 90%;
+            // height: 40rem;
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .candidate {
+        &__form-group {
+            // width: 100%;
+            min-width: 200%;
             // height: 40rem;
         }
     }
