@@ -2,6 +2,11 @@ import './matchPath.scss';
 import matchPath from '../../../assets/HomeImages/match-path.svg';
 import MatchContentBox from '../MatchContentBox/MatchContentBox';
 
+// CREATE MATCHCONTENTBOX
+// THEY WILL LOOK LIKE ON EPAM WEBSITE
+// THEN CREATE HERO COMPONENT THAT WILL BE MADE OF HOMEPAGE MADE STUFF HOME__HERO...
+// A LITTLE STYLING AND TEXT, THEN GO FOR LOGIN FORMS
+
 const MatchPath = () => {
   return (
     <div className='matchPath'>
@@ -11,6 +16,7 @@ const MatchPath = () => {
             <img className='matchPath__image' src={matchPath} alt='matchPath' />
         </div>
         <div className='matchPath__column'>
+            <div className='matchPath__blob'></div>
             <MatchContentBox
                 icon="path"
                 title="Convenience for both parties"
