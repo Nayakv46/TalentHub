@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 4rem;
     padding: var(--wrapper-padding);
 
     &__hero {
@@ -87,6 +87,9 @@
 }
 
 @media screen and (max-width: 911px){
+    .home__hero {
+        height: 40rem;
+    }
     .hero__text,
     .hero__info {
         align-items: center;

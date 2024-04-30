@@ -1,6 +1,7 @@
 import './homePage.scss';
 import { Link } from 'react-router-dom';
 import AnimatedBlocks from '../../components/HomePage/AnimatedBlocks/AnimatedBlocks';
+import MatchPath from '../../components/HomePage/MatchPath/MatchPath';
 
 const HomePage = () => {
   return (
@@ -23,6 +24,8 @@ const HomePage = () => {
             </div>
             <AnimatedBlocks />
         </div>
+
+        <MatchPath />
     </main>
   )
 }
