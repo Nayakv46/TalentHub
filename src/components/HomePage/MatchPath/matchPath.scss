@@ -5,10 +5,17 @@
     max-width: var(--max-width);
 
     &__column {
-        flex: 1;
+        // flex: 1;
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        width: 100%;
+
+        &:nth-child(1) {
+            // justify-content: space-between;
+            justify-content: center;
+            gap: 4rem;
+        }
     }
 
     &__title {
@@ -22,6 +29,9 @@
 
     &__image {
         max-width: 60rem;
+        width: 100%;
+        height: auto;
+        
     }
 }
 
