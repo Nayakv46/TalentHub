@@ -1,0 +1,51 @@
+.candidate {
+    position: relative;
+    display: flex;
+    width: 100dvw;
+    width: 100%;
+    min-height: 100dvh;
+    min-height: 100vh;
+    max-height: 100dvh;
+    max-height: 100vh;
+    overflow: hidden;
+
+    &__image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    &__overlay {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0,0,0,0.2);
+    }
+
+    &__content {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        height: 100%;
+        width: 50%;
+        transform: translate(0, -50%);
+    }
+
+    &__bg1 {
+        position: absolute;
+        left: 10rem;
+        width: 200%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.9);
+        transform: skewX(20deg);
+    }
+
+    &__bg2 {
+        position: absolute;
+        left: -10rem;
+        width: 15rem;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.9);
+        transform: skewX(20deg);
+    }
+}
