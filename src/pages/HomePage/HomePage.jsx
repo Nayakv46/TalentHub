@@ -21,6 +21,8 @@ const HomePage = () => {
                     <Link to="/employer" className='hero__cta--button'>I&apos;m an Employer</Link>
                     <Link to="/candidate" className='hero__cta--button'>I&apos;m a Candidate</Link>
                 </div>
+
+                <div className='hero__blob'></div>
             </div>
             <AnimatedBlocks />
         </div>

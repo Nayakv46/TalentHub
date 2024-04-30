@@ -2,22 +2,24 @@ import './navbar.scss';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBarsStaggered } from 'react-icons/fa6';
+import { IoClose } from 'react-icons/io5';
 import useMountTransition from '../../utils/useMountTransition';
 
-const Menu = () => {
-  return (
-    <>
-        <li>
-            <Link to='/employer'>Employer</Link>
-        </li>
-        <li>
-            <Link to='/candidate'>Candidate</Link>
-        </li>
-    </>
-  )
-}
 
 const Navbar = () => {
+
+    const Menu = () => {
+      return (
+        <>
+            <li>
+                <Link to='/employer' onClick={() => setToggleMenu(!toggleMenu)}>Employer</Link>
+            </li>
+            <li>
+                <Link to='/candidate' onClick={() => setToggleMenu(!toggleMenu)}>Candidate</Link>
+            </li>
+        </>
+      )
+    }
 
     const [toggleMenu, setToggleMenu] = useState(false);
     const hasTransitionedIn = useMountTransition(toggleMenu, 250);
@@ -40,6 +42,8 @@ const Navbar = () => {
         </nav>
 
         <div className={`navbar-mobile ${toggleMenu ? `open-menu` : `closed-menu`}`}>
+            <IoClose className='icon--close' onClick={() => setToggleMenu(false)} />
+
             <ul className='navbar-mobile__links'>
                 <Menu/>
             </ul>

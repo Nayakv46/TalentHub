@@ -6,6 +6,7 @@
     align-items: center;
     gap: 4rem;
     padding: var(--wrapper-padding);
+    overflow: hidden;
 
     &__hero {
         // position: relative;
@@ -23,6 +24,7 @@
 .hero {
 
     &__content {
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -84,6 +86,20 @@
             }
         }
     }
+
+    &__blob {
+        position: absolute;
+        top: 50%;
+        left: 27%;
+        width: 35%;
+        height: 70%;
+        background-color: rgba(124, 252, 0, 0.07);
+        border-radius: 50%;
+        // transform: skewX(33deg) rotate(73deg)  translateY(-50%);
+        // transform: translate(-50%, -50%) skewX(13deg) rotate(73deg);
+        transform: translate(-50%, -50%) skewX(-40deg) rotate(60deg);
+        filter: blur(5rem);
+    }
 }
 
 @media screen and (max-width: 911px){
@@ -104,6 +120,10 @@
 
     .hero__cta {
         justify-content: center;
+    }
+
+    .hero__blob {
+        left: 50%;
     }
 
 }
