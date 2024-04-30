@@ -52,7 +52,7 @@
 
     &__error {
         position: absolute;
-        top: -4rem;
+        top: -2rem;
         // left: 50%;
         padding: 0.7rem 1rem;
         background-color: var(--white700);
@@ -61,8 +61,7 @@
         box-shadow: 0 0.5rem 1rem 0.3rem rgba(0,0,0,0.2);
         opacity: 0;
         transition: var(--transition);
-        transform: translate(0,0);
-        
+
         &:before {
             content: '';
             position: absolute;
@@ -74,12 +73,10 @@
             left: 50%;
             bottom: -0.5rem;
             transform: translate(-50%, 0);
-            // transition: var(--transition);
         }
 
         &.in.visible {
-            // top: -4rem;
-            transform: translate(0, 2rem);
+            top: -4rem;
             opacity: 1;
         }
     }

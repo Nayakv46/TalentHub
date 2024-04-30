@@ -21,7 +21,9 @@ const EmailRegister = ({ userType }) => {
 
     const [showLoader, setShowLoader] = useState(false);
 
-    const hasTransitionedIn = useMountTransition(emailExists, 1000);
+    const hasTransitionedInEE = useMountTransition(emailExists, 250);
+    
+    const hasTransitionedInPW = useMountTransition(missingPassword, 250);
 
     const handleUserType = async () => {
         try{
@@ -86,7 +88,11 @@ const EmailRegister = ({ userType }) => {
                     Enter email
                 </label>
 
-                {(hasTransitionedIn || emailExists) && <div className={`email-register__error ${hasTransitionedIn && `in`} ${emailExists && `visible`}`}>Email already exists</div>}
+                {(hasTransitionedInEE || emailExists) &&
+                    <div className={`email-register__error ${hasTransitionedInEE && `in`} ${emailExists && `visible`}`}>
+                        Email already exists
+                    </div>
+                }
             </div>
 
 
@@ -106,7 +112,11 @@ const EmailRegister = ({ userType }) => {
                     Enter password
                 </label>
 
-                {missingPassword && <span className='email-register__error'>Password is required</span>}
+                {(hasTransitionedInPW || missingPassword) &&
+                    <div className={`email-register__error ${hasTransitionedInPW && `in`} ${missingPassword && `visible`}`}>
+                        Password is required
+                    </div>
+                }
             </div>
 
 
