@@ -1,3 +1,4 @@
+import './emailRegister.scss';
 import { auth } from "../../config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
@@ -52,18 +53,28 @@ const EmailRegister = ({ userType }) => {
     }
 
     return (
-        <div>
+        <div className="email-register">
             <input
                 placeholder="Enter email"
+                className='email-register__input'
                 onChange={(e) => setEmail(e.target.value)}
             />
             <input
                 placeholder="Enter password"
                 type="password"
+                className='email-register__input'
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <button onClick={handleSignIn}>Sign In as {userTypeUpper}</button>
-            {showLoader && <Loader />}
+
+            <div className='email-register__confirm'>
+                <button
+                    className='email-register__button'
+                    onClick={handleSignIn}
+                >
+                    Sign In as {userTypeUpper}
+                </button>
+                {showLoader && <Loader />}
+            </div>
         </div>
     )
 }

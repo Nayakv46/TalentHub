@@ -1,7 +1,8 @@
 import './candidate.scss';
 import { useState, useEffect } from 'react';
 import loginPic1 from '../../assets/LoginImages/login-pic1.jpg';
-
+import EmailRegister from '../../components/EmailRegister/EmailRegister';
+import GoogleAuth from '../../components/GoogleAuth/GoogleAuth';
 const Candidate = () => {
     const [toggleImage, setToggleImage] = useState();
 
@@ -30,10 +31,11 @@ const Candidate = () => {
             <div className='candidate__bg1'></div>
             <div className='candidate__bg2'></div>
 
-            <div className='candidate__form'>
-
-            </div>
         </div>
+            <div className='candidate__form'>
+                <EmailRegister userType='candidate'/>
+                <GoogleAuth userType='candidate'/>
+            </div>
     </div>
   )
 }

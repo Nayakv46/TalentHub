@@ -1,0 +1,31 @@
+.email-register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+    &__confirm {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    &__input {
+        display: flex;
+        width: 100%;
+        max-width: 30rem;
+        // height: 4rem;
+        padding: 1.5rem 1rem;
+        border: 0.2rem solid var(--gray300);
+        border-radius: 1rem;
+        outline: none;
+    }
+
+    &__button {
+        display: flex;
+        background-color: rgba(0,0,0,0.2);
+    }
+}

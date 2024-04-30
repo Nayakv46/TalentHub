@@ -12,10 +12,10 @@ const Navbar = () => {
       return (
         <>
             <li>
-                <Link to='/employer' onClick={() => setToggleMenu(!toggleMenu)}>Employer</Link>
+                <Link to='/employer' onClick={() => setToggleMenu(false)}>Employer</Link>
             </li>
             <li>
-                <Link to='/candidate' onClick={() => setToggleMenu(!toggleMenu)}>Candidate</Link>
+                <Link to='/candidate' onClick={() => setToggleMenu(false)}>Candidate</Link>
             </li>
         </>
       )

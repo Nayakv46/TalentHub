@@ -38,6 +38,7 @@
         height: 100%;
         background: rgba(255, 255, 255, 0.9);
         transform: skewX(20deg);
+        // backdrop-filter: blur(0.2rem);
     }
 
     &__bg2 {
@@ -47,5 +48,42 @@
         height: 100%;
         background: rgba(255, 255, 255, 0.9);
         transform: skewX(20deg);
+        // backdrop-filter: blur(0.2rem);
+        // z-index: 0;
+    }
+
+    &__form {
+        position: absolute;
+        top: 50%;
+        left: 75%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        width: 40rem;
+        height: 50rem;
+        padding: 2rem;
+        background: var(--white700);
+        border-radius: 2.5rem;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 2rem 0.2rem rgba(0,0,0,0.2);
+        // z-index: 1;
+    }
+}
+
+@media screen and (max-width: 911px){
+    .candidate {
+        &__form {
+            left: 50%;
+        }
+    }
+}
+
+@media screen and (max-width: 450px){
+    .candidate {
+        &__form {
+            width: 90%;
+            // height: 40rem;
+        }
     }
 }

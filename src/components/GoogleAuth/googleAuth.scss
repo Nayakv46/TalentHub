@@ -1,0 +1,17 @@
+.google-auth {
+    position: relative;
+    display: flex;
+    align-items: center;
+    // left: 100%;
+    margin: 0 auto;
+    // display: flex;
+    // justify-content: center;
+    // gap: 2rem;
+
+    &__button {
+        // display: flex;
+        margin: 0 auto;
+        background-color: rgba(0,0,0,0.2);
+    }
+    // background-color: rgba(0,0,0,0.2);
+}

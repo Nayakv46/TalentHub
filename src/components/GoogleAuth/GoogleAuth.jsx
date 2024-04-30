@@ -1,3 +1,4 @@
+import './googleAuth.scss';
 import { auth, googleProvider } from '../../config/firebase';
 import { signInWithPopup } from 'firebase/auth';
 import { db } from "../../config/firebase";
@@ -48,11 +49,16 @@ const GoogleAuth = ({ userType }) => {
     }
 
   return (
-    <>
-        <h2>Google {userTypeUpper}</h2>
-        <button onClick={handleSignInWithGoogle}>Sign In With Google</button>
+    <div className='google-auth'>
+        {/* <h2>Google {userTypeUpper}</h2> */}
+        <button
+            className='google-auth__button'
+            onClick={handleSignInWithGoogle}
+        >
+            Sign In With Google
+        </button>
         {showLoader && <Loader />}
-    </>
+    </div>
   )
 }
 
