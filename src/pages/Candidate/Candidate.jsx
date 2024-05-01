@@ -1,81 +1,26 @@
 import './candidate.scss';
-import { useState, useEffect } from 'react';
-import loginPic1 from '../../assets/LoginImages/login-pic1.jpg';
-import loginPic2 from '../../assets/LoginImages/login-pic2.jpg';
-import loginPic3 from '../../assets/LoginImages/login-pic3.jpg';
-import loginPic4 from '../../assets/LoginImages/login-pic4.jpg';
-import loginPic5 from '../../assets/LoginImages/login-pic5.jpg';
-import EmailRegister from '../../components/EmailRegister/EmailRegister';
-import GoogleAuth from '../../components/GoogleAuth/GoogleAuth';
+import { useAuth } from "../../context/AuthContext"
+import { useNavigate } from "react-router-dom"
 
 const Candidate = () => {
-    const [toggleImage, setToggleImage] = useState();
 
-    const [formState, setFormState] = useState(false);
+    const { currentUser, userLoggedIn } = useAuth();
 
-    useEffect(() => {
-        // random number between 0 and 2
-        const randomNumber = Math.floor(Math.random() * 5);
+    const navigateTo = useNavigate();
 
-        switch(randomNumber){
-            case 0:
-                return setToggleImage(loginPic1);
-            case 1:
-                return setToggleImage(loginPic2);
-            case 2:
-                return setToggleImage(loginPic3);
-            case 3:
-                return setToggleImage(loginPic4);
-            case 4:
-                return setToggleImage(loginPic5);
-        }
-    }, []);
+    if(!userLoggedIn) {
+        navigateTo('/');
+        return;
+    } else {
 
-  return (
-    <div className='candidate'>
-        <img src={toggleImage} alt='loginPic1' className='candidate__image'/>
-        <div className='candidate__overlay'></div>
+        console.log("here!", currentUser)
 
-        <div className='candidate__content'>
-            <div className='candidate__bg1'></div>
-            <div className='candidate__bg2'></div>
-
-        </div>
-            <div className='candidate__form'>
-
-                <div className={`candidate__form-group ${formState && `candidate__form-group--swap` }`}>
-
-                    <div className='candidate__login'>
-                        <h4 className='candidate__title'>Log into an account</h4>
-                        <EmailRegister userType='candidate'/>
-                        <p>or</p>
-                        <GoogleAuth userType='candidate'/>
-
-                        <button
-                            className='candidate__swap-btn'
-                            onClick={() => setFormState(!formState)}
-                        >
-                            Create an account
-                        </button>
-                    </div>
-
-                    <div className='candidate__register'>
-                        <h4 className='candidate__title'>Register an account</h4>
-                        <EmailRegister userType='candidate'/>
-                        <p>or</p>
-                        <GoogleAuth userType='candidate'/>
-
-                        <button
-                            className='candidate__swap-btn'
-                            onClick={() => setFormState(!formState)}
-                        >
-                            Already have an account?
-                        </button>
-                    </div>
-                </div>
+        return (
+            <div className="candidate">
+                Hello {currentUser.email}
             </div>
-    </div>
-  )
+        )
+    }
 }
 
 export default Candidate

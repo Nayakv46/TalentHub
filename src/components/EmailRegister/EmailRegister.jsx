@@ -6,17 +6,9 @@ import { db } from "../../config/firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import Loader from "../Loader/Loader";
 import useMountTransition from '../../utils/useMountTransition';
+import { useNavigate } from 'react-router-dom';
 
 const EmailRegister = ({ userType }) => {
-
-    // CHECK IF CREATEUSERWITHEMAILANDPASSWORD LOGS USER IN
-    // console.log(createUserWithEmailAndPassword(auth, email, password));
-    // console.log("auth.currentUser",auth.currentUser)
-    // console.log("auth.currentUser.email",auth?.currentUser?.email)
-    // IF YES -> REDIRECT TO DASHBOARD (CANDIDATE OR EMPLOYER)
-    // CREATE EMPLOYER REGISTER PAGE
-    // LET THE REGISTER PAGES BE STH LIKE /register/candidate and /register/employer
-    // DASHBOARD WILL BE /candidate and /employer
 
     const userTypeUpper = userType.charAt(0).toUpperCase() + userType.slice(1);
 
@@ -53,6 +45,7 @@ const EmailRegister = ({ userType }) => {
             console.error(err);
         }
     }
+    const navigateTo = useNavigate();
 
     const handleSignIn = async () => {
         setShowLoader(true);
@@ -61,6 +54,7 @@ const EmailRegister = ({ userType }) => {
             handleUserType();
             console.log("auth.currentUser",auth.currentUser)
             console.log("auth.currentUser.email",auth?.currentUser?.email)
+            navigateTo('/')
         } catch (error) {
             console.error(error);
             if(error.code == "auth/email-already-in-use") {

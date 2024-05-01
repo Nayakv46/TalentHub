@@ -1,8 +1,12 @@
 import './hero.scss';
 import { Link } from 'react-router-dom';
 import AnimatedBlocks from '../AnimatedBlocks/AnimatedBlocks';
+import { useAuth } from '../../../context/AuthContext'
 
 const Hero = () => {
+
+    const { currentUser, userLoggedIn } = useAuth();
+
   return (
     <div className='hero'>
 
@@ -16,8 +20,8 @@ const Hero = () => {
                 </div>
 
                 <div className='hero__cta'>
-                    <Link to="/employer" className='hero__cta--button'>I&apos;m an Employer</Link>
-                    <Link to="/candidate" className='hero__cta--button'>I&apos;m a Candidate</Link>
+                    <Link to={userLoggedIn ? "/somewhere" : "/auth/candidate"} className='hero__cta--button'>I&apos;m an Employer</Link>
+                    <Link to={userLoggedIn ? `/candidate` : `/auth/candidate`} className='hero__cta--button'>I&apos;m a Candidate</Link>
                 </div>
 
                 <div className='hero__blob'></div>
