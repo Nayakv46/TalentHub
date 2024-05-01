@@ -1,12 +1,15 @@
 import './navbar.scss';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import { IoClose } from 'react-icons/io5';
 import useMountTransition from '../../utils/useMountTransition';
+import { useAuth } from '../../context/AuthContext';
 
 
 const Navbar = () => {
+
+    const { currentUser } = useAuth();
 
     const Menu = () => {
       return (
@@ -24,6 +27,8 @@ const Navbar = () => {
     const [toggleMenu, setToggleMenu] = useState(false);
     const hasTransitionedIn = useMountTransition(toggleMenu, 250);
 
+   
+
   return (
     <>
         <nav className="navbar">
@@ -32,6 +37,7 @@ const Navbar = () => {
 
                 <ul className='navbar__links'>
                     <Menu />
+                    {currentUser ? currentUser.email : 'No user'}
                 </ul>
 
                 <FaBarsStaggered

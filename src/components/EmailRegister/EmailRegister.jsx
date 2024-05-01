@@ -9,6 +9,15 @@ import useMountTransition from '../../utils/useMountTransition';
 
 const EmailRegister = ({ userType }) => {
 
+    // CHECK IF CREATEUSERWITHEMAILANDPASSWORD LOGS USER IN
+    // console.log(createUserWithEmailAndPassword(auth, email, password));
+    // console.log("auth.currentUser",auth.currentUser)
+    // console.log("auth.currentUser.email",auth?.currentUser?.email)
+    // IF YES -> REDIRECT TO DASHBOARD (CANDIDATE OR EMPLOYER)
+    // CREATE EMPLOYER REGISTER PAGE
+    // LET THE REGISTER PAGES BE STH LIKE /register/candidate and /register/employer
+    // DASHBOARD WILL BE /candidate and /employer
+
     const userTypeUpper = userType.charAt(0).toUpperCase() + userType.slice(1);
 
     const [email, setEmail] = useState("");
@@ -50,6 +59,8 @@ const EmailRegister = ({ userType }) => {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             handleUserType();
+            console.log("auth.currentUser",auth.currentUser)
+            console.log("auth.currentUser.email",auth?.currentUser?.email)
         } catch (error) {
             console.error(error);
             if(error.code == "auth/email-already-in-use") {

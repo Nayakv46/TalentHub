@@ -14,7 +14,7 @@ const MatchContentBox = ({ icon, title, info}) => {
             case 'tick':
                 return <SiTicktick className='icon--tick' />
             default:
-                return <HiMiniArrowPathRoundedSquare />
+                return <HiMiniArrowPathRoundedSquare className='icon--path' />
         }
 
     };
