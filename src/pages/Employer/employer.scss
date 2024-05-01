@@ -1,0 +1,9 @@
+.employer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    padding: var(--wrapper-padding);
+    overflow: hidden;
+}

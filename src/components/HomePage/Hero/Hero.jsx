@@ -5,13 +5,7 @@ import { useAuth } from '../../../context/AuthContext'
 
 const Hero = () => {
 
-    // CREATE EMPLOYER REGISTER PAGE
-    // LET THE REGISTER PAGES BE STH LIKE /register/candidate and /register/employer
-    // DASHBOARD WILL BE /candidate and /employer
-    // AFTER SUCCESSFUL REGISTER, REDIRECT
-    // Create login forms
-
-    const { currentUser, userLoggedIn, userType } = useAuth();
+    const { userLoggedIn, userType } = useAuth();
 
   return (
     <div className='hero'>

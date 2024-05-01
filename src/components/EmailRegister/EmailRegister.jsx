@@ -7,6 +7,7 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 import Loader from "../Loader/Loader";
 import useMountTransition from '../../utils/useMountTransition';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 const EmailRegister = ({ userType }) => {
 
@@ -26,6 +27,8 @@ const EmailRegister = ({ userType }) => {
     
     const hasTransitionedInPW = useMountTransition(missingPassword, 250);
 
+    const { setUserType } = useAuth();
+
     const handleUserType = async () => {
         try{
             // get all users
@@ -41,6 +44,8 @@ const EmailRegister = ({ userType }) => {
                 email: email,
                 userType: userType
             });
+
+            setUserType(userType);
         } catch(err){
             console.error(err);
         }

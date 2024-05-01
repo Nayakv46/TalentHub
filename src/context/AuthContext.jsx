@@ -3,7 +3,6 @@ import { auth, db } from "../config/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { collection, getDocs } from "firebase/firestore";
 
-
 const AuthContext = createContext();
 
 export function useAuth() {
@@ -25,33 +24,33 @@ export function AuthContextProvider({ children }) {
         if (user) {
             setCurrentUser({ ...user });
             setUserLoggedIn(true);
-            getUserType(user.email);
+            const userTypeSnapshot = await getUserType(user.email);
+            if (userTypeSnapshot) {
+                setUserType(userTypeSnapshot)
+            }
         } else {
             setCurrentUser(null);
             setUserLoggedIn(false);
+            setUserType(null);
         }
     }
 
-    const usersCollectionRef = collection(db, 'users');
+    async function getUserType (userEmail) {
 
-    const getUserType = async (email) => {
-        try {
-            const users = await getDocs(usersCollectionRef);
-            const user = users.docs.find((doc) => doc.data().email === email);
-            if(user) {
-                // console.log(user.data().userType)
-                setUserType(user.data().userType);
+        const usersCollectionRef = collection(db, 'users');
+        const users = await getDocs(usersCollectionRef);
+        users.forEach((doc) => {
+            if(doc.data().email === userEmail) {
+                setUserType(doc.data().userType);
             }
-        } catch (err) {
-            console.error(err);
-        }
-    
+        })
     }
 
     const value = {
         currentUser,
         userLoggedIn,
-        userType
+        userType,
+        setUserType
     }
 
   return (

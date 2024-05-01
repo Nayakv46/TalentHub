@@ -1,4 +1,4 @@
-import './candidate.scss';
+import './employer.scss';
 import { useAuth } from "../../context/AuthContext"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from 'react';
@@ -10,14 +10,14 @@ const Candidate = () => {
     const navigateTo = useNavigate();
 
     useEffect(() => {
-        if(!userLoggedIn || userType !== 'candidate') {
-            navigateTo('/auth/candidate');
+        if(!userLoggedIn || userType !== 'employer') {
+            navigateTo('/auth/employer');
             return;
         }
     }, []);
     return (
-        <div className="candidate">
-            Hello, {currentUser?.displayName ? currentUser.displayName : currentUser?.email}
+        <div className="employer">
+            Hello {currentUser?.email}
             <br/>
             USERTYPE: {userType}
         </div>

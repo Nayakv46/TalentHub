@@ -6,6 +6,7 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 import { useState } from 'react';
 import Loader from '../Loader/Loader';
 import { FcGoogle } from 'react-icons/fc';
+import { useAuth } from '../../context/AuthContext';
 
 
 const GoogleAuth = ({ userType }) => {
@@ -15,6 +16,8 @@ const GoogleAuth = ({ userType }) => {
     const usersCollectionRef = collection(db, 'users');
 
     const [showLoader, setShowLoader] = useState(false);
+
+    const { setUserType } = useAuth();
 
     const handleUserType = async (email) => {
         try{
@@ -31,6 +34,7 @@ const GoogleAuth = ({ userType }) => {
                 email: email,
                 userType: userType
             });
+            setUserType(userType);
         } catch(err){
             console.error(err);
         }
