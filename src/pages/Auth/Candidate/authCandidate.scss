@@ -134,7 +134,7 @@
 }
 
 @media screen and (max-width: 911px){
-    .candidate {
+    .auth-candidate {
         &__form {
             left: 50%;
         }
@@ -142,7 +142,7 @@
 }
 
 @media screen and (max-width: 450px){
-    .candidate {
+    .auth-candidate {
         &__form {
             width: 90%;
             // height: 40rem;
@@ -151,7 +151,7 @@
 }
 
 @media screen and (max-width: 400px) {
-    .candidate {
+    .auth-candidate {
         &__form-group {
             // width: 100%;
             min-width: 200%;

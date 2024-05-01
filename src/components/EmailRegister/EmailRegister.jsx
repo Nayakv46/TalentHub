@@ -17,15 +17,18 @@ const EmailRegister = ({ userType }) => {
     const [password, setPassword] = useState("");
 
     const [emailExists, setEmailExists] = useState(false);
+    const [invalidEmail, setInvalidEmail] = useState(false);
     const [missingPassword, setMissingPassword] = useState(false);
+    const [invalidPassword, setInvalidPassword] = useState(false);
 
     const usersCollectionRef = collection(db, 'users');
 
     const [showLoader, setShowLoader] = useState(false);
 
     const hasTransitionedInEE = useMountTransition(emailExists, 250);
-    
     const hasTransitionedInPW = useMountTransition(missingPassword, 250);
+    const hasTransitionedInInvEmail = useMountTransition(invalidEmail, 250);
+    const hasTransitionedInInvPW = useMountTransition(invalidPassword, 250);
 
     const { setUserType } = useAuth();
 
@@ -48,6 +51,8 @@ const EmailRegister = ({ userType }) => {
             setUserType(userType);
         } catch(err){
             console.error(err);
+        } finally {
+            navigateTo(`/${userType}`)
         }
     }
     const navigateTo = useNavigate();
@@ -57,9 +62,6 @@ const EmailRegister = ({ userType }) => {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             handleUserType();
-            console.log("auth.currentUser",auth.currentUser)
-            console.log("auth.currentUser.email",auth?.currentUser?.email)
-            navigateTo('/')
         } catch (error) {
             console.error(error);
             if(error.code == "auth/email-already-in-use") {
@@ -74,6 +76,18 @@ const EmailRegister = ({ userType }) => {
                 setTimeout(() => {
                     setMissingPassword(false);
                 }, 5000);
+            } else if (error.code == "auth/invalid-email") {
+                console.log("Invalid email");
+                setInvalidEmail(true);
+                setTimeout(() => {
+                    setInvalidEmail(false);
+                }, 5000);
+            }  else if (error.code == "auth/weak-password") {
+                console.log("Invalid email");
+                setInvalidPassword(true);
+                setTimeout(() => {
+                    setInvalidPassword(false);
+                }, 5000);
             }
         } finally {
             setShowLoader(false);
@@ -87,7 +101,7 @@ const EmailRegister = ({ userType }) => {
                 <input
                     id="register-email"
                     required
-                    className={`email-register__input ${emailExists && `email-register__input--error`}`}
+                    className={`email-register__input ${(emailExists || invalidEmail) && `email-register__input--error`}`}
                     onChange={(e) => setEmail(e.target.value)}
                 />
 
@@ -103,6 +117,11 @@ const EmailRegister = ({ userType }) => {
                         Email already exists
                     </div>
                 }
+                {(hasTransitionedInInvEmail || invalidEmail) &&
+                    <div className={`email-register__error ${hasTransitionedInInvEmail && `in`} ${invalidEmail && `visible`}`}>
+                        Invalid email
+                    </div>
+                }
             </div>
 
 
@@ -111,7 +130,7 @@ const EmailRegister = ({ userType }) => {
                     id="register-password"
                     type="password"
                     required
-                    className={`email-register__input ${missingPassword && `email-register__input--error`}`}
+                    className={`email-register__input ${(missingPassword || invalidPassword) && `email-register__input--error`}`}
                     onChange={(e) => setPassword(e.target.value)}
                 />
 
@@ -125,6 +144,11 @@ const EmailRegister = ({ userType }) => {
                 {(hasTransitionedInPW || missingPassword) &&
                     <div className={`email-register__error ${hasTransitionedInPW && `in`} ${missingPassword && `visible`}`}>
                         Password is required
+                    </div>
+                }
+                {(hasTransitionedInInvPW || invalidPassword) &&
+                    <div className={`email-register__error ${hasTransitionedInInvPW && `in`} ${invalidPassword && `visible`}`}>
+                        Password is too weak
                     </div>
                 }
             </div>

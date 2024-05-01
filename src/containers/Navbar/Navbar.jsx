@@ -1,5 +1,5 @@
 import './navbar.scss';
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import { IoClose } from 'react-icons/io5';
@@ -10,16 +10,16 @@ import Logout from '../../components/Logout/Logout';
 
 const Navbar = () => {
 
-    const { currentUser, userLoggedIn } = useAuth();
+    const { currentUser, userLoggedIn, userType } = useAuth();
 
     const Menu = () => {
       return (
         <>
             <li>
-                <Link to='/employer' onClick={() => setToggleMenu(false)}>Employer</Link>
+                <Link to={userLoggedIn && userType == 'employer' ? "/employer" : "/auth/employer"} onClick={() => setToggleMenu(false)}>Employer</Link>
             </li>
             <li>
-                <Link to='/candidate' onClick={() => setToggleMenu(false)}>Candidate</Link>
+                <Link to={userLoggedIn && userType == 'candidate' ? "/candidate" : "/auth/candidate"} onClick={() => setToggleMenu(false)}>Candidate</Link>
             </li>
         </>
       )
@@ -27,8 +27,6 @@ const Navbar = () => {
 
     const [toggleMenu, setToggleMenu] = useState(false);
     const hasTransitionedIn = useMountTransition(toggleMenu, 250);
-
-   
 
   return (
     <>

@@ -16,7 +16,7 @@ const Candidate = () => {
 
     const [formState, setFormState] = useState(false);
 
-    const { currentUser, userLoggedIn, userType } = useAuth();
+    const { userLoggedIn, userType } = useAuth();
     const navigateTo = useNavigate();
 
     useEffect(() => {

@@ -7,6 +7,7 @@ import { useState } from 'react';
 import Loader from '../Loader/Loader';
 import { FcGoogle } from 'react-icons/fc';
 import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const GoogleAuth = ({ userType }) => {
@@ -18,6 +19,8 @@ const GoogleAuth = ({ userType }) => {
     const [showLoader, setShowLoader] = useState(false);
 
     const { setUserType } = useAuth();
+
+    const navigateTo = useNavigate();
 
     const handleUserType = async (email) => {
         try{
@@ -37,6 +40,8 @@ const GoogleAuth = ({ userType }) => {
             setUserType(userType);
         } catch(err){
             console.error(err);
+        } finally {
+            navigateTo(`/${userType}`);
         }
     }
 
