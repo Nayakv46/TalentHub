@@ -1,3 +1,5 @@
+import './logout.scss';
+
 import { signOut } from 'firebase/auth'
 import { auth } from '../../config/firebase'
 
@@ -11,7 +13,12 @@ const Logout = () => {
     }
 
   return (
-    <button onClick={handleLogout}>Logout</button>
+    <button
+      className='logout-button'
+      onClick={handleLogout}
+    >
+      Logout
+    </button>
   )
 }
 

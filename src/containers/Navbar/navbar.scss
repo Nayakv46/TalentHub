@@ -28,8 +28,11 @@
 
     &__links {
         display: flex;
+        align-items: center;
         gap: 2.5rem;
         list-style: none;
+
+
     }
 
     &__mobile-icon {
@@ -47,11 +50,13 @@
 .navbar-mobile{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
     gap: 2rem;
     width: 30rem;
     height: 100vh;
     height: 100dvh;
-    padding: 4rem 2rem;
+    padding: 8rem 2rem 2rem 2rem;
     background-color: var(--blue100);
     transition: var(--transition);
     z-index: 101;
@@ -61,6 +66,7 @@
         flex-direction: column;
         gap: 2rem;
         list-style: none;
+        font-size: 1.8rem;
     }
 
     & .icon--close {
@@ -69,6 +75,10 @@
         right: 2rem;
         font-size: 4rem;
         cursor: pointer;
+    }
+
+    & .logout-button {
+        padding-left: 0;
     }
 }
 

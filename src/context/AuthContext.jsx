@@ -10,6 +10,7 @@ export function useAuth() {
 
 export function AuthContextProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, initializeUser);
@@ -19,14 +20,17 @@ export function AuthContextProvider({ children }) {
 
     async function initializeUser(user) {
         if (user) {
-            setCurrentUser(user);
+            setCurrentUser({ ...user });
+            setUserLoggedIn(true);
         } else {
             setCurrentUser(null);
+            setUserLoggedIn(false);
         }
     }
 
     const value = {
-        currentUser
+        currentUser,
+        userLoggedIn
     }
 
   return (

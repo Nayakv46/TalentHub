@@ -5,11 +5,12 @@ import { FaBarsStaggered } from 'react-icons/fa6';
 import { IoClose } from 'react-icons/io5';
 import useMountTransition from '../../utils/useMountTransition';
 import { useAuth } from '../../context/AuthContext';
+import Logout from '../../components/Logout/Logout';
 
 
 const Navbar = () => {
 
-    const { currentUser } = useAuth();
+    const { currentUser, userLoggedIn } = useAuth();
 
     const Menu = () => {
       return (
@@ -35,9 +36,13 @@ const Navbar = () => {
             <div className='navbar__content'>
                 <Link to='/' className='navbar__logo gradient-color blue'>TalentHub</Link>
 
+
                 <ul className='navbar__links'>
                     <Menu />
-                    {currentUser ? currentUser.email : 'No user'}
+                    {/* <p>
+                        {currentUser?.email}
+                    </p> */}
+                    {currentUser && <Logout />}
                 </ul>
 
                 <FaBarsStaggered
@@ -53,6 +58,8 @@ const Navbar = () => {
             <ul className='navbar-mobile__links'>
                 <Menu/>
             </ul>
+
+            {currentUser && <Logout />}
         </div>
 
         {(hasTransitionedIn || toggleMenu) && <div className={`menu-overlay ${hasTransitionedIn && 'in'} ${toggleMenu && 'visible'}`} onClick={() => setToggleMenu(false)}></div>}
