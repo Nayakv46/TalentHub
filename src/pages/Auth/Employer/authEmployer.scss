@@ -1,4 +1,4 @@
-.auth-candidate {
+.auth-employer {
     position: relative;
     display: flex;
     width: 100dvw;
@@ -134,7 +134,7 @@
 }
 
 @media screen and (max-width: 911px){
-    .candidate {
+    .employer {
         &__form {
             left: 50%;
         }
@@ -142,7 +142,7 @@
 }
 
 @media screen and (max-width: 450px){
-    .candidate {
+    .employer {
         &__form {
             width: 90%;
             // height: 40rem;
@@ -151,7 +151,7 @@
 }
 
 @media screen and (max-width: 400px) {
-    .candidate {
+    .employer {
         &__form-group {
             // width: 100%;
             min-width: 200%;

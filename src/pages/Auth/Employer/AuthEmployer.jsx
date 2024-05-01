@@ -1,4 +1,4 @@
-import './authCandidate.scss';
+import './authEmployer.scss';
 import { useState, useEffect } from 'react';
 import loginPic1 from '../../../assets/LoginImages/login-pic1.jpg';
 import loginPic2 from '../../../assets/LoginImages/login-pic2.jpg';
@@ -21,7 +21,7 @@ const Candidate = () => {
 
     useEffect(() => {
 
-        if(userLoggedIn && userType === 'candidate') {
+        if(userLoggedIn && userType === 'employer') {
             navigateTo('/');
             return;
         }
@@ -44,41 +44,41 @@ const Candidate = () => {
     }, []);
 
   return (
-    <div className='auth-candidate'>
-        <img src={toggleImage} alt='loginPic1' className='auth-candidate__image'/>
-        <div className='auth-candidate__overlay'></div>
+    <div className='auth-employer'>
+        <img src={toggleImage} alt='loginPic1' className='auth-employer__image'/>
+        <div className='auth-employer__overlay'></div>
 
-        <div className='auth-candidate__content'>
-            <div className='auth-candidate__bg1'></div>
-            <div className='auth-candidate__bg2'></div>
+        <div className='auth-employer__content'>
+            <div className='auth-employer__bg1'></div>
+            <div className='auth-employer__bg2'></div>
 
         </div>
-            <div className='auth-candidate__form'>
+            <div className='auth-employer__form'>
 
-                <div className={`auth-candidate__form-group ${formState && `auth-candidate__form-group--swap` }`}>
+                <div className={`auth-employer__form-group ${formState && `auth-employer__form-group--swap` }`}>
 
-                    <div className='auth-candidate__login'>
-                        <h4 className='auth-candidate__title'>Log into an account</h4>
-                        <EmailRegister userType='candidate'/>
+                    <div className='auth-employer__login'>
+                        <h4 className='auth-employer__title'>Log into an account</h4>
+                        <EmailRegister userType='employer'/>
                         <p>or</p>
-                        <GoogleAuth userType='candidate'/>
+                        <GoogleAuth userType='employer'/>
 
                         <button
-                            className='auth-candidate__swap-btn'
+                            className='auth-employer__swap-btn'
                             onClick={() => setFormState(!formState)}
                         >
                             Create an account
                         </button>
                     </div>
 
-                    <div className='auth-candidate__register'>
-                        <h4 className='auth-candidate__title'>Register an account</h4>
-                        <EmailRegister userType='candidate'/>
+                    <div className='auth-employer__register'>
+                        <h4 className='auth-employer__title'>Register an account</h4>
+                        <EmailRegister userType='employer'/>
                         <p>or</p>
-                        <GoogleAuth userType='candidate'/>
+                        <GoogleAuth userType='employer'/>
 
                         <button
-                            className='auth-candidate__swap-btn'
+                            className='auth-employer__swap-btn'
                             onClick={() => setFormState(!formState)}
                         >
                             Already have an account?

@@ -5,7 +5,13 @@ import { useAuth } from '../../../context/AuthContext'
 
 const Hero = () => {
 
-    const { currentUser, userLoggedIn } = useAuth();
+    // CREATE EMPLOYER REGISTER PAGE
+    // LET THE REGISTER PAGES BE STH LIKE /register/candidate and /register/employer
+    // DASHBOARD WILL BE /candidate and /employer
+    // AFTER SUCCESSFUL REGISTER, REDIRECT
+    // Create login forms
+
+    const { currentUser, userLoggedIn, userType } = useAuth();
 
   return (
     <div className='hero'>
@@ -20,8 +26,8 @@ const Hero = () => {
                 </div>
 
                 <div className='hero__cta'>
-                    <Link to={userLoggedIn ? "/somewhere" : "/auth/candidate"} className='hero__cta--button'>I&apos;m an Employer</Link>
-                    <Link to={userLoggedIn ? `/candidate` : `/auth/candidate`} className='hero__cta--button'>I&apos;m a Candidate</Link>
+                    <Link to={userLoggedIn && userType == 'employer' ? "/employer" : "/auth/employer"} className='hero__cta--button'>I&apos;m an Employer</Link>
+                    <Link to={userLoggedIn && userType == 'candidate' ? `/candidate` : `/auth/candidate`} className='hero__cta--button'>I&apos;m a Candidate</Link>
                 </div>
 
                 <div className='hero__blob'></div>
