@@ -14,13 +14,13 @@ const Candidate = () => {
             navigateTo('/auth/employer');
             return;
         }
-    }, []);
+    });
     return (
-        <div className="employer">
+        <main className="employer">
             Hello {currentUser?.email}
             <br/>
             USERTYPE: {userType}
-        </div>
+        </main>
     )
 }
 

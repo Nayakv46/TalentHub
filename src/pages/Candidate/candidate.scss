@@ -1,9 +1,25 @@
 .candidate{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    // justify-content: center;
+    // align-items: center;
     gap: 4rem;
-    padding: var(--wrapper-padding);
+    padding: var(--wrapper-padding-large);
+    min-height: 100dvh;
+    min-height: 100vh;
     overflow: hidden;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    &__user {
+        display: flex;
+    }
+
+    &__title {
+        display: flex;
+    }
 }
