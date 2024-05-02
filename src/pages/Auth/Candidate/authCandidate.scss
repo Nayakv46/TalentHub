@@ -149,13 +149,3 @@
         }
     }
 }
-
-@media screen and (max-width: 400px) {
-    .auth-candidate {
-        &__form-group {
-            // width: 100%;
-            min-width: 200%;
-            // height: 40rem;
-        }
-    }
-}

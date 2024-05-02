@@ -149,13 +149,3 @@
         }
     }
 }
-
-@media screen and (max-width: 400px) {
-    .auth-employer {
-        &__form-group {
-            // width: 100%;
-            min-width: 200%;
-            // height: 40rem;
-        }
-    }
-}

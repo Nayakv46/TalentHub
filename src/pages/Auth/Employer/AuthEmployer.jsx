@@ -12,7 +12,7 @@ import { useAuth } from '../../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 
-const Candidate = () => {
+const AuthEmployer = () => {
     const [toggleImage, setToggleImage] = useState();
 
     const [formState, setFormState] = useState(false);
@@ -59,7 +59,7 @@ const Candidate = () => {
                 <div className={`auth-employer__form-group ${formState && `auth-employer__form-group--swap` }`}>
 
                     <div className='auth-employer__login'>
-                        <h4 className='auth-employer__title'>Log into an account</h4>
+                        <h4 className='auth-employer__title'>Login to an account</h4>
                         <EmailLogin userType='employer'/>
                         <p>or</p>
                         <GoogleAuth userType='employer'/>
@@ -91,4 +91,4 @@ const Candidate = () => {
   )
 }
 
-export default Candidate
+export default AuthEmployer

@@ -87,25 +87,25 @@ const EmailRegister = ({ userType }) => {
     }
 
     return (
-        <div className="email-register">
+        <div className="email-login">
             <div className='input-wrapper'>
 
                 <input
-                    id="register-email"
+                    id="login-email"
                     required
-                    className={`email-register__input ${(invalidCredential || invalidEmail) && `email-register__input--error`}`}
+                    className={`email-login__input ${(invalidCredential || invalidEmail) && `email-login__input--error`}`}
                     onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <label
-                    htmlFor="register-email"
-                    className='email-register__label'
+                    htmlFor="login-email"
+                    className='email-login__label'
                 >
                     Enter email
                 </label>
 
                 {(hasTransitionedInInvEmail || invalidEmail) &&
-                    <div className={`email-register__error ${hasTransitionedInInvEmail && `in`} ${invalidEmail && `visible`}`}>
+                    <div className={`email-login__error ${hasTransitionedInInvEmail && `in`} ${invalidEmail && `visible`}`}>
                         Invalid email
                     </div>
                 }
@@ -114,22 +114,22 @@ const EmailRegister = ({ userType }) => {
 
             <div className='input-wrapper'>
                 <input
-                    id="register-password"
+                    id="login-password"
                     type="password"
                     required
-                    className={`email-register__input ${(missingPassword || invalidCredential) && `email-register__input--error`}`}
+                    className={`email-login__input ${(missingPassword || invalidCredential) && `email-login__input--error`}`}
                     onChange={(e) => setPassword(e.target.value)}
                 />
 
                 <label
-                    htmlFor="register-password"
-                    className='email-register__label'
+                    htmlFor="login-password"
+                    className='email-login__label'
                 >
                     Enter password
                 </label>
 
                 {(hasTransitionedInPW || missingPassword) &&
-                    <div className={`email-register__error ${hasTransitionedInPW && `in`} ${missingPassword && `visible`}`}>
+                    <div className={`email-login__error ${hasTransitionedInPW && `in`} ${missingPassword && `visible`}`}>
                         Password is required
                     </div>
                 }
@@ -137,17 +137,17 @@ const EmailRegister = ({ userType }) => {
 
 
 
-            <div className='email-register__confirm'>
+            <div className='email-login__confirm'>
                 {(hasTransitionedInInvCred || invalidCredential) &&
-                    <div className={`email-register__error ${hasTransitionedInInvCred && `in`} ${invalidCredential && `visible`}`}>
+                    <div className={`email-login__error ${hasTransitionedInInvCred && `in`} ${invalidCredential && `visible`}`}>
                         Invalid credentials
                     </div>
                 }
                 <button
-                    className='email-register__button'
+                    className='email-login__button'
                     onClick={handleSignIn}
                 >
-                    Sign in as {userTypeUpper}
+                    Login as {userTypeUpper}
                 </button>
                 {showLoader && <Loader />}
             </div>

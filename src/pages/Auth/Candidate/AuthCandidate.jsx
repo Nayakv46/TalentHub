@@ -11,16 +11,10 @@ import EmailLogin from '../../../components/EmailLogin/EmailLogin';
 import { useAuth } from '../../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-
-const Candidate = () => {
+const AuthCandidate = () => {
     const [toggleImage, setToggleImage] = useState();
 
     const [formState, setFormState] = useState(false);
-
-    // CREATE EMAILLOGIN COMPONENT
-    // INSERT IT SOMEWHERE HERE AS THE LEFT ONE
-    // THEN GO FOR CANDIDATE FORM FOR SKILLS AND EXPERIENCE
-    // AND EMPLOYER FORM QUERYING FOR SKILLS AND EXPERIENCE AND SHOWING POTENTIAL CANDIDATES
 
     const { userLoggedIn, userType } = useAuth();
     const navigateTo = useNavigate();
@@ -64,7 +58,7 @@ const Candidate = () => {
                 <div className={`auth-candidate__form-group ${formState && `auth-candidate__form-group--swap` }`}>
 
                     <div className='auth-candidate__login'>
-                        <h4 className='auth-candidate__title'>Log into an account</h4>
+                        <h4 className='auth-candidate__title'>Login to an account</h4>
                         <EmailLogin userType='candidate'/>
                         <p>or</p>
                         <GoogleAuth userType='candidate'/>
@@ -96,4 +90,4 @@ const Candidate = () => {
   )
 }
 
-export default Candidate
+export default AuthCandidate

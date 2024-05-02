@@ -1,0 +1,114 @@
+.email-login {
+    // position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+    &__confirm {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        width: 100%;
+    }
+
+    &__input {
+        display: flex;
+        width: 100%;
+        max-width: 30rem;
+        // height: 4rem;
+        padding: 1.5rem 1rem;
+        border: 0.2rem solid var(--gray300);
+        border-radius: 3.4rem;
+        outline: none;
+        transition: var(--transition);
+
+        &--error {
+            border: 0.2rem solid var(--red200);
+        }
+    }
+
+    &__button {
+        display: flex;
+        justify-content: center;
+        background-color: rgba(0,0,0,0);
+        width: 100%;
+        max-width: 30rem;
+        border-radius: 2.4rem;
+        border: 0.2rem solid var(--black200);
+        box-shadow: 0 0.5rem 1rem 0.2rem rgba(0,0,0,0.1);
+        transition: var(--transition);
+
+        &:hover {
+            // background-color: rgba(0,0,0,0.02);
+            box-shadow: 0rem 1rem 1.2rem 0.4rem rgba(0,0,0,0.15);
+            transform: scale(1.05);
+        }
+    }
+
+    &__error {
+        position: absolute;
+        top: -2rem;
+        // left: 50%;
+        padding: 0.7rem 1rem;
+        background-color: var(--white700);
+        border-radius: 2rem;
+        font-size: 1.4rem;
+        box-shadow: 0 0.5rem 1rem 0.3rem rgba(0,0,0,0.2);
+        opacity: 0;
+        transition: var(--transition);
+
+        &:before {
+            content: '';
+            position: absolute;
+            height: 0;
+            width: 0;
+            border-left: 0.5rem solid transparent;
+            border-right: 0.5rem solid transparent;
+            border-top: 0.5rem solid var(--white700);
+            left: 50%;
+            bottom: -0.5rem;
+            transform: translate(-50%, 0);
+        }
+
+        &.in.visible {
+            top: -4rem;
+            opacity: 1;
+        }
+    }
+}
+
+.email-login__label {
+    position: absolute;
+    top: 50%;
+    left: 0.7rem;
+    transform: translateY(-50%);
+    font-size: 1.3rem;
+    color: var(--gray500);
+    background-color: var(--white700);
+    border-radius: 1rem;
+    padding: 0.2rem 0.5rem;
+    transition: var(--transition);
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 30rem;
+
+    &:has(.email-login__input:valid) .email-login__label,
+    &:has(.email-login__input:focus) .email-login__label {
+        cursor: default;
+        font-size: 1.3rem;
+        top: 0;
+        left: 2.5rem;
+        transform: translateY(-50%);
+    }
+}

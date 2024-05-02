@@ -61,7 +61,7 @@ const Navbar = () => {
         </div>
 
         {(hasTransitionedIn || toggleMenu) && <div className={`menu-overlay ${hasTransitionedIn && 'in'} ${toggleMenu && 'visible'}`} onClick={() => setToggleMenu(false)}></div>}
-        
+
     </>
   )
 }

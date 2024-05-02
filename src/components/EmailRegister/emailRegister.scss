@@ -85,7 +85,7 @@
 .email-register__label {
     position: absolute;
     top: 50%;
-    left: 3.7rem;
+    left: 0.7rem;
     transform: translateY(-50%);
     font-size: 1.3rem;
     color: var(--gray500);
@@ -101,12 +101,14 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    max-width: 30rem;
 
     &:has(.email-register__input:valid) .email-register__label,
     &:has(.email-register__input:focus) .email-register__label {
         cursor: default;
         font-size: 1.3rem;
         top: 0;
-        transform: translateY(-50%) translateX(15%);
+        left: 2.5rem;
+        transform: translateY(-50%);
     }
 }
