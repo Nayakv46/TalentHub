@@ -7,6 +7,7 @@ import loginPic4 from '../../../assets/LoginImages/login-pic4.jpg';
 import loginPic5 from '../../../assets/LoginImages/login-pic5.jpg';
 import EmailRegister from '../../../components/EmailRegister/EmailRegister';
 import GoogleAuth from '../../../components/GoogleAuth/GoogleAuth';
+import EmailLogin from '../../../components/EmailLogin/EmailLogin';
 import { useAuth } from '../../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -59,7 +60,7 @@ const Candidate = () => {
 
                     <div className='auth-employer__login'>
                         <h4 className='auth-employer__title'>Log into an account</h4>
-                        <EmailRegister userType='employer'/>
+                        <EmailLogin userType='employer'/>
                         <p>or</p>
                         <GoogleAuth userType='employer'/>
 
