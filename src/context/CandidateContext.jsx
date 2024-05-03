@@ -1,6 +1,12 @@
 import { createContext, useState, useContext, useEffect } from 'react';
 import { db } from '../config/firebase';
-import { collection, getDocs } from 'firebase/firestore';
+import {
+    collection,
+    getDocs,
+    doc,
+    addDoc,
+    updateDoc
+} from 'firebase/firestore';
 import { useAuth } from './AuthContext';
 
 const CandidateContext = createContext();
@@ -13,16 +19,22 @@ export const CandidateContextProvider = ({ children }) => {
 
     const [formData, setFormData] = useState({});
 
+    const [existingExperience, setExistingExperience] = useState(false);
+    const [experienceId, setExperienceId] = useState("");
+
     const { currentUser } = useAuth();
 
     const userExperienceRef = collection(db, 'candidate-experience');
 
+    // Function fetching user experience from database
     const getUserExperience = async () => {
         try {
             const userExperienceSnapshot = await getDocs(userExperienceRef);
             userExperienceSnapshot.forEach((doc) => {
-                if(doc.data().email === currentUser.email) {
+                if(doc.data().email === currentUser?.email) {
                     initializeUserExperience(doc.data().experience);
+                    setExistingExperience(true);
+                    setExperienceId(doc.id)
                 }
             })
         } catch (error) {
@@ -34,6 +46,7 @@ export const CandidateContextProvider = ({ children }) => {
         getUserExperience();
     }, [])
 
+    // Function initializing user experience state from database
     const initializeUserExperience = (experience) => {
         let index = 0;
         let data = {};
@@ -50,6 +63,7 @@ export const CandidateContextProvider = ({ children }) => {
         setFormData(data);
     }
 
+    // Function handling select change
     const handleSelectChange = (index, value) => {
         setFormData( prevState => ({
             ...prevState,
@@ -60,6 +74,7 @@ export const CandidateContextProvider = ({ children }) => {
         }))
     }
 
+    // Function handling input change
     const handleInputChange = (index, value) => {
         setFormData( prevState => ({
             ...prevState,
@@ -70,10 +85,58 @@ export const CandidateContextProvider = ({ children }) => {
         }))
     }
 
+    // Function updating a document in database
+    const handleFormUpdate = async (id, data) => {
+        const experienceDoc = doc(db, 'candidate-experience', id);
+        console.log(experienceDoc)
+        await updateDoc(experienceDoc, {
+            email: currentUser.email,
+            experience: data
+        })
+    }
+
+    // Function adding a new document to database
+    const handleFormAdd = async (data) => {
+        try {
+            await addDoc(userExperienceRef, {
+                email: currentUser.email,
+                experience: data
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    // Function handling form submission
+    const handleFormSubmit = (id) => {
+
+        // Function converting form data to database format
+        function convertToDbFormat(data) {
+            let result = {};
+            for (const key in data) {
+                if (data.hasOwnProperty(key)) {
+                    result[data[key].select] = Number(data[key].input);
+                }
+            }
+            return result;
+        }
+
+        const convertedData = convertToDbFormat(formData);
+
+        // Check if the user has filled out experience form before
+        if (existingExperience) {
+            handleFormUpdate(id, convertedData);
+        } else {
+            handleFormAdd(convertedData);
+        }
+    }
+
     const value = {
         formData,
         handleSelectChange,
-        handleInputChange
+        handleInputChange,
+        experienceId,
+        handleFormSubmit
     }
 
   return (

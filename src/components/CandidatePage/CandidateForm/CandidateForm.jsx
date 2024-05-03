@@ -4,7 +4,7 @@ import { useCandidateContext } from "../../../context/CandidateContext"
 
 const CandidateForm = () => {
 
-    const { formData, handleSelectChange, handleInputChange } = useCandidateContext();
+    const { formData, handleSelectChange, handleInputChange, experienceId, handleFormSubmit } = useCandidateContext();
 
     const [inputCount, setInputCount] = useState();
 
@@ -73,7 +73,7 @@ const CandidateForm = () => {
 
         <button
             className='form__submit'
-            onClick={submitForm}
+            onClick={() => handleFormSubmit(experienceId)}
         >
             Submit Form
         </button>

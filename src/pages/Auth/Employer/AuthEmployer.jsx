@@ -23,7 +23,7 @@ const AuthEmployer = () => {
     useEffect(() => {
 
         if(userLoggedIn && userType === 'employer') {
-            navigateTo('/');
+            navigateTo('/employer');
             return;
         }
 

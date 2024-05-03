@@ -22,7 +22,7 @@ const AuthCandidate = () => {
     useEffect(() => {
 
         if(userLoggedIn && userType === 'candidate') {
-            navigateTo('/');
+            navigateTo('/candidate');
             return;
         }
 
@@ -41,7 +41,7 @@ const AuthCandidate = () => {
             case 4:
                 return setToggleImage(loginPic5);
         }
-    }, []);
+    });
 
   return (
     <div className='auth-candidate'>
