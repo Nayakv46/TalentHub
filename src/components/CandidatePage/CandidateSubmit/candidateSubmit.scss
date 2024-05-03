@@ -1,18 +1,6 @@
-.candidate__form{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
 .form{
-    &__state-wrapper{
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        max-width: 30rem;
-    }
 
-    &__add {
+    &__submit {
         display: flex;
         justify-content: center;
         background-color: rgba(0,0,0,0);

@@ -52,7 +52,6 @@ export const CandidateContextProvider = ({ children }) => {
         let data = {};
         const newData = { ... data };
         for (let [key, value] of Object.entries(experience)) {
-            console.log(key, value);
             newData[index] = {
                 select: key,
                 input: value
@@ -76,6 +75,13 @@ export const CandidateContextProvider = ({ children }) => {
 
     // Function handling input change
     const handleInputChange = (index, value) => {
+        if(value < 0 ) {
+            value = 0;
+        } else if (value > 5) {
+            value = 5;
+        } else if (value === "") {
+            value = 0;
+        }
         setFormData( prevState => ({
             ...prevState,
             [index]: {
@@ -88,7 +94,7 @@ export const CandidateContextProvider = ({ children }) => {
     // Function updating a document in database
     const handleFormUpdate = async (id, data) => {
         const experienceDoc = doc(db, 'candidate-experience', id);
-        console.log(experienceDoc)
+
         await updateDoc(experienceDoc, {
             email: currentUser.email,
             experience: data
@@ -105,10 +111,21 @@ export const CandidateContextProvider = ({ children }) => {
         } catch (error) {
             console.error(error);
         }
+        window.location.reload();
     }
 
     // Function handling form submission
     const handleFormSubmit = (id) => {
+
+        //Validate for empty fields
+        for (const key in formData) {
+            if (formData.hasOwnProperty(key)) {
+                if(formData[key].select === "" || formData[key].input === "") {
+                    console.log("empty field")
+                    return;
+                }
+            }
+        }
 
         // Function converting form data to database format
         function convertToDbFormat(data) {

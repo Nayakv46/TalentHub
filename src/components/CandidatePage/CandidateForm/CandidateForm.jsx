@@ -1,10 +1,11 @@
 import './candidateForm.scss';
 import { useState, useEffect } from "react"
 import { useCandidateContext } from "../../../context/CandidateContext"
+import CandidateSubmit from '../CandidateSubmit/CandidateSubmit';
 
 const CandidateForm = () => {
 
-    const { formData, handleSelectChange, handleInputChange, experienceId, handleFormSubmit } = useCandidateContext();
+    const { formData, handleSelectChange, handleInputChange } = useCandidateContext();
 
     const [inputCount, setInputCount] = useState();
 
@@ -53,10 +54,6 @@ const CandidateForm = () => {
         return inputs;
     }
 
-    const submitForm = () => {
-        console.log(Object.keys(formData).length);
-    }
-
   return (
     <>
 
@@ -71,17 +68,12 @@ const CandidateForm = () => {
             Add
         </button>
 
-        <button
-            className='form__submit'
-            onClick={() => handleFormSubmit(experienceId)}
-        >
-            Submit Form
-        </button>
+        <CandidateSubmit />
+
     </div>
 
 
     {Object.entries(formData).map((data, index) => {
-        // console.log("formData", formData)
         return (
             <div key={index}>
                 {data[1].select} - {data[1].input}
