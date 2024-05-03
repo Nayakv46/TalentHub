@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 const EmployerForm = () => {
 
-    const { queryData, setQueryData } = useEmployerContext();
+    const { queryData, setQueryData, handleSelectChange, handleInputChange } = useEmployerContext();
 
     const [queryCount, setQueryCount] = useState(1);
 
@@ -13,7 +13,7 @@ const EmployerForm = () => {
         for (let id = 0; id < queryCount; id++) {
             inputs.push(
                 <div key={id} className='form__state-wrapper'>
-                    <select value={queryData[id]?.select || ""} onChange={(e) => setQueryData(id, e.target.value)}>
+                    <select value={queryData[id]?.select || ""} onChange={(e) => handleSelectChange(id, e.target.value)}>
                         <option value="">Select</option>
                         <option value="React">React</option>
                         <option value="Vue">Vue</option>
@@ -38,7 +38,7 @@ const EmployerForm = () => {
                         <option value="SQL">SQL</option>
                     </select>
 
-                    <input type="number" name="inputValue" min="0" max="5" value={queryData[id]?.input || ""} onChange={(e) => setQueryCount(id, e.target.value)} />
+                    <input type="number" name="inputValue" min="0" max="5" value={queryData[id]?.input || ""} onChange={(e) => handleInputChange(id, e.target.value)} />
                 </div>
             );
         }
@@ -48,6 +48,21 @@ const EmployerForm = () => {
   return (
     <>
         {generateInputs()}
+
+        <button
+            className='form__add'
+            onClick={() => setQueryCount(queryCount + 1)}
+        >
+            Add
+        </button>
+
+        {Object.entries(queryData).map((data, index) => {
+            return (
+                <div key={index}>
+                    {data[1].select} - {data[1].input}
+                </div>
+            )
+        })}
     </>
   )
 }
