@@ -1,31 +1,20 @@
 import './candidateForm.scss';
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useCandidateContext } from "../../../context/CandidateContext"
 
 const CandidateForm = () => {
 
-    const [inputCount, setInputCount] = useState(1);
+    const { formData, handleSelectChange, handleInputChange } = useCandidateContext();
 
-    const [formData, setFormData] = useState({});
+    const [inputCount, setInputCount] = useState();
 
-    const handleSelectChange = (index, value) => {
-        setFormData( prevState => ({
-            ...prevState,
-            [index]: {
-                ...prevState[index],
-                select: value
-            }
-        }))
-    }
-
-    const handleInputChange = (index, value) => {
-        setFormData( prevState => ({
-            ...prevState,
-            [index]: {
-                ...prevState[index],
-                input: value
-            }
-        }))
-    }
+    useEffect(() => {
+        if (Object.keys(formData).length > 0) {
+            setInputCount(Object.keys(formData).length);
+        } else {
+            setInputCount(1);
+        }
+    }, [formData])
 
     const generateInputs = () => {
         const inputs = [];
@@ -64,31 +53,41 @@ const CandidateForm = () => {
         return inputs;
     }
 
+    const submitForm = () => {
+        console.log(Object.keys(formData).length);
+    }
+
   return (
     <>
 
     <div className='candidate__form'>
 
-                {generateInputs()}
-                
+        {generateInputs()}
 
-                <button
-                    className='form__add'
-                    onClick={() => setInputCount(inputCount + 1)}
-                >
-                    Add
-                </button>
+        <button
+            className='form__add'
+            onClick={() => setInputCount(inputCount + 1)}
+        >
+            Add
+        </button>
+
+        <button
+            className='form__submit'
+            onClick={submitForm}
+        >
+            Submit Form
+        </button>
+    </div>
+
+
+    {Object.entries(formData).map((data, index) => {
+        // console.log("formData", formData)
+        return (
+            <div key={index}>
+                {data[1].select} - {data[1].input}
             </div>
-
-
-{Object.entries(formData).map((data, index) => {
-    console.log(data)
-    return (
-        <div key={index}>
-            {data[1].select} - {data[1].input}
-        </div>
-    )
-})}
+        )
+    })}
 </>
   )
 }

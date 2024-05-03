@@ -12,7 +12,8 @@
         max-width: 30rem;
     }
 
-    &__add {
+    &__add,
+    &__submit {
         display: flex;
         justify-content: center;
         background-color: rgba(0,0,0,0);

@@ -3,6 +3,7 @@ import { useAuth } from "../../context/AuthContext"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from 'react';
 import CandidateForm from '../../components/CandidatePage/CandidateForm/CandidateForm';
+import { CandidateContextProvider } from '../../context/CandidateContext';
 
 const Candidate = () => {
 
@@ -19,6 +20,7 @@ const Candidate = () => {
 
 
     return (
+        <CandidateContextProvider>
         <main className="candidate">
 
             <div className='candidate__header'>
@@ -35,6 +37,7 @@ const Candidate = () => {
             </div>
 
         </main>
+        </CandidateContextProvider>
     )
 }
 
