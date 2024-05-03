@@ -42,7 +42,7 @@ const AuthEmployer = () => {
             case 4:
                 return setToggleImage(loginPic5);
         }
-    }, []);
+    });
 
   return (
     <div className='auth-employer'>

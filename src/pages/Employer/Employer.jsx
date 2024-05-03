@@ -2,6 +2,8 @@ import './employer.scss';
 import { useAuth } from "../../context/AuthContext"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from 'react';
+import EmployerForm from '../../components/EmployerPage/EmployerForm/EmployerForm';
+import { EmployerContextProvider } from '../../context/EmployerContext';
 
 const Candidate = () => {
 
@@ -16,11 +18,15 @@ const Candidate = () => {
         }
     });
     return (
-        <main className="employer">
-            Hello {currentUser?.email}
-            <br/>
-            USERTYPE: {userType}
-        </main>
+        <EmployerContextProvider>
+            <main className="employer">
+                Hello {currentUser?.email}
+                <br/>
+                USERTYPE: {userType}
+
+                <EmployerForm />
+            </main>
+        </EmployerContextProvider>
     )
 }
 
