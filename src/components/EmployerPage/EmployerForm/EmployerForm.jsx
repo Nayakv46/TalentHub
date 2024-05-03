@@ -1,4 +1,5 @@
 import { useEmployerContext } from '../../../context/EmployerContext';
+import EmployerSubmit from '../EmployerSubmit/EmployerSubmit';
 import './employerForm.scss';
 import { useState } from 'react';
 
@@ -55,6 +56,8 @@ const EmployerForm = () => {
         >
             Add
         </button>
+
+        <EmployerSubmit />
 
         {Object.entries(queryData).map((data, index) => {
             return (
