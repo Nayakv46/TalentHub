@@ -82,21 +82,37 @@ export const EmployerContextProvider = ({ children }) => {
         // console.log(convertedData)
 
         const allData = await createQuery(convertedData);
-        console.log(allData)
+        // console.log(allData.docs)
 
         
         // allData.docs.map(doc => console.log(doc.data()))
         allData.docs.map(doc => {
             // experience of candidates
-            console.log("experience", doc.data().experience)
+            // console.log("experience", doc.data().experience)
             // email of candidates
-            console.log("email", doc.data().email)
+            // console.log("email", doc.data().email)
         })
+
+        const updateSearchedData = () => {
+            const newData = allData.docs.map(doc => {
+                return {
+                    experience: doc.data().experience,
+                    email: doc.data().email
+                }
+            })
+            setSearchedData(newData);
+            console.log(newData)
+        }
+
+        updateSearchedData();
+        // console.log(searchedData)
+
+        // setSearchedData(allData.docs);
 
         // CREATE A FUNCTION TO GENERATE TILES OF CANDIDATES WITH THEIR INFORMATION
         // ON CLICK ON BUTTON FOR *DISPLAY* OPEN WINDOW OF CANDIDATE INFORMATION SUCH AS EMAIL
 
-        
+
         // // Check if the user has filled out experience form before
         // if (existingExperience) {
         //     handleFormUpdate(id, convertedData);
@@ -110,7 +126,8 @@ export const EmployerContextProvider = ({ children }) => {
         setQueryData,
         handleSelectChange,
         handleInputChange,
-        handleFormSubmit
+        handleFormSubmit,
+        searchedData
     }
 
   return (

@@ -1,13 +1,15 @@
+import { set } from 'firebase/database';
 import { useEmployerContext } from '../../../context/EmployerContext';
 import EmployerSubmit from '../EmployerSubmit/EmployerSubmit';
 import './employerForm.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const EmployerForm = () => {
 
-    const { queryData, setQueryData, handleSelectChange, handleInputChange } = useEmployerContext();
+    const { queryData, setQueryData, handleSelectChange, handleInputChange, searchedData, handleFormSubmit } = useEmployerContext();
 
     const [queryCount, setQueryCount] = useState(1);
+    const [showResults, setShowResults] = useState(false);
 
     const generateInputs = () => {
         const inputs = [];
@@ -57,12 +59,60 @@ const EmployerForm = () => {
             Add
         </button>
 
-        <EmployerSubmit />
+        {/* <EmployerSubmit /> */}
+
+        <button
+            className='form__submit'
+            onClick={() => {
+                handleFormSubmit()
+                setTimeout(() => {
+                    setShowResults(true)
+                }, 1000)
+            }}
+        >
+            Submit Form
+        </button>
+
+        After clicking submit you will see all results for now.
+
+        Don't worry, the full functionality will be added in the near future. Due to certain circumstances, project's development had to be halted for a few days. Please check back later and thank you for your patience.
+
+        <br />
+        <br />
+
+        Styling will also be applied in some time. Feel free to contact me for more information regarding this project.
 
         {Object.entries(queryData).map((data, index) => {
             return (
                 <div key={index}>
                     {data[1].select} - {data[1].input}
+                </div>
+            )
+        })}
+
+        {/* {searchedData && searchedData.map((doc, index) => {
+            console.log(doc.data())
+            return (
+                <div key={index}>
+                    {doc.data().experience}
+                </div>
+            )
+        })} */}
+
+        {showResults && searchedData.map((doc, index) => {
+            console.log(doc.email)
+            return (
+                <div key={index}>
+                    {doc.email}
+                    <div>
+                        {Object.entries(doc.experience).map((data, index) => {
+                            return (
+                                <div key={index}>
+                                    {data[0]} - {data[1]}
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
             )
         })}
