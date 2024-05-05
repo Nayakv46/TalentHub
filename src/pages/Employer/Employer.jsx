@@ -20,11 +20,14 @@ const Candidate = () => {
     return (
         <EmployerContextProvider>
             <main className="employer">
-                Hello {currentUser?.email}
-                <br/>
-                USERTYPE: {userType}
+                <div className='employer__content'>
 
-                <EmployerForm />
+                    Hello {currentUser?.email}
+                    <br/>
+                    USERTYPE: {userType}
+
+                    <EmployerForm />
+                </div>
             </main>
         </EmployerContextProvider>
     )

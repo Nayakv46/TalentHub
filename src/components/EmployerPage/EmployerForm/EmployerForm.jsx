@@ -1,7 +1,7 @@
+import './employerForm.scss';
 import { set } from 'firebase/database';
 import { useEmployerContext } from '../../../context/EmployerContext';
 import EmployerSubmit from '../EmployerSubmit/EmployerSubmit';
-import './employerForm.scss';
 import CandidateCard from '../CandidateCard/CandidateCard';
 import { useState, useEffect } from 'react';
 
@@ -99,11 +99,12 @@ const EmployerForm = () => {
                 </div>
             )
         })} */}
-
-        {showResults && searchedData.map((doc, index) => {
-            // console.log(doc.email)
-            return <CandidateCard key={index} email={doc.email} experience={doc.experience}/>
-        })}
+        {showResults && (<div className='searchedData__results'>
+            {showResults && searchedData.map((doc, index) => {
+                // console.log(doc.email)
+                return <CandidateCard key={index} email={doc.email} experience={doc.experience}/>
+            })}
+        </div>)}
     </>
   )
 }

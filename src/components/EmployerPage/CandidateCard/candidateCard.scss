@@ -2,6 +2,9 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    padding: 2rem;
+    box-shadow: 0 0 0.5rem 0.2rem rgba(21, 23, 27, 0.1);
+    border-radius: 2rem;
 
     &__email {
         display: flex;
@@ -10,8 +13,8 @@
 
     &__exp-wrapper {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem 4rem;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem 2rem;
     }
 
     &__experience {
@@ -89,6 +92,39 @@
                     border-radius: 1.2rem;
                 }
             }
+        }
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .candidate-card {
+        &__exp-wrapper {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+
+// Width at which the grid will be 1 column
+@media screen and (max-width: 768px) {
+    .candidate-card {
+        &__exp-wrapper {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .candidate-card {
+        &__exp-wrapper {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .candidate-card {
+        &__exp-wrapper {
+            grid-template-columns: 1fr;
         }
     }
 }
