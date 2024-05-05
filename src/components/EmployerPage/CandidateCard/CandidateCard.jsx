@@ -4,13 +4,13 @@ import { FaRegEnvelope } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
 import useMountTransition from '../../../utils/useMountTransition';
 
-const CandidateCard = ({ key, email, experience }) => {
+const CandidateCard = ({ index, email, experience }) => {
 
     const [showDetails, setShowDetails] = useState(false);
     const hasTransitionedInDetails = useMountTransition(showDetails, 250);
 
   return (
-    <div className='candidate-card' key={key}>
+    <div className='candidate-card' key={index}>
         <p className='candidate-card__email'>
             {email}
         </p>
