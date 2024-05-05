@@ -1,0 +1,94 @@
+.candidate-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    &__email {
+        display: flex;
+        gap: 1rem;
+    }
+
+    &__exp-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem 4rem;
+    }
+
+    &__experience {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        &-title {
+            display: flex;
+        }
+
+        &-level {
+            position: relative;
+            height: 0.6rem;
+            width: 100%;
+            background-color: rgba(21, 23, 27, 0.1);
+            border-radius: 1.2rem;
+
+            &.level-1 {
+                &:after {
+                    content: '';
+                    position: absolute;
+                    display: flex;
+                    height: 100%;
+                    width: 20%;
+                    background-color: var(--blue200);
+                    border-radius: 1.2rem;
+                }
+            }
+
+            &.level-2 {
+                &:after {
+                    content: '';
+                    position: absolute;
+                    display: flex;
+                    height: 100%;
+                    width: 40%;
+                    background-color: var(--blue200);
+                    border-radius: 1.2rem;
+                }
+            }
+
+            &.level-3 {
+                &:after {
+                    content: '';
+                    position: absolute;
+                    display: flex;
+                    height: 100%;
+                    width: 60%;
+                    background-color: var(--blue200);
+                    border-radius: 1.2rem;
+                }
+            }
+
+            &.level-4 {
+                &:after {
+                    content: '';
+                    position: absolute;
+                    display: flex;
+                    height: 100%;
+                    width: 80%;
+                    background-color: var(--blue200);
+                    border-radius: 1.2rem;
+                }
+            }
+
+            &.level-5 {
+                &:after {
+                    content: '';
+                    position: absolute;
+                    display: flex;
+                    height: 100%;
+                    width: 100%;
+                    background-color: var(--blue200);
+                    border-radius: 1.2rem;
+                }
+            }
+        }
+    }
+}

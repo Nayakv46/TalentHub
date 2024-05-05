@@ -2,6 +2,7 @@ import { set } from 'firebase/database';
 import { useEmployerContext } from '../../../context/EmployerContext';
 import EmployerSubmit from '../EmployerSubmit/EmployerSubmit';
 import './employerForm.scss';
+import CandidateCard from '../CandidateCard/CandidateCard';
 import { useState, useEffect } from 'react';
 
 const EmployerForm = () => {
@@ -100,21 +101,8 @@ const EmployerForm = () => {
         })} */}
 
         {showResults && searchedData.map((doc, index) => {
-            console.log(doc.email)
-            return (
-                <div key={index}>
-                    {doc.email}
-                    <div>
-                        {Object.entries(doc.experience).map((data, index) => {
-                            return (
-                                <div key={index}>
-                                    {data[0]} - {data[1]}
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
-            )
+            // console.log(doc.email)
+            return <CandidateCard key={index} email={doc.email} experience={doc.experience}/>
         })}
     </>
   )
