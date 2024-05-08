@@ -13,7 +13,7 @@ const AnimatedBlocks = () => {
             <div className='animatedBlocks__box'>
                 <img src={officeImg1} alt='office' className='animatedBlocks__img'/>
             </div>
-            <div className='animatedBlocks__box animatedBlocks__box--blue'>
+            <div className='animatedBlocks__box animatedBlocks__box--mojito'>
                 <div className="box__content">
                     <p className='box__text'>1,000+</p>
                     <p className='box__text'>employed</p>
@@ -22,7 +22,7 @@ const AnimatedBlocks = () => {
             <div className='animatedBlocks__box'>
                 <img src={officeImg2} alt='office' className='animatedBlocks__img'/>
             </div>
-            <div className='animatedBlocks__box animatedBlocks__box--red'>
+            <div className='animatedBlocks__box animatedBlocks__box--peach'>
                 <div className="box__content">
                     <p className='box__text'>7+</p>
                     <p className='box__text'>years of experience</p>
@@ -37,7 +37,7 @@ const AnimatedBlocks = () => {
             <div className='animatedBlocks__box'>
                 <img src={officeImg5} alt='office' className='animatedBlocks__img'/>
             </div>
-            <div className='animatedBlocks__box animatedBlocks__box--purple'>
+            <div className='animatedBlocks__box animatedBlocks__box--neon'>
                 <div className="box__content">
                     <p className='box__text'>200+</p>
                     <p className='box__text'>employers</p>
@@ -46,7 +46,7 @@ const AnimatedBlocks = () => {
             <div className='animatedBlocks__box'>
                 <img src={officeImg3} alt='office' className='animatedBlocks__img'/>
             </div>
-            <div className='animatedBlocks__box animatedBlocks__box--green'>
+            <div className='animatedBlocks__box animatedBlocks__box--butterfly'>
                 <div className="box__content">
                     <p className='box__text'>10,000+</p>
                     <p className='box__text'>registered</p>

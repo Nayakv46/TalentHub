@@ -6,23 +6,51 @@
         -webkit-background-clip: text;
     }
     &.green {
-        background: linear-gradient(0deg, #40dd40 0%, #60ee60 70%);
+        background: linear-gradient(0deg, #40dd40 0%, #60ee60 100%);
         -webkit-background-clip: text;
     }
     &.red {
-        background: linear-gradient(0deg, #ff4040 0%, #ff6060 70%);
+        background: linear-gradient(0deg, #ff4040 0%, #ff6060 100%);
         -webkit-background-clip: text;
     }
     &.purple {
-        background: linear-gradient(0deg, #800080 0%, #9f009f 70%);
+        background: linear-gradient(0deg, #800080 0%, #9f009f 100%);
         -webkit-background-clip: text;
     }
     &.yellow {
-        background: linear-gradient(0deg, #ccdd00 0%, #ddee00 70%);
+        background: linear-gradient(0deg, #ccdd00 0%, #ddee00 100%);
         -webkit-background-clip: text;
     }
     &.orange {
-        background: linear-gradient(0deg, #ffa500 0%, #ffb800 70%);
+        background: linear-gradient(0deg, #ffa500 0%, #ffb800 100%);
+        -webkit-background-clip: text;
+    }
+    &.neon {
+        background: linear-gradient(0deg, #6157ff 0%, #ee49fd 100%);
+        -webkit-background-clip: text;
+    }
+    &.lime {
+        background: linear-gradient(0deg, #2DFFF5 0%, #FFF878 100%);
+        -webkit-background-clip: text;
+    }
+    &.malibu {
+        background: linear-gradient(0deg, #0700DE 0%, #DDFFC9 100%);
+        -webkit-background-clip: text;
+    }
+    &.mojito {
+        background: linear-gradient(0deg, #103ce7 0%, #64e9ff 100%);
+        -webkit-background-clip: text;
+    }
+    &.azure {
+        background: linear-gradient(0deg, #0172af 0%, #74febd 100%);
+        -webkit-background-clip: text;
+    }
+    &.butterfly {
+        background: linear-gradient(0deg, #ff4066 0%, #fff16a 100%);
+        -webkit-background-clip: text;
+    }
+    &.peach {
+        background: linear-gradient(0deg, #ff8473 0%, #fff9d2 100%);
         -webkit-background-clip: text;
     }
 }

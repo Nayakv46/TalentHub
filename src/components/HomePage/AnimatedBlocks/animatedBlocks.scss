@@ -81,6 +81,28 @@
             // background-color: var(--purple400);
             background: radial-gradient(circle at right top,  var(--purple100) 0%, var(--purple300) 100%) ;
         }
+
+        &--neon {
+            background: radial-gradient(circle at right top, #ee49fd 0%, #6157ff 100%);
+        }
+        &--lime {
+            background: radial-gradient(circle at right top, #FFF878 0%, #2DFFF5 100%);
+        }
+        &--malibu {
+            background: radial-gradient(circle at right top,  #DDFFC9 0%, #0700DE 100%);
+        }
+        &--mojito {
+            background: radial-gradient(circle at right top, #64e9ff 0%, #103ce7 100%);
+        }
+        &--azure {
+            background: radial-gradient(circle at right top, #74febd 0%, #0172af 100%);
+        }
+        &--butterfly {
+            background: radial-gradient(circle at right top, #fff16a 0%, #ff4066 100%);
+        }
+        &--peach {
+            background: radial-gradient(circle at right top, #fff9d2 0%, #ff8473 100%);
+        }
     }
 
     &__img {
