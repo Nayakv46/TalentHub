@@ -2,6 +2,7 @@ import './candidateForm.scss';
 import { useState, useEffect } from "react"
 import { useCandidateContext } from "../../../context/CandidateContext"
 import CandidateSubmit from '../CandidateSubmit/CandidateSubmit';
+import FormAddButton from '../FormAddButton/FormAddButton';
 
 const CandidateForm = () => {
 
@@ -16,6 +17,10 @@ const CandidateForm = () => {
             setInputCount(1);
         }
     }, [formData])
+
+    const handleInputAdd = () => {
+        setInputCount(inputCount + 1);
+    }
 
     const generateInputs = () => {
         const inputs = [];
@@ -61,12 +66,7 @@ const CandidateForm = () => {
 
         {generateInputs()}
 
-        <button
-            className='form__add'
-            onClick={() => setInputCount(inputCount + 1)}
-        >
-            Add
-        </button>
+        <FormAddButton handleInputAdd={handleInputAdd} />
 
         <CandidateSubmit />
 
