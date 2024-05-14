@@ -34,7 +34,18 @@ const CandidateForm = () => {
                         handleSelectChange={handleSelectChange}
                     />
 
-                    <input type="number" name="inputValue" min="0" max="5" value={formData[id]?.input || ""} onChange={(e) => handleInputChange(id, e.target.value)} />
+                    <div className='formInput'>
+                        <label htmlFor={`input-${id}`}>Rate your skill</label>
+                        <input
+                            type="number"
+                            name="inputValue"
+                            min="0"
+                            max="5"
+                            value={formData[id]?.input || ""}
+                            onChange={(e) => handleInputChange(id, e.target.value)}
+                            id={`input-${id}`}
+                        />
+                    </div>
                 </div>
             );
         }
