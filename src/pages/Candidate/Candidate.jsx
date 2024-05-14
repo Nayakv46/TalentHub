@@ -34,7 +34,30 @@ const Candidate = () => {
                 </h4>
 
             </div>
-            <CandidateForm />
+
+            <div className='candidate__content'>
+
+                <div className='candidate__content-info'>
+                    <p className='candidate__content-text'>
+                        Provide as many details as you can about your skills and experience. This will help us match you with the right employers.
+                    </p>
+
+                    <p className='candidate__content-text'>
+                        Rate your skills from 0 to 5, where 0 is no knowledge and 5 is expert.
+                    </p>
+
+                    <p className='candidate__content-text'>
+                        Add as many skills as you like. You can always come back and update your skills.
+                    </p>
+
+                    <p className='candidate__content-text'>
+                        The more skills you add, the better the chances of finding the right job for you.
+                    </p>
+                </div>
+
+
+                <CandidateForm />
+            </div>
 
         </main>
         </CandidateContextProvider>

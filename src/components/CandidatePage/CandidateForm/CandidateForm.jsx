@@ -42,7 +42,7 @@ const CandidateForm = () => {
     }
 
   return (
-    <>
+    <div className='candidate_toDelete'>
 
     <div className='candidate__form'>
 
@@ -57,14 +57,16 @@ const CandidateForm = () => {
     </div>
 
 
-    {Object.entries(formData).map((data, index) => {
-        return (
-            <div key={index}>
-                {data[1].select} - {data[1].input}
-            </div>
-        )
-    })}
-</>
+    <div className='candidate__form-entries'>
+        {Object.entries(formData).map((data, index) => {
+            return (
+                <div key={index}>
+                    {data[1].select} - {data[1].input}
+                </div>
+            )
+        })}
+    </div>
+</div>
   )
 }
 

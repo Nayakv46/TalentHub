@@ -2,12 +2,25 @@
     display: flex;
     flex-direction: column;
     // justify-content: center;
-    // align-items: center;
+    align-items: center;
     gap: 4rem;
     padding: var(--wrapper-padding-large);
     min-height: 100dvh;
     min-height: 100vh;
     overflow: hidden;
+
+    &__content {
+        display: flex;
+        gap: 2rem;
+        max-width: var(--max-width);
+    
+        &-info {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+    }
 
     &__header {
         display: flex;
@@ -21,5 +34,13 @@
 
     &__title {
         display: flex;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .candidate {
+        &__content {
+            flex-direction: column;
+        }
     }
 }

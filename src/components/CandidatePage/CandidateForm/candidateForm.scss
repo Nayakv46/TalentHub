@@ -1,4 +1,5 @@
 .candidate__form{
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -15,10 +16,41 @@
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        max-width: 30rem;
+        // max-width: 30rem;
         padding: 2rem;
         background-color: var(--white700);
         border-radius: 1rem;
         box-shadow: 0 0.5rem 1rem 0.2rem rgba(0, 0, 0, 0.1);
+    }
+}
+
+.candidate_toDelete {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+@media screen and (max-width: 991px) {
+    .candidate__form {
+        &-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .candidate__form {
+        &-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .form {
+        &__state-wrapper {
+            max-width: 35rem;
+        }
     }
 }
