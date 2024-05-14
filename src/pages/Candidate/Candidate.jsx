@@ -33,8 +33,8 @@ const Candidate = () => {
                     Tell us about yourself
                 </h4>
 
-                <CandidateForm />
             </div>
+            <CandidateForm />
 
         </main>
         </CandidateContextProvider>

@@ -46,7 +46,9 @@ const CandidateForm = () => {
 
     <div className='candidate__form'>
 
-        {generateInputs()}
+        <div className='candidate__form-wrapper'>
+            {generateInputs()}
+        </div>
 
         <FormAddButton handleInputAdd={handleInputAdd} />
 

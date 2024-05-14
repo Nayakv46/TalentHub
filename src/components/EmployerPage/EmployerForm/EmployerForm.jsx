@@ -5,6 +5,7 @@ import EmployerSubmit from '../EmployerSubmit/EmployerSubmit';
 import CandidateCard from '../CandidateCard/CandidateCard';
 import { useState, useEffect } from 'react';
 import FormSelect from '../FormSelect/FormSelect';
+import FormAddButton from '../FormAddButton/FormAddButton';
 
 const EmployerForm = () => {
 
@@ -32,15 +33,10 @@ const EmployerForm = () => {
     }
 
   return (
-    <>
+    <div className='employer__form'>
         {generateInputs()}
 
-        <button
-            className='form__add'
-            onClick={() => setQueryCount(queryCount + 1)}
-        >
-            Add
-        </button>
+        <FormAddButton handleInputAdd={() => setQueryCount(queryCount + 1)} />
 
         {/* <EmployerSubmit /> */}
 
@@ -87,7 +83,7 @@ const EmployerForm = () => {
                 return <CandidateCard key={`candidate-card__${index}`} email={doc.email} experience={doc.experience}/>
             })}
         </div>)}
-    </>
+    </div>
   )
 }
 
