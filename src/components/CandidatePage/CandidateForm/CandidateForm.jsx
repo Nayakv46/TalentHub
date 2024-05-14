@@ -4,6 +4,14 @@ import { useCandidateContext } from "../../../context/CandidateContext"
 import CandidateSubmit from '../CandidateSubmit/CandidateSubmit';
 import FormAddButton from '../FormAddButton/FormAddButton';
 import FormSelect from '../FormSelect/FormSelect';
+import { BiSolidBarChartAlt2 } from 'react-icons/bi'
+import { BiBarChart } from 'react-icons/bi';
+import { IoStatsChart } from 'react-icons/io5';
+import { IoStatsChartOutline } from 'react-icons/io5';
+import { HiOutlineChartBar } from 'react-icons/hi2';
+import { BsBarChart } from 'react-icons/bs';
+import { TbAntennaBars5 } from 'react-icons/tb';
+import { MdOutlineGrade } from 'react-icons/md';
 
 const CandidateForm = () => {
 
@@ -35,7 +43,17 @@ const CandidateForm = () => {
                     />
 
                     <div className='formInput'>
-                        <label htmlFor={`input-${id}`}>Rate your skill</label>
+                        <label
+                            htmlFor={`input-${id}`}
+                            className='formInput__label'
+                        >
+                            <MdOutlineGrade
+                                className='formInput__label--icon'
+                            />
+
+                            Rate your skill
+                        </label>
+
                         <input
                             type="number"
                             name="inputValue"
@@ -44,6 +62,7 @@ const CandidateForm = () => {
                             value={formData[id]?.input || ""}
                             onChange={(e) => handleInputChange(id, e.target.value)}
                             id={`input-${id}`}
+                            className='formInput__input'
                         />
                     </div>
                 </div>

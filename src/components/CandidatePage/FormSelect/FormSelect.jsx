@@ -1,4 +1,5 @@
 import './formSelect.scss'
+import { PiStackBold } from 'react-icons/pi'
 
 const FormSelect = ({ formData, id, handleSelectChange }) => {
   return (
@@ -7,6 +8,10 @@ const FormSelect = ({ formData, id, handleSelectChange }) => {
         htmlFor={`select-${id}`}
         className='formSelect__label'
       >
+        <PiStackBold
+          className='formSelect__label--icon'
+        />
+
         Select a skill
       </label>
 
