@@ -6,6 +6,7 @@ import CandidateCard from '../CandidateCard/CandidateCard';
 import { useState, useEffect } from 'react';
 import FormSelect from '../FormSelect/FormSelect';
 import FormAddButton from '../FormAddButton/FormAddButton';
+import FormInput from '../FormInput/FormInput';
 
 const EmployerForm = () => {
 
@@ -20,12 +21,13 @@ const EmployerForm = () => {
             inputs.push(
                 <div key={id} className='form__state-wrapper'>
                     <FormSelect
-                        formData={queryData}
                         id={id}
                         handleSelectChange={handleSelectChange}
+                        queryData={queryData}
                     />
 
-                    <input type="number" name="inputValue" min="0" max="5" value={queryData[id]?.input || ""} onChange={(e) => handleInputChange(id, e.target.value)} />
+                    <FormInput id={id} queryData={queryData} handleInputChange={handleInputChange} />
+
                 </div>
             );
         }
