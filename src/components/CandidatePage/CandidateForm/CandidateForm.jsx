@@ -4,14 +4,7 @@ import { useCandidateContext } from "../../../context/CandidateContext"
 import CandidateSubmit from '../CandidateSubmit/CandidateSubmit';
 import FormAddButton from '../FormAddButton/FormAddButton';
 import FormSelect from '../FormSelect/FormSelect';
-import { BiSolidBarChartAlt2 } from 'react-icons/bi'
-import { BiBarChart } from 'react-icons/bi';
-import { IoStatsChart } from 'react-icons/io5';
-import { IoStatsChartOutline } from 'react-icons/io5';
-import { HiOutlineChartBar } from 'react-icons/hi2';
-import { BsBarChart } from 'react-icons/bs';
-import { TbAntennaBars5 } from 'react-icons/tb';
-import { MdOutlineGrade } from 'react-icons/md';
+import FormInput from '../FormInput/FormInput';
 
 const CandidateForm = () => {
 
@@ -42,29 +35,11 @@ const CandidateForm = () => {
                         handleSelectChange={handleSelectChange}
                     />
 
-                    <div className='formInput'>
-                        <label
-                            htmlFor={`input-${id}`}
-                            className='formInput__label'
-                        >
-                            <MdOutlineGrade
-                                className='formInput__label--icon'
-                            />
-
-                            Rate your skill
-                        </label>
-
-                        <input
-                            type="number"
-                            name="inputValue"
-                            min="0"
-                            max="5"
-                            value={formData[id]?.input || ""}
-                            onChange={(e) => handleInputChange(id, e.target.value)}
-                            id={`input-${id}`}
-                            className='formInput__input'
-                        />
-                    </div>
+                    <FormInput
+                        id={id}
+                        formData={formData}
+                        handleInputChange={handleInputChange}
+                    />
                 </div>
             );
         }
