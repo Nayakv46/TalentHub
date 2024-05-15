@@ -40,19 +40,7 @@ const EmployerForm = () => {
 
         <FormAddButton handleInputAdd={() => setQueryCount(queryCount + 1)} />
 
-        {/* <EmployerSubmit /> */}
-
-        <button
-            className='form__submit'
-            onClick={() => {
-                handleFormSubmit()
-                setTimeout(() => {
-                    setShowResults(true)
-                }, 1000)
-            }}
-        >
-            Submit Form
-        </button>
+        <EmployerSubmit handleFormSubmit={handleFormSubmit} setShowResults={setShowResults} />
 
         After clicking submit you will see all results for now.
 

@@ -1,3 +1,10 @@
+.employer{
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
 .searchedData__results {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
