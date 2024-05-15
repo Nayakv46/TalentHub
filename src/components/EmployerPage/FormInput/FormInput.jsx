@@ -37,16 +37,6 @@ const FormInput = ({queryData, id, handleInputChange}) => {
                 onClick={() => handleInputChange(id, 5)}
             ></button>
         </div>
-        {/* <input
-            type="number"
-            name="inputValue"
-            min="0"
-            max="5"
-            value={queryData[id]?.input || ""}
-            onChange={(e) => handleInputChange(id, e.target.value)}
-            id={`input-${id}`}
-            className='formInput__input'
-        /> */}
     </div>
   )
 }
