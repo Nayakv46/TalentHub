@@ -4,8 +4,7 @@ import { MdOutlineGrade } from 'react-icons/md';
 const FormInput = ({queryData, id, handleInputChange}) => {
   return (
     <div className='formInput'>
-        <label
-            htmlFor={`input-${id}`}
+        <span
             className='formInput__label'
         >
             <MdOutlineGrade
@@ -13,9 +12,32 @@ const FormInput = ({queryData, id, handleInputChange}) => {
             />
 
             Skill level
-        </label>
+        </span>
 
-        <input
+        <div className={`formInput__choice formInput__choice--${queryData[id]?.input}`}>
+            <div className='formInput__choice-progressBar'></div>
+            <button
+                className='formInput__choice-button'
+                onClick={() => handleInputChange(id, 1)}
+            ></button>
+            <button
+                className='formInput__choice-button'
+                onClick={() => handleInputChange(id, 2)}
+            ></button>
+            <button
+                className='formInput__choice-button'
+                onClick={() => handleInputChange(id, 3)}
+            ></button>
+            <button
+                className='formInput__choice-button'
+                onClick={() => handleInputChange(id, 4)}
+            ></button>
+            <button
+                className='formInput__choice-button'
+                onClick={() => handleInputChange(id, 5)}
+            ></button>
+        </div>
+        {/* <input
             type="number"
             name="inputValue"
             min="0"
@@ -24,7 +46,7 @@ const FormInput = ({queryData, id, handleInputChange}) => {
             onChange={(e) => handleInputChange(id, e.target.value)}
             id={`input-${id}`}
             className='formInput__input'
-        />
+        /> */}
     </div>
   )
 }

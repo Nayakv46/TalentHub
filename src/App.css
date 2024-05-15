@@ -1,6 +1,7 @@
 @import './styles/_variables.scss';
 @import './styles/_default.scss';
 @import './styles/_functional.scss';
+@import './styles/shared/_form.scss';
 
 * {
   font-family: 'Montserrat', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

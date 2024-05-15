@@ -1,16 +1,1 @@
-.formSelect {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-
-    &__label {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-
-        &--icon {
-            font-size: 2rem;
-            color:  #008eff;
-        }
-    }
-}
+// styles are in /styles/shared/_form.scss

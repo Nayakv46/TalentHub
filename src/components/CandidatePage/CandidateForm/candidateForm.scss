@@ -11,37 +11,6 @@
     }
 }
 
-.form{
-    &__state-wrapper{
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        // max-width: 30rem;
-        padding: 2rem;
-        background-color: var(--white700);
-        border-radius: 1rem;
-        box-shadow: 0 0.5rem 1rem 0.2rem rgba(0, 0, 0, 0.1);
-    }
-
-    &Input {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-
-        &__label {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-
-            &--icon {
-                font-size: 2rem;
-                color:  #008eff;
-            }
-        
-        }
-    }
-}
-
 .candidate_toDelete {
     flex: 1;
     display: flex;
@@ -63,12 +32,6 @@
         &-wrapper {
             display: flex;
             flex-direction: column;
-        }
-    }
-
-    .form {
-        &__state-wrapper {
-            max-width: 35rem;
         }
     }
 }
