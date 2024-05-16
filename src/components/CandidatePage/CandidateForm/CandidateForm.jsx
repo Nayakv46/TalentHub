@@ -55,9 +55,11 @@ const CandidateForm = () => {
             {generateInputs()}
         </div>
 
-        <FormAddButton handleInputAdd={handleInputAdd} />
+        <div className='candidate__form-buttons'>
+            <FormAddButton handleInputAdd={handleInputAdd} />
 
-        <CandidateSubmit />
+            <CandidateSubmit />
+        </div>
 
     </div>
 

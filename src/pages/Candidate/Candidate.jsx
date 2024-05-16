@@ -43,7 +43,7 @@ const Candidate = () => {
                     </p>
 
                     <p className='candidate__content-text'>
-                        Rate your skills from 0 to 5, where 0 is no knowledge and 5 is expert.
+                        Rate your skills from 0 to 5, where 0 is intern&apos;s level and 5 is expert.
                     </p>
 
                     <p className='candidate__content-text'>
