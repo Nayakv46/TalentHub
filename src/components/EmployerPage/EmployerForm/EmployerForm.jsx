@@ -36,20 +36,16 @@ const EmployerForm = () => {
 
   return (
     <div className='employer__form'>
-        {generateInputs()}
+        <div className='employer__form-requirements'>
+            {generateInputs()}
+        </div>
 
-        <FormAddButton handleInputAdd={() => setQueryCount(queryCount + 1)} />
+        <div className='employer__form-buttons'>
+            <FormAddButton handleInputAdd={() => setQueryCount(queryCount + 1)} />
 
-        <EmployerSubmit handleFormSubmit={handleFormSubmit} setShowResults={setShowResults} />
+            <EmployerSubmit handleFormSubmit={handleFormSubmit} setShowResults={setShowResults} />
+        </div>
 
-        After clicking submit you will see all results for now.
-
-        Don't worry, the full functionality will be added in the near future. Due to certain circumstances, project's development had to be halted for a few days. Please check back later and thank you for your patience.
-
-        <br />
-        <br />
-
-        Styling will also be applied in some time. Feel free to contact me for more information regarding this project.
 
         {Object.entries(queryData).map((data, index) => {
             return (

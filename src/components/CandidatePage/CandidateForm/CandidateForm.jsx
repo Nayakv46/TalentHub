@@ -49,31 +49,31 @@ const CandidateForm = () => {
   return (
     <div className='candidate_toDelete'>
 
-    <div className='candidate__form'>
+        <div className='candidate__form'>
 
-        <div className='candidate__form-wrapper'>
-            {generateInputs()}
+            <div className='candidate__form-wrapper'>
+                {generateInputs()}
+            </div>
+
+            <div className='candidate__form-buttons'>
+                <FormAddButton handleInputAdd={handleInputAdd} />
+
+                <CandidateSubmit />
+            </div>
+
         </div>
 
-        <div className='candidate__form-buttons'>
-            <FormAddButton handleInputAdd={handleInputAdd} />
 
-            <CandidateSubmit />
+        <div className='candidate__form-entries'>
+            {Object.entries(formData).map((data, index) => {
+                return (
+                    <div key={index}>
+                        {data[1].select} - {data[1].input}
+                    </div>
+                )
+            })}
         </div>
-
     </div>
-
-
-    <div className='candidate__form-entries'>
-        {Object.entries(formData).map((data, index) => {
-            return (
-                <div key={index}>
-                    {data[1].select} - {data[1].input}
-                </div>
-            )
-        })}
-    </div>
-</div>
   )
 }
 

@@ -20,11 +20,31 @@ const Candidate = () => {
     return (
         <EmployerContextProvider>
             <main className="employer">
+                    <div className='employer__header'>
+                        <p className='employer__header-user'>
+                            Hello, {currentUser?.email}
+                        </p>
+                        {/* <p className='employer__header-userType'>
+                            USERTYPE: {userType}
+                        </p> */}
+                        <h4 className='employer__header-title'>
+                            Who are you looking for?
+                        </h4>
+                    </div>
                 <div className='employer__content'>
+                    <div className='employer__content-info'>
+                        <p>
+                            After clicking submit you will see all results for now.
+                        </p>
 
-                    Hello {currentUser?.email}
-                    <br/>
-                    USERTYPE: {userType}
+                        <p>
+                            Don't worry, the full functionality will be added in the near future. Due to certain circumstances, project's development had to be halted for a few days. Please check back later and thank you for your patience.
+                        </p>
+
+                        <p>
+                            Styling will also be applied in some time. Feel free to contact me for more information regarding this project.
+                        </p>
+                    </div>
 
                     <EmployerForm />
                 </div>
