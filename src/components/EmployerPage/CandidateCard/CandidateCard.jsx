@@ -9,6 +9,29 @@ const CandidateCard = ({ index, email, experience }) => {
     const [showDetails, setShowDetails] = useState(false);
     const hasTransitionedInDetails = useMountTransition(showDetails, 250);
 
+    // filter out the top 3 experiences
+    const topExperiences = Object.entries(experience).sort((a, b) => b[1] - a[1]).slice(0, 3);
+
+    // length of extra experiences in object
+    const experienceLength = Object.keys(experience).length - 3;
+
+    const handleSkillLevel = (level) => {
+        switch (level) {
+            case 1:
+                return 'Intern';
+            case 2:
+                return 'Junior';
+            case 3:
+                return 'Mid';
+            case 4:
+                return 'Senior';
+            case 5:
+                return 'Expert';
+            default:
+                return;
+        }
+    }
+
   return (
     <div className='candidate-card' key={index}>
         <p className='candidate-card__email'>
@@ -18,6 +41,31 @@ const CandidateCard = ({ index, email, experience }) => {
         <button className='candidate-card__show-details' onClick={() => setShowDetails(!showDetails)}>
             <FaRegEnvelope className='icon--envelope' />More Info
         </button>
+
+        <div className='candidate-card__experience-wrapper'>
+            {topExperiences.map((data, index) => {
+                return (
+                    <div className='candidate-card__experience' key={index}>
+                        <p className='candidate-card__experience-title'>
+                            {data[0].charAt(0).toUpperCase() + data[0].slice(1)} {` - ${handleSkillLevel(data[1])}`}
+                        </p>
+
+                        <span className={`candidate-card__experience-level level-${data[1]}`}></span>
+
+                        <div className={`candidate-card__level-wrapper candidate-card__level-wrapper--${data[1]}`}>
+                            <div className='candidate-card__level-progressBar'></div>
+                            <span className='candidate-card__level-bar'></span>
+                            <span className='candidate-card__level-bar'></span>
+                            <span className='candidate-card__level-bar'></span>
+                            <span className='candidate-card__level-bar'></span>
+                            <span className='candidate-card__level-bar'></span>
+                        </div>
+                    </div>
+                )
+            })}
+        </div>
+
+        {experienceLength > 0 && <p className='candidate-card__experience-more'>+ {experienceLength} more...</p>}
 
         <div className='candidate-card__exp-wrapper'>
             {Object.entries(experience).map((data, index) => {
@@ -40,6 +88,7 @@ const CandidateCard = ({ index, email, experience }) => {
                 <p>Here will be button for downloading CV</p>
             </div>
         }
+
         {(hasTransitionedInDetails || showDetails) && <div className={`candidate-card__details-overlay ${hasTransitionedInDetails && 'in'} ${showDetails && 'visible'}`} onClick={() => setShowDetails(false)}></div>}
     </div>
   )
