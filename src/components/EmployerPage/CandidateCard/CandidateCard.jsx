@@ -60,6 +60,7 @@ const CandidateCard = ({ index, email, experience }) => {
                 showDetails={showDetails}
                 email={email}
                 setShowDetails={setShowDetails}
+                experience={experience}
             />
         }
 
