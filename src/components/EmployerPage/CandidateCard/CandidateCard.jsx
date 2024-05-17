@@ -4,6 +4,7 @@ import { FaRegEnvelope } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
 import useMountTransition from '../../../utils/useMountTransition';
 import CandidateCardExperience from '../CandidateCardExperience/CandidateCardExperience';
+import CandidateCardDetails from '../CandidateCardDetails/CandidateCardDetails';
 
 const CandidateCard = ({ index, email, experience }) => {
 
@@ -15,23 +16,6 @@ const CandidateCard = ({ index, email, experience }) => {
 
     // length of extra experiences in object
     const experienceLength = Object.keys(experience).length - 3;
-
-    const handleSkillLevel = (level) => {
-        switch (level) {
-            case 1:
-                return 'Intern';
-            case 2:
-                return 'Junior';
-            case 3:
-                return 'Mid';
-            case 4:
-                return 'Senior';
-            case 5:
-                return 'Expert';
-            default:
-                return;
-        }
-    }
 
   return (
     <div className='candidate-card' key={index}>
@@ -71,14 +55,14 @@ const CandidateCard = ({ index, email, experience }) => {
         </div>
 
         {(hasTransitionedInDetails || showDetails) &&
-            <div className={`candidate-card__details ${hasTransitionedInDetails && 'in'} ${showDetails && 'visible'}`}>
-                <IoClose className='candidate-card__details-close' onClick={() => setShowDetails(false)} />
-                <a href={`mailto:${email}`}>{email}</a>
-                <p>Here will be button for downloading CV</p>
-            </div>
+            <CandidateCardDetails
+                hasTransitionedInDetails={hasTransitionedInDetails}
+                showDetails={showDetails}
+                email={email}
+                setShowDetails={setShowDetails}
+            />
         }
 
-        {(hasTransitionedInDetails || showDetails) && <div className={`candidate-card__details-overlay ${hasTransitionedInDetails && 'in'} ${showDetails && 'visible'}`} onClick={() => setShowDetails(false)}></div>}
     </div>
   )
 }
