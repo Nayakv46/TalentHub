@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { FaRegEnvelope } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
 import useMountTransition from '../../../utils/useMountTransition';
+import CandidateCardExperience from '../CandidateCardExperience/CandidateCardExperience';
 
 const CandidateCard = ({ index, email, experience }) => {
 
@@ -45,22 +46,10 @@ const CandidateCard = ({ index, email, experience }) => {
         <div className='candidate-card__experience-wrapper'>
             {topExperiences.map((data, index) => {
                 return (
-                    <div className='candidate-card__experience' key={index}>
-                        <p className='candidate-card__experience-title'>
-                            {data[0].charAt(0).toUpperCase() + data[0].slice(1)} {` - ${handleSkillLevel(data[1])}`}
-                        </p>
-
-                        <span className={`candidate-card__experience-level level-${data[1]}`}></span>
-
-                        <div className={`candidate-card__level-wrapper candidate-card__level-wrapper--${data[1]}`}>
-                            <div className='candidate-card__level-progressBar'></div>
-                            <span className='candidate-card__level-bar'></span>
-                            <span className='candidate-card__level-bar'></span>
-                            <span className='candidate-card__level-bar'></span>
-                            <span className='candidate-card__level-bar'></span>
-                            <span className='candidate-card__level-bar'></span>
-                        </div>
-                    </div>
+                    <CandidateCardExperience
+                        data={data}
+                        key={index}
+                    />
                 )
             })}
         </div>

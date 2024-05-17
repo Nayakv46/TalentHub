@@ -1,0 +1,89 @@
+.candidateCardExperience {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    &__title {
+        display: flex;
+    }
+
+    &__level{
+
+        &-wrapper {
+            position: relative;
+            display: flex;
+            gap: var(--gap-size);
+            // border: 0.2rem solid red;
+            border-radius: 1.2rem;
+            height: 1rem;
+
+            --gap-size: 0.4rem;
+            --border-size: 0.2rem;
+
+            &:after {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 50%;
+                height: calc(100% - (var(--border-size) * 2));
+                width: 100%;
+                transition: var(--transition);
+                transform: translate(0, -50%);
+                background-color: var(--candidate-card-bg);
+                z-index: 1;
+            }
+
+            &--1{
+                &:after {
+                    width: 80%;
+                    // background-color: #28df99;
+                }
+            }
+            &--2{
+                &:after {
+                    width: 60%;
+                    // background-color: #ffbd69;
+                }
+            }
+            &--3{
+                &:after {
+                    width: 40%;
+                    // background-color: #f37121;
+                }
+            }
+            &--4{
+                &:after {
+                    width: 20%;
+                    // background-color: #c70039;
+                }
+            }
+            &--5{
+                &:after {
+                    width: 0%;
+                    // background-color: #4d4c7d;
+                }
+            }
+        }
+
+        &-progressBar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border-radius: 1.2rem;
+            background: var(--progress-gradient);
+            z-index: 1;
+        }
+
+        &-bar {
+            flex: 1;
+            height: 100%;
+            background-color: transparent;
+            border: var(--border-size) solid var(--black200);
+            outline: var(--gap-size) solid var(--candidate-card-bg);
+            border-radius: 2rem;
+            z-index: 3;
+        }
+    }
+}
