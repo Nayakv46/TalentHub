@@ -21,7 +21,7 @@ const CandidateCardExperience = ({ data, index }) => {
             case 5:
                 return 'Expert';
             default:
-                return;
+                return 'None';
         }
     }
 

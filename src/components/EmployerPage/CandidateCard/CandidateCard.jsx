@@ -1,7 +1,6 @@
 import './candidateCard.scss';
 import { useState } from 'react';
 import { FaRegEnvelope } from 'react-icons/fa';
-import { IoClose } from 'react-icons/io5';
 import useMountTransition from '../../../utils/useMountTransition';
 import CandidateCardExperience from '../CandidateCardExperience/CandidateCardExperience';
 import CandidateCardDetails from '../CandidateCardDetails/CandidateCardDetails';
@@ -39,20 +38,6 @@ const CandidateCard = ({ index, email, experience }) => {
         </div>
 
         {experienceLength > 0 && <p className='candidate-card__experience-more'>+ {experienceLength} more...</p>}
-
-        <div className='candidate-card__exp-wrapper'>
-            {Object.entries(experience).map((data, index) => {
-                return (
-                    <div className='candidate-card__experience' key={index}>
-                        <p className='candidate-card__experience-title'>
-                            {data[0].charAt(0).toUpperCase() + data[0].slice(1)}
-                        </p>
-
-                        <span className={`candidate-card__experience-level level-${data[1]}`}></span>
-                    </div>
-                )
-            })}
-        </div>
 
         {(hasTransitionedInDetails || showDetails) &&
             <CandidateCardDetails
