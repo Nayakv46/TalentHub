@@ -48,20 +48,33 @@ const CandidateForm = () => {
 
   return (
     <div className='candidate_toDelete'>
-        <div className='candidate__yearsOfExperience'>
-            <p className='candidate__yearsOfExperience-text'>Start by providing us with how many years of experience you&apos;ve got.</p>
-            <input
-                className='candidate__yearsOfExperience-input'
-                type="range"
-                min="0"
-                max="10"
-                step="0.01"
-                value={yearsOfExperience}
-                onChange={(e) => handleYearsOfExperienceChange(e.target.value)}
-            />
+        <div className='formRange'>
+            <p className='formRange-text'>Start by providing us with how many years of experience you&apos;ve got.</p>
 
-            {yearsOfExperience == 0 ? `0 - 1 year` : `${yearsOfExperience}+ years`}
+            <div className='formRange-content'>
+                <label
+                    htmlFor="yearsOfExperience"
+                    className='formRange-label'
+                >
+                    Years of Experience: &nbsp;
+                        <p>
+                            {yearsOfExperience == 0 ? `0 - 1 year` : `${yearsOfExperience}+ years`}
+                        </p>
+                </label>
+
+                <input
+                    className='formRange-choice'
+                    id='yearsOfExperience'
+                    type="range"
+                    min="0"
+                    max="10"
+                    step="1"
+                    value={yearsOfExperience}
+                    onChange={(e) => handleYearsOfExperienceChange(e.target.value)}
+                />
+            </div>
         </div>
+
         <div className='candidate__form'>
 
             <div className='candidate__form-wrapper'>

@@ -16,6 +16,103 @@
         box-shadow: 0 0.5rem 1rem 0.2rem rgba(0, 0, 0, 0.1);
     }
 
+    &Range {
+        --state-wrapper-bg: var(--white700);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        max-width: 50rem;
+        padding: 2rem;
+        border-radius: 1.5rem;
+        margin: 0 auto;
+        text-align: center;
+        background-color: var(--state-wrapper-bg);
+        box-shadow: 0 0.5rem 1rem 0.2rem rgba(0, 0, 0, 0.1);
+
+        &-text {
+
+        }
+
+        
+        &-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &-label {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        &-choice {
+
+            -webkit-appearance: none;
+            background-color: rgba(#fff, .2);
+            position: relative;
+            // top: 50%;
+            // left: 50%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            max-width: 20rem;
+            height: 1.8rem;
+            // transform: translate(-50%, -50%) ;
+            border: 0.1rem solid #212327;
+            border-radius: 1rem;
+            // outline: 0.1rem solid black;
+            overflow: hidden;
+            cursor: pointer;
+
+            &[step]{
+                background-color: transparent;
+                background-image: repeating-linear-gradient(to right, rgba(#212327, 0.25), rgba(#212327, 0.45) calc(10.05% - 1px), #05051a calc(10.05% - 1px), #05051a 10.05%);
+            }
+
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 0;
+                box-shadow: -20rem 0 0 20rem rgba(#212327, 0.5);
+            }
+
+            &::-moz-range-thumb {
+                border: none;
+                width: 0;
+                box-shadow: -20rem 0 0 20rem rgba(#05051a, 0.2);
+            }
+
+            &:before,
+            &:after {
+                position: absolute;
+                display: flex;
+                align-items: center;
+                height: 100%;
+                color: var(--white700);
+                font-size: 1.8rem;
+                font-weight: 500;
+                line-height: 1;
+                text-align: center;
+                z-index: 3;
+                pointer-events: none;
+            }
+
+            &:before {
+                content: '+';
+                right: 0.4rem;
+            }
+
+            &:after {
+                content: '-';
+                left: 0.4rem;
+            }
+        }
+    }
+
     &Select {
         display: flex;
         flex-direction: column;

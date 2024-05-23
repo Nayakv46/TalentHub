@@ -67,7 +67,7 @@ export const CandidateContextProvider = ({ children }) => {
 
     const handleYearsOfExperienceChange = (value) => {
         // Round the value to the nearest whole number
-        value = Math.round(value);
+        // value = Math.round(value);
         setYearsOfExperience(value);
     }
 
