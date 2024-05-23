@@ -64,6 +64,12 @@ export const CandidateContextProvider = ({ children }) => {
         setFormData(data);
     }
 
+    const handleYearsOfExperienceChange = (value) => {
+        // Round the value to the nearest whole number
+        value = Math.round(value);
+        setYearsOfExperience(value);
+    }
+
     // Function handling select change
     const handleSelectChange = (index, value) => {
         setFormData( prevState => ({
@@ -99,6 +105,7 @@ export const CandidateContextProvider = ({ children }) => {
 
         await updateDoc(experienceDoc, {
             email: currentUser.email,
+            yearsOfExperience: yearsOfExperience,
             experience: data
         })
     }
@@ -108,6 +115,7 @@ export const CandidateContextProvider = ({ children }) => {
         try {
             await addDoc(userExperienceRef, {
                 email: currentUser.email,
+                yearsOfExperience: yearsOfExperience,
                 experience: data
             });
         } catch (error) {
@@ -157,7 +165,7 @@ export const CandidateContextProvider = ({ children }) => {
         experienceId,
         handleFormSubmit,
         yearsOfExperience,
-        setYearsOfExperience
+        handleYearsOfExperienceChange
     }
 
   return (
