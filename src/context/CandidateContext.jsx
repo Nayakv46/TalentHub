@@ -35,6 +35,7 @@ export const CandidateContextProvider = ({ children }) => {
             userExperienceSnapshot.forEach((doc) => {
                 if(doc.data().email === currentUser?.email) {
                     initializeUserExperience(doc.data().experience);
+                    setYearsOfExperience(doc.data().yearsOfExperience);
                     setExistingExperience(true);
                     setExperienceId(doc.id)
                 }
