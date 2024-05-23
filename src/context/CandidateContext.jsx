@@ -17,6 +17,8 @@ export function useCandidateContext() {
 
 export const CandidateContextProvider = ({ children }) => {
 
+    const [yearsOfExperience, setYearsOfExperience] = useState(0);
+
     const [formData, setFormData] = useState({});
 
     const [existingExperience, setExistingExperience] = useState(false);
@@ -153,7 +155,9 @@ export const CandidateContextProvider = ({ children }) => {
         handleSelectChange,
         handleInputChange,
         experienceId,
-        handleFormSubmit
+        handleFormSubmit,
+        yearsOfExperience,
+        setYearsOfExperience
     }
 
   return (
