@@ -97,7 +97,9 @@ export const EmployerContextProvider = ({ children }) => {
             const newData = allData.docs.map(doc => {
                 return {
                     experience: doc.data().experience,
-                    email: doc.data().email
+                    email: doc.data().email,
+                    yearsOfExperience: doc.data().yearsOfExperience,
+                    position: doc.data().position
                 }
             })
             setSearchedData(newData);

@@ -63,10 +63,11 @@ const EmployerForm = () => {
                 </div>
             )
         })} */}
+
         {showResults && (<div className='searchedData__results'>
             {showResults && searchedData.map((doc, index) => {
-                // console.log(doc.email)
-                return <CandidateCard key={`candidate-card__${index}`} email={doc.email} experience={doc.experience}/>
+                console.log(doc)
+                return <CandidateCard key={`candidate-card__${index}`} email={doc.email} experience={doc.experience} yearsOfExperience={doc.yearsOfExperience} position={doc.position} />
             })}
         </div>)}
     </div>

@@ -5,21 +5,58 @@
 .candidate-card {
     display: flex;
     flex-direction: column;
+    // justify-content: space-between;
     gap: 2rem;
     padding: 2rem;
     background-color: var(--candidate-card-bg);
     box-shadow: 0 0 0.5rem 0.2rem rgba(21, 23, 27, 0.1);
     border-radius: 2rem;
 
-    &__email {
+    &__header {
         display: flex;
+        // justify-content: space-between;
+        align-items: center;
         gap: 1rem;
+    }
+
+    &__profile-picture {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 0.1rem solid black;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 0rem;
+    }
+
+    &__position {
+        font-size: 1.8rem;
+        white-space: nowrap;
+    }
+
+    &__years {
+        font-size: 1.4rem;
+
+        &--short {
+            display: none;
+        }
     }
 
     &__experience-wrapper {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+    }
+
+    &__more {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: row-reverse;
+        justify-content: space-between;
     }
 
     &__show-details {
@@ -44,6 +81,25 @@
         & .icon {
             &--envelope {
                 font-size: 1.8rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .candidate-card {
+
+        &__position {
+            max-width: 14ch;
+            white-space: nowrap;
+            overflow: hidden;
+            // font-size: 1.4rem;
+        }
+
+        &__years {
+            display: none;
+            &--short {
+                display: block;
             }
         }
     }
