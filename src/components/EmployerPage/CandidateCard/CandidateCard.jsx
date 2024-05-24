@@ -17,9 +17,6 @@ const CandidateCard = ({ index, email, experience, yearsOfExperience, position }
     // length of extra experiences in object
     const experienceLength = Object.keys(experience).length - 3;
 
-    // first letters big
-    // position = position.replace(/\b\w/g, l => l.toUpperCase());
-
   return (
     <div className='candidate-card' key={index}>
 
@@ -35,7 +32,7 @@ const CandidateCard = ({ index, email, experience, yearsOfExperience, position }
                     {yearsOfExperience == 0 || yearsOfExperience == undefined ? `0 - 1 year of experience` : `${yearsOfExperience}+ years of experience`}
                 </p>
                 <p className='candidate-card__years candidate-card__years--short'>
-                {yearsOfExperience == 0 || yearsOfExperience == undefined ? `0 - 1 year...` : `${yearsOfExperience}+ years...`}
+                    {yearsOfExperience == 0 || yearsOfExperience == undefined ? `0 - 1 year...` : `${yearsOfExperience}+ years...`}
                 </p>
             </div>
         </div>
@@ -68,6 +65,8 @@ const CandidateCard = ({ index, email, experience, yearsOfExperience, position }
                 email={email}
                 setShowDetails={setShowDetails}
                 experience={experience}
+                yearsOfExperience={yearsOfExperience}
+                position={position}
             />
         }
 
