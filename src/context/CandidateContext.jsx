@@ -8,6 +8,7 @@ import {
     updateDoc
 } from 'firebase/firestore';
 import { useAuth } from './AuthContext';
+import { set } from 'firebase/database';
 
 const CandidateContext = createContext();
 
@@ -17,6 +18,7 @@ export function useCandidateContext() {
 
 export const CandidateContextProvider = ({ children }) => {
 
+    const [position, setPosition] = useState("");
     const [yearsOfExperience, setYearsOfExperience] = useState(0);
 
     const [formData, setFormData] = useState({});
@@ -35,7 +37,8 @@ export const CandidateContextProvider = ({ children }) => {
             userExperienceSnapshot.forEach((doc) => {
                 if(doc.data().email === currentUser?.email) {
                     initializeUserExperience(doc.data().experience);
-                    setYearsOfExperience(doc.data().yearsOfExperience);
+                    setPosition(doc.data().position);
+                    initializeYearsOfExperience(doc.data().yearsOfExperience);
                     setExistingExperience(true);
                     setExperienceId(doc.id)
                 }
@@ -65,6 +68,13 @@ export const CandidateContextProvider = ({ children }) => {
         setFormData(data);
     }
 
+    const initializeYearsOfExperience = (years) => {
+        if (years == undefined) {
+            setYearsOfExperience(0);
+        } else {
+            setYearsOfExperience(Number(years));
+        }
+    }
     const handleYearsOfExperienceChange = (value) => {
         // Round the value to the nearest whole number
         // value = Math.round(value);
@@ -106,7 +116,8 @@ export const CandidateContextProvider = ({ children }) => {
 
         await updateDoc(experienceDoc, {
             email: currentUser.email,
-            yearsOfExperience: yearsOfExperience,
+            position: position,
+            yearsOfExperience: Number(yearsOfExperience),
             experience: data
         })
     }
@@ -116,7 +127,8 @@ export const CandidateContextProvider = ({ children }) => {
         try {
             await addDoc(userExperienceRef, {
                 email: currentUser.email,
-                yearsOfExperience: yearsOfExperience,
+                position: position,
+                yearsOfExperience: Number(yearsOfExperience),
                 experience: data
             });
         } catch (error) {
@@ -128,7 +140,7 @@ export const CandidateContextProvider = ({ children }) => {
     // Function handling form submission
     const handleFormSubmit = (id) => {
 
-        //Validate for empty fields
+        // Validate for empty fields
         for (const key in formData) {
             if (formData.hasOwnProperty(key)) {
                 if(formData[key].select === "" || formData[key].input === "") {
@@ -166,7 +178,9 @@ export const CandidateContextProvider = ({ children }) => {
         experienceId,
         handleFormSubmit,
         yearsOfExperience,
-        handleYearsOfExperienceChange
+        handleYearsOfExperienceChange,
+        position,
+        setPosition
     }
 
   return (

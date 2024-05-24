@@ -8,7 +8,7 @@ import FormInput from '../FormInput/FormInput';
 
 const CandidateForm = () => {
 
-    const { formData, handleSelectChange, handleInputChange, yearsOfExperience, handleYearsOfExperienceChange } = useCandidateContext();
+    const { formData, handleSelectChange, handleInputChange, yearsOfExperience, handleYearsOfExperienceChange, position, setPosition } = useCandidateContext();
 
     const [inputCount, setInputCount] = useState();
 
@@ -48,17 +48,25 @@ const CandidateForm = () => {
 
   return (
     <div className='candidate_toDelete'>
-        <div className='formRange'>
-            <p className='formRange-text'>Start by providing us with how many years of experience you&apos;ve got.</p>
+        <div className='candidate__position'>
+            <p className='candidate__position-text'>Start by providing us with your present or desired position and how many years of experience you&apos;ve got.</p>
 
-            <div className='formRange-content'>
+            <input
+                type="text"
+                placeholder="Software Engineer"
+                className='candidate__position-input'
+                value={position}
+                onChange={(e) => setPosition(e.target.value)}
+            />
+
+            <div className='formRange'>
                 <label
                     htmlFor="yearsOfExperience"
                     className='formRange-label'
                 >
-                    Years of Experience: &nbsp;
+                    Years of Experience:&nbsp;
                         <p>
-                            {yearsOfExperience == 0 ? `0 - 1 year` : `${yearsOfExperience}+ years`}
+                            {yearsOfExperience == 0 || yearsOfExperience == undefined ? `0 - 1 year of experience` : `${yearsOfExperience}+ years of experience`}
                         </p>
                 </label>
 

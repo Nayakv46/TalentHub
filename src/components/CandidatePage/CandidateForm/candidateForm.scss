@@ -1,20 +1,50 @@
-.candidate__form{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-
-    &-wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+.candidate{
+    &__position {
+        --state-wrapper-bg: var(--white700);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         gap: 2rem;
+        max-width: 50rem;
+        padding: 2rem;
+        border-radius: 1.5rem;
+        margin: 0 auto;
+        text-align: center;
+        background-color: var(--state-wrapper-bg);
+        box-shadow: 0 0.5rem 1rem 0.2rem rgba(0, 0, 0, 0.1);
+
+        &-input {
+            width: 100%;
+            max-width: 30rem;
+            padding: 1rem;
+            border: 0.1rem solid var(--black600);
+            border-radius: 2.5rem;
+            // outline: none;
+            font-weight: 500;
+            font-size: 1.6rem;
+            font-family: inherit;
+        }
     }
 
-    &-buttons {
+    &__form{
+        flex: 1;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         gap: 2rem;
-        flex-wrap: wrap;
+        
+        &-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        &-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
     }
 }
 
