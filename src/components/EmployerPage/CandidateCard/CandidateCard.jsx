@@ -4,7 +4,7 @@ import { FaRegEnvelope } from 'react-icons/fa';
 import useMountTransition from '../../../utils/useMountTransition';
 import CandidateCardExperience from '../CandidateCardExperience/CandidateCardExperience';
 import CandidateCardDetails from '../CandidateCardDetails/CandidateCardDetails';
-import defaultUserPic from '../../../assets/UserImage/default-user-pic.png';
+import CandidateCardHeader from '../CandidateCardHeader/CandidateCardHeader';
 
 const CandidateCard = ({ index, email, experience, yearsOfExperience, position }) => {
 
@@ -19,24 +19,7 @@ const CandidateCard = ({ index, email, experience, yearsOfExperience, position }
 
   return (
     <div className='candidate-card' key={index}>
-
-        <div className='candidate-card__header'>
-            <img src={defaultUserPic} alt="profile pic" className='candidate-card__profile-picture'/>
-
-            <div className='candidate-card__info'>
-                <p className='candidate-card__position'>
-                    {position ? position.replace(/\b\w/g, l => l.toUpperCase()) : 'Position not provided'}
-                </p>
-
-                <p className='candidate-card__years'>
-                    {yearsOfExperience == 0 || yearsOfExperience == undefined ? `0 - 1 year of experience` : `${yearsOfExperience}+ years of experience`}
-                </p>
-                <p className='candidate-card__years candidate-card__years--short'>
-                    {yearsOfExperience == 0 || yearsOfExperience == undefined ? `0 - 1 year...` : `${yearsOfExperience}+ years...`}
-                </p>
-            </div>
-        </div>
-
+        <CandidateCardHeader position={position} yearsOfExperience={yearsOfExperience} />
 
         <div className='candidate-card__experience-wrapper'>
             {topExperiences.map((data, index) => {
