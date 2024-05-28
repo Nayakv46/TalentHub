@@ -28,10 +28,12 @@
         gap: 0.5rem;
         width: -moz-fit-content;
         width: fit-content;
+        color: var(--black400);
+        font-weight: 600;
 
         .icon--envelope {
             font-size: 1.9rem;
-            color: var(--black600);
+            // color: var(--black600);
         }
     }
 

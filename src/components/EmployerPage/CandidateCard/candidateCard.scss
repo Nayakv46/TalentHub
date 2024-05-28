@@ -11,38 +11,6 @@
     box-shadow: 0 0 0.5rem 0.2rem rgba(21, 23, 27, 0.1);
     border-radius: 2rem;
 
-    &__header {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    &__profile-picture {
-        width: 5rem;
-        height: 5rem;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 0.1rem solid rgba(21, 23, 27, 0.08);
-    }
-
-    &__info {
-        display: flex;
-        flex-direction: column;
-        gap: 0rem;
-    }
-
-    &__position {
-        font-size: 1.8rem;
-    }
-
-    &__years {
-        font-size: 1.4rem;
-
-        &--short {
-            display: none;
-        }
-    }
-
     &__experience-wrapper {
         flex: 1;
         display: flex;
