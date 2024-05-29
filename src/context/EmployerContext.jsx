@@ -1,6 +1,8 @@
 import {
     collection,
-    getDocs
+    getDocs,
+    query,
+    where
 } from 'firebase/firestore';
 import { createContext, useState, useContext, useEffect } from 'react';
 import { db } from '../config/firebase';
@@ -46,16 +48,6 @@ export const EmployerContextProvider = ({ children }) => {
 
     const candidateCollectionRef = collection(db, 'candidate-experience');
 
-    // Function creating query from queryData
-    const createQuery = async (data) => {
-        // console.log("data", data)
-        // let query = "";
-        const allData = await getDocs(candidateCollectionRef);
-        // console.log("allData", allData.docs)
-        return allData;
-        // setSearchedData(allData);
-    }
-
     // Function handling form submission
     const handleFormSubmit = async () => {
 
@@ -81,30 +73,39 @@ export const EmployerContextProvider = ({ children }) => {
         }
 
         const convertedData = convertToDbFormat(queryData);
-        // console.log("convertedData", convertedData)
+
+        // Function creating query from queryData
+        const createQuery = async (criteria) => {
+            // Return of all data from the database
+            // const allData = await getDocs(candidateCollectionRef);
+            // return allData;
+            let q = candidateCollectionRef;
+
+            // Loop through the criteria object and add where clauses to the query
+            Object.keys(criteria).forEach(tech => {
+                q = query(q, where(`experience.${tech}`, '>=', criteria[tech]));
+            });
+
+            const data = await getDocs(q);
+            console.log(data.docs);
+            return data;
+        }
 
         const allData = await createQuery(convertedData);
-        // console.log("allData", allData.docs)
-
-        
-        // allData.docs.map(doc => console.log(doc.data()))
-        // allData.docs.map(doc => {
-            // experience of candidates
-            // console.log("experience", doc.data().experience)
-            // email of candidates
-            // console.log("email", doc.data().email)
-        // })
 
         const updateSearchedData = (data, minExperience, minYearsOfExperience) => {
 
-            const filteredData = data.docs.filter(doc => {
-                const candidate = doc.data();
-                const meetsYearsOfExperience = candidate.yearsOfExperience >= minYearsOfExperience;
-                const meetsTechnologyRequirements = Object.keys(minExperience).every(tech => 
-                    candidate.experience[tech] >= minExperience[tech]
-                );
-                return meetsYearsOfExperience && meetsTechnologyRequirements;
-            }).map(doc => {
+            const filteredData = data.docs
+            // Filter out candidates out of whole database records
+            // .filter(doc => {
+            //     const candidate = doc.data();
+            //     const meetsYearsOfExperience = candidate.yearsOfExperience >= minYearsOfExperience;
+            //     const meetsTechnologyRequirements = Object.keys(minExperience).every(tech => 
+            //         candidate.experience[tech] >= minExperience[tech]
+            //     );
+            //     return meetsYearsOfExperience && meetsTechnologyRequirements;
+            // })
+            .map(doc => {
                 return {
                     experience: doc.data().experience,
                     email: doc.data().email,
@@ -112,39 +113,12 @@ export const EmployerContextProvider = ({ children }) => {
                     position: doc.data().position
                 };
             });
-        
+
             setSearchedData(filteredData);
             // console.log(filteredData);
         };
 
-        // const updateSearchedData = (data) => {
-        //     const newData = data.docs.map(doc => {
-        //         return {
-        //             experience: doc.data().experience,
-        //             email: doc.data().email,
-        //             yearsOfExperience: doc.data().yearsOfExperience,
-        //             position: doc.data().position
-        //         }
-        //     })
-        //     setSearchedData(newData);
-        //     console.log(newData)
-        // }
-
         updateSearchedData(allData, convertedData, 0);
-        // console.log(searchedData)
-
-        // setSearchedData(allData.docs);
-
-        // CREATE A FUNCTION TO GENERATE TILES OF CANDIDATES WITH THEIR INFORMATION
-        // ON CLICK ON BUTTON FOR *DISPLAY* OPEN WINDOW OF CANDIDATE INFORMATION SUCH AS EMAIL
-
-
-        // // Check if the user has filled out experience form before
-        // if (existingExperience) {
-        //     handleFormUpdate(id, convertedData);
-        // } else {
-        //     handleFormAdd(convertedData);
-        // }
     }
 
     const value = {
