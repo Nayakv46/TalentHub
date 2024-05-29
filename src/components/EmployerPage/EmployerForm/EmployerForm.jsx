@@ -66,7 +66,7 @@ const EmployerForm = () => {
 
         {showResults && (<div className='searchedData__results'>
             {showResults && searchedData.map((doc, index) => {
-                console.log(doc)
+                // console.log(doc)
                 return <CandidateCard key={`candidate-card__${index}`} email={doc.email} experience={doc.experience} yearsOfExperience={doc.yearsOfExperience} position={doc.position} />
             })}
         </div>)}

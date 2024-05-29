@@ -48,8 +48,10 @@ export const EmployerContextProvider = ({ children }) => {
 
     // Function creating query from queryData
     const createQuery = async (data) => {
-        let query = "";
+        // console.log("data", data)
+        // let query = "";
         const allData = await getDocs(candidateCollectionRef);
+        // console.log("allData", allData.docs)
         return allData;
         // setSearchedData(allData);
     }
@@ -79,34 +81,56 @@ export const EmployerContextProvider = ({ children }) => {
         }
 
         const convertedData = convertToDbFormat(queryData);
-        // console.log(convertedData)
+        // console.log("convertedData", convertedData)
 
         const allData = await createQuery(convertedData);
-        // console.log(allData.docs)
+        // console.log("allData", allData.docs)
 
         
         // allData.docs.map(doc => console.log(doc.data()))
-        allData.docs.map(doc => {
+        // allData.docs.map(doc => {
             // experience of candidates
             // console.log("experience", doc.data().experience)
             // email of candidates
             // console.log("email", doc.data().email)
-        })
+        // })
 
-        const updateSearchedData = () => {
-            const newData = allData.docs.map(doc => {
+        const updateSearchedData = (data, minExperience, minYearsOfExperience) => {
+
+            const filteredData = data.docs.filter(doc => {
+                const candidate = doc.data();
+                const meetsYearsOfExperience = candidate.yearsOfExperience >= minYearsOfExperience;
+                const meetsTechnologyRequirements = Object.keys(minExperience).every(tech => 
+                    candidate.experience[tech] >= minExperience[tech]
+                );
+                return meetsYearsOfExperience && meetsTechnologyRequirements;
+            }).map(doc => {
                 return {
                     experience: doc.data().experience,
                     email: doc.data().email,
                     yearsOfExperience: doc.data().yearsOfExperience,
                     position: doc.data().position
-                }
-            })
-            setSearchedData(newData);
-            console.log(newData)
-        }
+                };
+            });
+        
+            setSearchedData(filteredData);
+            // console.log(filteredData);
+        };
 
-        updateSearchedData();
+        // const updateSearchedData = (data) => {
+        //     const newData = data.docs.map(doc => {
+        //         return {
+        //             experience: doc.data().experience,
+        //             email: doc.data().email,
+        //             yearsOfExperience: doc.data().yearsOfExperience,
+        //             position: doc.data().position
+        //         }
+        //     })
+        //     setSearchedData(newData);
+        //     console.log(newData)
+        // }
+
+        updateSearchedData(allData, convertedData, 0);
         // console.log(searchedData)
 
         // setSearchedData(allData.docs);
