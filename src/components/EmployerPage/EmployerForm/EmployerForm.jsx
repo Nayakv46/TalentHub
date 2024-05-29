@@ -10,7 +10,7 @@ import FormInput from '../FormInput/FormInput';
 
 const EmployerForm = () => {
 
-    const { queryData, setQueryData, handleSelectChange, handleInputChange, searchedData, handleFormSubmit } = useEmployerContext();
+    const { queryData, setQueryData, handleSelectChange, handleInputChange, searchedData, handleFormSubmit, handleRemoveObject } = useEmployerContext();
 
     const [queryCount, setQueryCount] = useState(1);
     const [showResults, setShowResults] = useState(false);
@@ -20,6 +20,15 @@ const EmployerForm = () => {
         for (let id = 0; id < queryCount; id++) {
             inputs.push(
                 <div key={id} className='form__state-wrapper'>
+                    {id}
+                    <button
+                        onClick={() => {
+                            handleRemoveObject(id);
+                            queryCount > 1 && setQueryCount(queryCount - 1);
+                        }}
+                    >
+                        Remove
+                    </button>
                     <FormSelect
                         id={id}
                         handleSelectChange={handleSelectChange}

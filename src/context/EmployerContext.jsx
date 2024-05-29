@@ -46,6 +46,15 @@ export const EmployerContextProvider = ({ children }) => {
         }))
     }
 
+    // Function handling query object removal
+    const handleRemoveObject = (indexToRemove) => {
+        setQueryData(prevState => {
+            const newState = { ...prevState };
+            delete newState[indexToRemove];
+            return newState;
+        });
+    };
+
     const candidateCollectionRef = collection(db, 'candidate-experience');
 
     // Function handling form submission
@@ -63,6 +72,7 @@ export const EmployerContextProvider = ({ children }) => {
 
         // Function converting form data to database format
         function convertToDbFormat(data) {
+            console.log(data);
             let result = {};
             for (const key in data) {
                 if (data.hasOwnProperty(key)) {
@@ -126,6 +136,7 @@ export const EmployerContextProvider = ({ children }) => {
         setQueryData,
         handleSelectChange,
         handleInputChange,
+        handleRemoveObject,
         handleFormSubmit,
         searchedData
     }
