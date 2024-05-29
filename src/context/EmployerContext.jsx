@@ -49,8 +49,20 @@ export const EmployerContextProvider = ({ children }) => {
     // Function handling query object removal
     const handleRemoveObject = (indexToRemove) => {
         setQueryData(prevState => {
+            // Removing an object from the queryData object based on the indexToRemove
             const newState = { ...prevState };
             delete newState[indexToRemove];
+
+            // Shifting the indexes of the remaining objects in the queryData object
+            Object.keys(newState)
+            .map(key => parseInt(key))
+            .filter(key => key > indexToRemove)
+            .sort((a, b) => a - b)
+            .forEach(key => {
+                newState[key - 1] = newState[key];
+                delete newState[key];
+            });
+
             return newState;
         });
     };
