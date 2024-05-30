@@ -23,7 +23,8 @@ export const EmployerContextProvider = ({ children }) => {
             ...prevState,
             [index]: {
                 ...prevState[index],
-                select: value
+                select: value,
+                input: prevState[index]?.input || 0
             }
         }))
     }
