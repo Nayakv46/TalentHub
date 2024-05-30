@@ -123,7 +123,7 @@ export const EmployerContextProvider = ({ children }) => {
             // .filter(doc => {
             //     const candidate = doc.data();
             //     const meetsYearsOfExperience = candidate.yearsOfExperience >= minYearsOfExperience;
-            //     const meetsTechnologyRequirements = Object.keys(minExperience).every(tech => 
+            //     const meetsTechnologyRequirements = Object.keys(minExperience).every(tech =>
             //         candidate.experience[tech] >= minExperience[tech]
             //     );
             //     return meetsYearsOfExperience && meetsTechnologyRequirements;

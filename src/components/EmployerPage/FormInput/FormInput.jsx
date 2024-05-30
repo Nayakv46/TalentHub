@@ -29,7 +29,7 @@ const FormInput = ({queryData, id, handleInputChange}) => {
                 className='formInput__label--icon'
             />
 
-            Skill level {queryData[id]?.input && `- ${handleSkillLevel(queryData[id]?.input)}` }
+            Skill level {(queryData[id]?.input && queryData[id]?.input !== 0) ? (`- ${handleSkillLevel(queryData[id]?.input)}`) : ''}
         </span>
 
         <div className={`formInput__choice formInput__choice--${queryData[id]?.input}`}>
