@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import FormSelect from '../FormSelect/FormSelect';
 import FormAddButton from '../FormAddButton/FormAddButton';
 import FormInput from '../FormInput/FormInput';
+import FormRemove from '../FormRemove/FormRemove';
 
 const EmployerForm = () => {
 
@@ -21,14 +22,7 @@ const EmployerForm = () => {
             inputs.push(
                 <div key={id} className='form__state-wrapper'>
                     {id}
-                    <button
-                        onClick={() => {
-                            handleRemoveObject(id);
-                            queryCount > 1 && setQueryCount(queryCount - 1);
-                        }}
-                    >
-                        Remove
-                    </button>
+                    <FormRemove queryCount={queryCount} setQueryCount={setQueryCount} handleRemoveObject={handleRemoveObject} id={id} />
                     <FormSelect
                         id={id}
                         handleSelectChange={handleSelectChange}
