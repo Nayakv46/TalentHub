@@ -85,7 +85,7 @@ export const EmployerContextProvider = ({ children }) => {
 
         // Function converting form data to database format
         function convertToDbFormat(data) {
-            console.log(data);
+            // console.log(data);
             let result = {};
             for (const key in data) {
                 if (data.hasOwnProperty(key)) {
@@ -105,12 +105,19 @@ export const EmployerContextProvider = ({ children }) => {
             let q = candidateCollectionRef;
 
             // Loop through the criteria object and add where clauses to the query
+            let counter = 0;
             Object.keys(criteria).forEach(tech => {
-                q = query(q, where(`experience.${tech}`, '>=', criteria[tech]));
+                // Due to queries requiring an index, we only query with the first technology, rest is being filtered out by JS in updateSearchedData
+                if (counter === 0){
+                    q = query(q, where(`experience.${tech}`, '>=', criteria[tech]));
+                }
+                counter++;
             });
 
+            // console.log(criteria);
+
             const data = await getDocs(q);
-            console.log(data.docs);
+            // console.log(data.docs);
             return data;
         }
 
@@ -120,14 +127,14 @@ export const EmployerContextProvider = ({ children }) => {
 
             const filteredData = data.docs
             // Filter out candidates out of whole database records
-            // .filter(doc => {
-            //     const candidate = doc.data();
-            //     const meetsYearsOfExperience = candidate.yearsOfExperience >= minYearsOfExperience;
-            //     const meetsTechnologyRequirements = Object.keys(minExperience).every(tech =>
-            //         candidate.experience[tech] >= minExperience[tech]
-            //     );
-            //     return meetsYearsOfExperience && meetsTechnologyRequirements;
-            // })
+            .filter(doc => {
+                const candidate = doc.data();
+                const meetsYearsOfExperience = candidate.yearsOfExperience >= minYearsOfExperience;
+                const meetsTechnologyRequirements = Object.keys(minExperience).every(tech =>
+                    candidate.experience[tech] >= minExperience[tech]
+                );
+                return meetsYearsOfExperience && meetsTechnologyRequirements;
+            })
             .map(doc => {
                 return {
                     experience: doc.data().experience,
