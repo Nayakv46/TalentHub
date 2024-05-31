@@ -21,7 +21,6 @@ const EmployerForm = () => {
         for (let id = 0; id < queryCount; id++) {
             inputs.push(
                 <div key={id} className='form__state-wrapper'>
-                    {id}
                     <FormRemove queryCount={queryCount} setQueryCount={setQueryCount} handleRemoveObject={handleRemoveObject} id={id} />
                     <FormSelect
                         id={id}
