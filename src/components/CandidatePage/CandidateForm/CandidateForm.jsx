@@ -8,7 +8,7 @@ import FormInput from '../FormInput/FormInput';
 
 const CandidateForm = () => {
 
-    const { formData, handleSelectChange, handleInputChange, yearsOfExperience, handleYearsOfExperienceChange, position, setPosition } = useCandidateContext();
+    const { formData, handleSelectChange, handleInputChange, yearsOfExperience, handleYearsOfExperienceChange, position, setPosition, handleRemoveExperience, experienceId } = useCandidateContext();
 
     const [inputCount, setInputCount] = useState();
 
@@ -29,6 +29,7 @@ const CandidateForm = () => {
         for (let id = 0; id < inputCount; id++) {
             inputs.push(
                 <div key={id} className='form__state-wrapper'>
+                    <button onClick={() => handleRemoveExperience(id)}>Remove</button>
                     <FormSelect
                         formData={formData}
                         id={id}

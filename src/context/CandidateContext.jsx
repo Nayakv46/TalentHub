@@ -92,6 +92,35 @@ export const CandidateContextProvider = ({ children }) => {
         }))
     }
 
+    // Function for deleting a language from the form
+    const handleRemoveExperience = async (select) => {
+
+        setFormData(prevState => {
+            const newState = { ...prevState };
+            delete newState[select];
+
+            console.log("newState", newState);
+            return newState;
+        })
+
+        const convertedData = convertToDbFormat(formData);
+
+        const removeLanguage = (obj, language) => {
+            const newObj = { ...obj };
+            delete newObj[language];
+            return newObj;
+        }
+
+        const updatedLanguages = removeLanguage(convertedData, formData[select].select);
+
+        // Check if the user has filled out experience form before
+        if (existingExperience) {
+            handleFormUpdate(experienceId, updatedLanguages);
+        } else {
+            handleFormAdd(convertedData);
+        }
+    }
+
     // Function handling input change
     const handleInputChange = (index, value) => {
         if(value < 0 ) {
@@ -137,6 +166,17 @@ export const CandidateContextProvider = ({ children }) => {
         window.location.reload();
     }
 
+    // Function converting form data to database format
+    function convertToDbFormat(data) {
+        let result = {};
+        for (const key in data) {
+            if (data.hasOwnProperty(key)) {
+                result[data[key].select] = Number(data[key].input);
+            }
+        }
+        return result;
+    }
+
     // Function handling form submission
     const handleFormSubmit = (id) => {
 
@@ -148,17 +188,6 @@ export const CandidateContextProvider = ({ children }) => {
                     return;
                 }
             }
-        }
-
-        // Function converting form data to database format
-        function convertToDbFormat(data) {
-            let result = {};
-            for (const key in data) {
-                if (data.hasOwnProperty(key)) {
-                    result[data[key].select] = Number(data[key].input);
-                }
-            }
-            return result;
         }
 
         const convertedData = convertToDbFormat(formData);
@@ -180,7 +209,8 @@ export const CandidateContextProvider = ({ children }) => {
         yearsOfExperience,
         handleYearsOfExperienceChange,
         position,
-        setPosition
+        setPosition,
+        handleRemoveExperience
     }
 
   return (
