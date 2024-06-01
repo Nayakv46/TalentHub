@@ -6,6 +6,7 @@ import FormAddButton from '../FormAddButton/FormAddButton';
 import FormSelect from '../FormSelect/FormSelect';
 import FormInput from '../FormInput/FormInput';
 import FormRemove from '../FormRemove/FormRemove';
+import FormRange from '../FormRange/FormRange';
 
 const CandidateForm = () => {
 
@@ -65,28 +66,11 @@ const CandidateForm = () => {
                 onChange={(e) => setPosition(e.target.value)}
             />
 
-            <div className='formRange'>
-                <label
-                    htmlFor="yearsOfExperience"
-                    className='formRange-label'
-                >
-                    Years of Experience:&nbsp;
-                        <p>
-                            {yearsOfExperience == 0 || yearsOfExperience == undefined ? `0 - 1 year of experience` : `${yearsOfExperience}+ years of experience`}
-                        </p>
-                </label>
+            <FormRange
+                yearsOfExperience={yearsOfExperience}
+                handleYearsOfExperienceChange={handleYearsOfExperienceChange}
+            />
 
-                <input
-                    className='formRange-choice'
-                    id='yearsOfExperience'
-                    type="range"
-                    min="0"
-                    max="10"
-                    step="1"
-                    value={yearsOfExperience}
-                    onChange={(e) => handleYearsOfExperienceChange(e.target.value)}
-                />
-            </div>
         </div>
 
         <div className='candidate__form'>
