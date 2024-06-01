@@ -7,6 +7,7 @@ import FormSelect from '../FormSelect/FormSelect';
 import FormInput from '../FormInput/FormInput';
 import FormRemove from '../FormRemove/FormRemove';
 import FormRange from '../FormRange/FormRange';
+import FormPosition from '../FormPosition/FormPosition';
 
 const CandidateForm = () => {
 
@@ -58,12 +59,9 @@ const CandidateForm = () => {
         <div className='candidate__position'>
             <p className='candidate__position-text'>Start by providing us with your present or desired position and how many years of experience you&apos;ve got.</p>
 
-            <input
-                type="text"
-                placeholder="Software Engineer"
-                className='candidate__position-input'
-                value={position}
-                onChange={(e) => setPosition(e.target.value)}
+            <FormPosition
+                position={position}
+                setPosition={setPosition}
             />
 
             <FormRange
