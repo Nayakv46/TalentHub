@@ -5,6 +5,7 @@ import CandidateSubmit from '../CandidateSubmit/CandidateSubmit';
 import FormAddButton from '../FormAddButton/FormAddButton';
 import FormSelect from '../FormSelect/FormSelect';
 import FormInput from '../FormInput/FormInput';
+import FormRemove from '../FormRemove/FormRemove';
 
 const CandidateForm = () => {
 
@@ -29,7 +30,11 @@ const CandidateForm = () => {
         for (let id = 0; id < inputCount; id++) {
             inputs.push(
                 <div key={id} className='form__state-wrapper'>
-                    <button onClick={() => handleRemoveExperience(id)}>Remove</button>
+                    <FormRemove
+                        id={id}
+                        handleRemoveExperience={handleRemoveExperience}
+                    />
+
                     <FormSelect
                         formData={formData}
                         id={id}

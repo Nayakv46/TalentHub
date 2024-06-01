@@ -95,6 +95,7 @@ export const CandidateContextProvider = ({ children }) => {
     // Function for deleting a language from the form
     const handleRemoveExperience = async (select) => {
 
+        // Remove the language from the formData
         setFormData(prevState => {
             const newState = { ...prevState };
             delete newState[select];
@@ -105,12 +106,14 @@ export const CandidateContextProvider = ({ children }) => {
 
         const convertedData = convertToDbFormat(formData);
 
+        // Remove language from variable containing converted data
         const removeLanguage = (obj, language) => {
             const newObj = { ...obj };
             delete newObj[language];
             return newObj;
         }
 
+        // Assign updated object containing languages to a variable
         const updatedLanguages = removeLanguage(convertedData, formData[select].select);
 
         // Check if the user has filled out experience form before
