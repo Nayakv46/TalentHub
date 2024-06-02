@@ -17,6 +17,8 @@ export const EmployerContextProvider = ({ children }) => {
     const [queryData, setQueryData] = useState({});
     const [searchedData, setSearchedData] = useState({});
 
+    const [yearsOfExperience, setYearsOfExperience] = useState(0);
+
     // Function handling select change
     const handleSelectChange = (index, value) => {
         setQueryData( prevState => ({
@@ -114,6 +116,9 @@ export const EmployerContextProvider = ({ children }) => {
                 counter++;
             });
 
+            // q = query(q, where('yearsOfExperience', '>=', yearsOfExperience));
+            // console.log(yearsOfExperience);
+
             // console.log(criteria);
 
             const data = await getDocs(q);
@@ -148,7 +153,7 @@ export const EmployerContextProvider = ({ children }) => {
             // console.log(filteredData);
         };
 
-        updateSearchedData(allData, convertedData, 0);
+        updateSearchedData(allData, convertedData, yearsOfExperience);
     }
 
     const value = {
@@ -158,7 +163,9 @@ export const EmployerContextProvider = ({ children }) => {
         handleInputChange,
         handleRemoveObject,
         handleFormSubmit,
-        searchedData
+        searchedData,
+        yearsOfExperience,
+        setYearsOfExperience
     }
 
   return (
