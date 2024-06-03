@@ -1,9 +1,8 @@
 import './employerForm.scss';
-import { set } from 'firebase/database';
 import { useEmployerContext } from '../../../context/EmployerContext';
 import EmployerSubmit from '../EmployerSubmit/EmployerSubmit';
 import CandidateCard from '../CandidateCard/CandidateCard';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import FormSelect from '../FormSelect/FormSelect';
 import FormAddButton from '../FormAddButton/FormAddButton';
 import FormInput from '../FormInput/FormInput';
@@ -12,7 +11,7 @@ import FormRange from '../FormRange/FormRange';
 
 const EmployerForm = () => {
 
-    const { queryData, setQueryData, handleSelectChange, handleInputChange, searchedData, handleFormSubmit, handleRemoveObject, yearsOfExperience, setYearsOfExperience } = useEmployerContext();
+    const { queryData, handleSelectChange, handleInputChange, searchedData, handleFormSubmit, handleRemoveObject, yearsOfExperience, setYearsOfExperience } = useEmployerContext();
 
     const [queryCount, setQueryCount] = useState(1);
     const [showResults, setShowResults] = useState(false);
@@ -73,18 +72,8 @@ const EmployerForm = () => {
             )
         })}
 
-        {/* {searchedData && searchedData.map((doc, index) => {
-            console.log(doc.data())
-            return (
-                <div key={index}>
-                    {doc.data().experience}
-                </div>
-            )
-        })} */}
-
         {showResults && (<div className='searchedData__results'>
             {showResults && searchedData.map((doc, index) => {
-                // console.log(doc)
                 return <CandidateCard key={`candidate-card__${index}`} email={doc.email} experience={doc.experience} yearsOfExperience={doc.yearsOfExperience} position={doc.position} />
             })}
         </div>)}
