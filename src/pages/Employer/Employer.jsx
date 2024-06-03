@@ -24,14 +24,14 @@ const Candidate = () => {
                         <p className='employer__header-user'>
                             Hello, {currentUser?.email}
                         </p>
-                        {/* <p className='employer__header-userType'>
-                            USERTYPE: {userType}
-                        </p> */}
                         <h4 className='employer__header-title'>
                             Who are you looking for?
                         </h4>
                     </div>
                 <div className='employer__content'>
+                    <div className='employer__content-info'>
+                        <p>Start by providing your experience requirements and techonologies used.</p>
+                    </div>
 
                     <EmployerForm />
                 </div>

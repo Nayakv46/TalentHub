@@ -63,15 +63,6 @@ const EmployerForm = () => {
             <EmployerSubmit handleFormSubmit={handleFormSubmit} setShowResults={setShowResults} />
         </div>
 
-
-        {Object.entries(queryData).map((data, index) => {
-            return (
-                <div key={index}>
-                    {data[1].select} - {data[1].input}
-                </div>
-            )
-        })}
-
         {showResults && (<div className='searchedData__results'>
             {showResults && searchedData.map((doc, index) => {
                 return <CandidateCard key={`candidate-card__${index}`} email={doc.email} experience={doc.experience} yearsOfExperience={doc.yearsOfExperience} position={doc.position} />
