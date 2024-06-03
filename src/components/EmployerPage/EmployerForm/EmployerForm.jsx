@@ -53,7 +53,7 @@ const EmployerForm = () => {
                 htmlFor="yearsOfExperience"
                 className='formRange-label'
             >
-                Minimum years of Experience:&nbsp;
+                Minimum years of experience:&nbsp;
                     <p>
                     {yearsOfExperience == 0 || yearsOfExperience == undefined ? `0 - 1 year of experience` : `${yearsOfExperience}+ years of experience`}
                     </p>
