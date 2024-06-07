@@ -7,7 +7,7 @@ const MatchPath = () => {
     <div className='matchPath'>
         <div className='matchPath__column'>
             <h3 className='matchPath__title'>Revolution of recruitment</h3>
-            <p className='matchPath__info'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti earum et eos repudiandae. Fuga, quisquam error. Id amet, nesciunt earum sint perferendis</p>
+            <p className='matchPath__info'>Join our movement to revolutionize the way you find a job. Simply fill out a form and start receiving life-changing offers from employers who value your skills!</p>
             <img className='matchPath__image' src={matchPath} alt='matchPath' />
         </div>
         <div className='matchPath__column'>
