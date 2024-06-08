@@ -84,17 +84,6 @@ const CandidateForm = () => {
             </div>
 
         </div>
-
-
-        <div className='candidate__form-entries'>
-            {Object.entries(formData).map((data, index) => {
-                return (
-                    <div key={index}>
-                        {data[1].select} - {data[1].input}
-                    </div>
-                )
-            })}
-        </div>
     </div>
   )
 }
