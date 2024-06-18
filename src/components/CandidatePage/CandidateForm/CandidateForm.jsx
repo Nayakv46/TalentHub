@@ -15,6 +15,8 @@ const CandidateForm = () => {
 
     const [inputCount, setInputCount] = useState();
 
+    const [selectSkill, setSelectSkill] = useState(null);
+
     useEffect(() => {
         if (Object.keys(formData).length > 0) {
             setInputCount(Object.keys(formData).length);
@@ -42,6 +44,30 @@ const CandidateForm = () => {
                         id={id}
                         handleSelectChange={handleSelectChange}
                     />
+
+                    <div className='selectSkill'>
+                        <label
+                            htmlFor={`select-skill-${id}`}
+                            className='selectSkill__label'
+                        >
+                            Select a skill
+                        </label>
+
+                        <div className='selectSkill__inner'>
+                            <div className='selectSkill__chosen'>
+                                {selectSkill === null ? 'Select a skill' : selectSkill}
+                            </div>
+                            <div className='selectSkill__options'>
+                                <button className='selectSkill__options-button' value="React">React</button>
+                                <button className='selectSkill__options-button' value="Vue">Vue</button>
+                                <button className='selectSkill__options-button' value="Angular">Angular</button>
+                                <button className='selectSkill__options-button' value="Svelte">Svelte</button>
+                                <button className='selectSkill__options-button' value="Ember">Ember</button>
+                                <button className='selectSkill__options-button' value="PHP">PHP</button>
+                                <button className='selectSkill__options-button' value="Python">Python</button>
+                            </div>
+                        </div>
+                    </div>
 
                     <FormInput
                         id={id}
