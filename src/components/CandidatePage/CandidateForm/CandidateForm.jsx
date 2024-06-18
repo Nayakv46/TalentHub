@@ -16,6 +16,26 @@ const CandidateForm = () => {
     const [inputCount, setInputCount] = useState();
 
     const [selectSkill, setSelectSkill] = useState(null);
+    const [showOptions, setShowOptions] = useState(false);
+
+    useEffect(() => {
+        const handleDocumentClick = () => {
+          setShowOptions(false);
+        };
+    
+        if (showOptions) {
+          document.addEventListener('click', handleDocumentClick);
+        }
+    
+        return () => {
+          document.removeEventListener('click', handleDocumentClick);
+        };
+      }, [showOptions]);
+    
+      const handleShowOptions = (event) => {
+        event.stopPropagation();
+        setShowOptions(true);
+      };
 
     useEffect(() => {
         if (Object.keys(formData).length > 0) {
@@ -54,17 +74,69 @@ const CandidateForm = () => {
                         </label>
 
                         <div className='selectSkill__inner'>
-                            <div className='selectSkill__chosen'>
+                            <div
+                                className='selectSkill__chosen'
+                                onClick={handleShowOptions}
+                            >
                                 {selectSkill === null ? 'Select a skill' : selectSkill}
                             </div>
-                            <div className='selectSkill__options'>
-                                <button className='selectSkill__options-button' value="React">React</button>
-                                <button className='selectSkill__options-button' value="Vue">Vue</button>
-                                <button className='selectSkill__options-button' value="Angular">Angular</button>
-                                <button className='selectSkill__options-button' value="Svelte">Svelte</button>
-                                <button className='selectSkill__options-button' value="Ember">Ember</button>
-                                <button className='selectSkill__options-button' value="PHP">PHP</button>
-                                <button className='selectSkill__options-button' value="Python">Python</button>
+                            <div className={`selectSkill__options ${showOptions && `open`}`}>
+                                <button
+                                    className='selectSkill__options-button'
+                                    value="React"
+                                    onClick={() => {
+                                        setSelectSkill("React");
+                                        // setShowOptions(false);
+                                    }}
+                                >React</button>
+                                <button
+                                    className='selectSkill__options-button'
+                                    value="Vue"
+                                    onClick={() => {
+                                        setSelectSkill("Vue");
+                                        // setShowOptions(false);
+                                    }}
+                                >Vue</button>
+                                <button
+                                    className='selectSkill__options-button'
+                                    value="Angular"
+                                    onClick={() => {
+                                        setSelectSkill("Angular");
+                                        // setShowOptions(false);
+                                    }}
+                                >Angular</button>
+                                <button
+                                    className='selectSkill__options-button'
+                                    value="Svelte"
+                                    onClick={() => {
+                                        setSelectSkill("Svelte");
+                                        // setShowOptions(false);
+                                    }}
+                                >Svelte</button>
+                                <button
+                                    className='selectSkill__options-button'
+                                    value="Ember"
+                                    onClick={() => {
+                                        setSelectSkill("Ember");
+                                        // setShowOptions(false);
+                                    }}
+                                >Ember</button>
+                                <button
+                                    className='selectSkill__options-button'
+                                    value="PHP"
+                                    onClick={() => {
+                                        setSelectSkill("PHP");
+                                        // setShowOptions(false);
+                                    }}
+                                >PHP</button>
+                                <button
+                                    className='selectSkill__options-button'
+                                    value="Python"
+                                    onClick={() => {
+                                        setSelectSkill("Python");
+                                        // setShowOptions(false);
+                                    }}
+                                >Python</button>
                             </div>
                         </div>
                     </div>
