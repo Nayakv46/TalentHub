@@ -71,11 +71,11 @@
         display: flex;
         width: 100%;
         border: 0.1rem solid var(--black600);
-        // background-color: green;
+        background-color: var(--state-wrapper-bg);
         border-radius: 2.5rem;
         padding: 0.5rem 1rem;
         cursor: pointer;
-        z-index: 2;
+        z-index: 5;
 
         &:after {
             content: 'v';
@@ -86,16 +86,15 @@
 
     &__options {
         position: absolute;
-        top: 100%;
+        top: calc(100%);
         display: flex;
         flex-direction: column;
-        // border: 0.1rem solid red;
         width: 100%;
-        // padding-top: 1.3rem;
-        // margin-top: -1.5rem;
         max-height: 0;
-        // height: 0;
         overflow: auto;
+        -webkit-backdrop-filter: blur(0.5rem);
+        backdrop-filter: blur(0.5rem);
+        scroll-behavior: smooth;
         transition: var(--transition);
         z-index: 4;
 
@@ -106,6 +105,13 @@
         &-button {
             display: flex;
             padding: 0rem 1rem;
+            background: none;
+            border: none;
+            transition: var(--transition);
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
         }
     }
 }
