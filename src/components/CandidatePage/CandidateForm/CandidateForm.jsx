@@ -35,7 +35,7 @@ const CandidateForm = () => {
     
       const handleShowOptions = (event) => {
         event.stopPropagation();
-        setShowOptions(true);
+        setShowOptions(!showOptions);
       };
 
     useEffect(() => {
