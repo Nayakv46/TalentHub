@@ -76,7 +76,7 @@ const CandidateForm = () => {
 
                         <div className='selectSkill__inner'>
                             <div
-                                className='selectSkill__chosen'
+                                className={`selectSkill__chosen ${showOptions && `open`}`}
                                 onClick={handleShowOptions}
                             >
                                 {selectSkill === null ? 'Select a skill' : selectSkill}
