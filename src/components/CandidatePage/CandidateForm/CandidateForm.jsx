@@ -8,6 +8,7 @@ import FormInput from '../FormInput/FormInput';
 import FormRemove from '../FormRemove/FormRemove';
 import FormRange from '../FormRange/FormRange';
 import FormPosition from '../FormPosition/FormPosition';
+import { FaChevronDown } from 'react-icons/fa6';
 
 const CandidateForm = () => {
 
@@ -79,6 +80,11 @@ const CandidateForm = () => {
                                 onClick={handleShowOptions}
                             >
                                 {selectSkill === null ? 'Select a skill' : selectSkill}
+                            </div>
+                            <div className='selectSkill__icon'>
+                                <FaChevronDown
+                                    className={`selectSkill__icon-svg ${showOptions && `open`}`}
+                                />
                             </div>
                             <div className={`selectSkill__options ${showOptions && `open`}`}>
                                 <button
