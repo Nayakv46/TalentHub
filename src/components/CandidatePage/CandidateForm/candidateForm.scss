@@ -56,7 +56,9 @@
 }
 
 .selectSkill {
-    --select-transition-time: 250ms;
+    --select-transition-time: 375ms;
+    --select-border-transition-time: calc(var(--select-transition-time) / 3);
+    --select-options-transition-time: calc(var(--select-transition-time) / 3 * 2);
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -81,15 +83,15 @@
         // transition-property: border-radius, border;
         // transition-delay: 400ms, 250ms;
         transition:
-            border-radius var(--select-transition-time) linear var(--select-transition-time),
-            border-bottom 0ms linear var(--select-transition-time);
+            border-radius var(--select-border-transition-time) ease-out var(--select-options-transition-time),
+            border-bottom 0ms ease-out var(--select-options-transition-time);
         
         &.open {
             border-radius: 1.6rem 1.6rem 0 0;
             border-bottom: 0.1rem solid rgba(0,0,0,0);
             transition:
-                border-radius var(--select-transition-time) linear 0ms,
-                border-bottom 0ms linear var(--select-transition-time);
+                border-radius var(--select-border-transition-time) ease-out 0ms,
+                border-bottom 0ms ease-out var(--select-border-transition-time);
         }
     }
 
@@ -128,10 +130,10 @@
         scroll-behavior: smooth;
         // transition: var(--transition);
         transition:
-            max-height var(--select-transition-time) linear 0ms,
-            border-bottom 0ms linear var(--select-transition-time),
-            border-left 0ms linear calc(var(--select-transition-time) * 2),
-            border-right 0ms linear calc(var(--select-transition-time) * 2);
+            max-height var(--select-options-transition-time) ease-out 0ms,
+            border-bottom 0ms ease-out var(--select-options-transition-time),
+            border-left 0ms ease-out var(--select-options-transition-time),
+            border-right 0ms ease-out var(--select-options-transition-time);
         // transition-property: max-height, border-bottom, border-left, border-right;
         // transition-duration: 250ms, 0, 250ms, 250ms;
         // transition-delay: 500ms, 0, 250ms, 250ms;
@@ -143,10 +145,10 @@
             border-right: 0.1rem solid var(--black600);
             border-bottom: 0.1rem solid var(--black600);
             transition:
-                max-height var(--select-transition-time) linear var(--select-transition-time),
-                border-bottom 0ms linear var(--select-transition-time),
-                border-left 0ms linear var(--select-transition-time),
-                border-right 0ms linear var(--select-transition-time);
+                max-height var(--select-options-transition-time) ease-out var(--select-border-transition-time),
+                border-bottom 0ms ease-out var(--select-border-transition-time),
+                border-left 0ms ease-out var(--select-border-transition-time),
+                border-right 0ms ease-out var(--select-border-transition-time);
         }
 
         &-button {
