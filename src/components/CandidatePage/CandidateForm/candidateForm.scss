@@ -105,7 +105,8 @@
 
         &-svg {
             font-size: 1.4rem;
-            transition: var(--transition);
+            transition: var(--select-transition-time) ease-out;
+            cursor: pointer;
 
             &.open {
                 transform: rotate(180deg);

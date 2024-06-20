@@ -84,6 +84,7 @@ const CandidateForm = () => {
                             <div className='selectSkill__icon'>
                                 <FaChevronDown
                                     className={`selectSkill__icon-svg ${showOptions && `open`}`}
+                                    onClick={handleShowOptions}
                                 />
                             </div>
                             <div className={`selectSkill__options ${showOptions && `open`}`}>
