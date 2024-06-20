@@ -26,6 +26,30 @@ const SelectSkill = ({ id, formData, handleSelectChange }) => {
         setShowOptions(!showOptions);
     };
 
+    const skillList = [
+        "React",
+        "Vue",
+        "Angular",
+        "Svelte",
+        "Ember",
+        "PHP",
+        "Python",
+        "Ruby",
+        "Java",
+        "C++",
+        "C#",
+        "C",
+        "Swift",
+        "Kotlin",
+        "Javascript",
+        "Typescript",
+        "HTML",
+        "CSS",
+        "SASS",
+        "LESS",
+        "SQL"
+    ]
+
   return (
     <div className='selectSkill'>
     <label
@@ -55,55 +79,21 @@ const SelectSkill = ({ id, formData, handleSelectChange }) => {
             className={`selectSkill__options ${showOptions && `open`}`}
             id={`select-skill-${id}`}
         >
-            <button
-                className='selectSkill__options-button'
-                value="React"
-                onClick={(e) => {
-                    handleSelectChange(id, e.target.value);
-                }}
-            >React</button>
-            <button
-                className='selectSkill__options-button'
-                value="Vue"
-                onClick={(e) => {
-                    handleSelectChange(id, e.target.value);
-                }}
-            >Vue</button>
-            <button
-                className='selectSkill__options-button'
-                value="Angular"
-                onClick={(e) => {
-                    handleSelectChange(id, e.target.value);
-                }}
-            >Angular</button>
-            <button
-                className='selectSkill__options-button'
-                value="Svelte"
-                onClick={(e) => {
-                    handleSelectChange(id, e.target.values)
-                }}
-            >Svelte</button>
-            <button
-                className='selectSkill__options-button'
-                value="Ember"
-                onClick={(e) => {
-                    handleSelectChange(id, e.target.value);
-                }}
-            >Ember</button>
-            <button
-                className='selectSkill__options-button'
-                value="PHP"
-                onClick={(e) => {
-                    handleSelectChange(id, e.target.value);
-                }}
-            >PHP</button>
-            <button
-                className='selectSkill__options-button'
-                value="Python"
-                onClick={(e) => {
-                    handleSelectChange(id, e.target.value);
-                }}
-            >Python</button>
+            {skillList.map((skill, index) => {
+                return (
+                    <button
+                        key={`selectSkill-${id}-button-${index}`}
+                        className='selectSkill__options-button'
+                        value={skill}
+                        onClick={(e) => {
+                            handleSelectChange(id, e.target.value);
+                        }}
+                    >
+                        {skill}
+                    </button>
+                );
+            })}
+
         </div>
     </div>
 </div>
