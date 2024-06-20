@@ -1,11 +1,11 @@
 import './selectSkill.scss';
 import { useState, useEffect } from 'react';
 import { FaChevronDown } from 'react-icons/fa6';
+import { PiStackBold } from 'react-icons/pi'
 
 const SelectSkill = ({ id, formData, handleSelectChange }) => {
 
     const [showOptions, setShowOptions] = useState(false);
-    const [selectSkill, setSelectSkill] = useState(null);
 
     useEffect(() => {
         const handleDocumentClick = () => {
@@ -19,12 +19,12 @@ const SelectSkill = ({ id, formData, handleSelectChange }) => {
         return () => {
           document.removeEventListener('click', handleDocumentClick);
         };
-      }, [showOptions]);
+    }, [showOptions]);
 
-      const handleShowOptions = (event) => {
+    const handleShowOptions = (event) => {
         event.stopPropagation();
         setShowOptions(!showOptions);
-      };
+    };
 
   return (
     <div className='selectSkill'>
@@ -32,6 +32,9 @@ const SelectSkill = ({ id, formData, handleSelectChange }) => {
         htmlFor={`select-skill-${id}`}
         className='selectSkill__label'
     >
+        <PiStackBold
+          className='selectSkill__label--icon'
+        />
         Select a skill
     </label>
 
@@ -48,7 +51,10 @@ const SelectSkill = ({ id, formData, handleSelectChange }) => {
                 onClick={handleShowOptions}
             />
         </div>
-        <div className={`selectSkill__options ${showOptions && `open`}`}>
+        <div
+            className={`selectSkill__options ${showOptions && `open`}`}
+            id={`select-skill-${id}`}
+        >
             <button
                 className='selectSkill__options-button'
                 value="React"
