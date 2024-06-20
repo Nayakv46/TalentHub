@@ -9,35 +9,12 @@ import FormRemove from '../FormRemove/FormRemove';
 import FormRange from '../FormRange/FormRange';
 import FormPosition from '../FormPosition/FormPosition';
 import SelectSkill from '../SelectSkill/SelectSkill';
-import { FaChevronDown } from 'react-icons/fa6';
 
 const CandidateForm = () => {
 
     const { formData, handleSelectChange, handleInputChange, yearsOfExperience, handleYearsOfExperienceChange, position, setPosition, handleRemoveExperience, experienceId } = useCandidateContext();
 
     const [inputCount, setInputCount] = useState();
-
-    const [selectSkill, setSelectSkill] = useState(null);
-    const [showOptions, setShowOptions] = useState(false);
-
-    useEffect(() => {
-        const handleDocumentClick = () => {
-          setShowOptions(false);
-        };
-    
-        if (showOptions) {
-          document.addEventListener('click', handleDocumentClick);
-        }
-    
-        return () => {
-          document.removeEventListener('click', handleDocumentClick);
-        };
-      }, [showOptions]);
-    
-      const handleShowOptions = (event) => {
-        event.stopPropagation();
-        setShowOptions(!showOptions);
-      };
 
     useEffect(() => {
         if (Object.keys(formData).length > 0) {
@@ -55,7 +32,7 @@ const CandidateForm = () => {
         const inputs = [];
         for (let id = 0; id < inputCount; id++) {
             inputs.push(
-                <div key={id} className='form__state-wrapper'>
+                <div key={`inputForm-${id}`} className='form__state-wrapper'>
                     <FormRemove
                         id={id}
                         handleRemoveExperience={handleRemoveExperience}
@@ -67,7 +44,11 @@ const CandidateForm = () => {
                         handleSelectChange={handleSelectChange}
                     />
 
-                    <SelectSkill id={id} />
+                    <SelectSkill
+                        formData={formData}
+                        id={id}
+                        handleSelectChange={handleSelectChange}
+                    />
 
                     <FormInput
                         id={id}
