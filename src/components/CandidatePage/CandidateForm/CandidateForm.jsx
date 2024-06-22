@@ -3,7 +3,6 @@ import { useState, useEffect } from "react"
 import { useCandidateContext } from "../../../context/CandidateContext"
 import CandidateSubmit from '../CandidateSubmit/CandidateSubmit';
 import FormAddButton from '../FormAddButton/FormAddButton';
-import FormSelect from '../FormSelect/FormSelect';
 import FormInput from '../FormInput/FormInput';
 import FormRemove from '../FormRemove/FormRemove';
 import FormRange from '../FormRange/FormRange';
@@ -36,12 +35,6 @@ const CandidateForm = () => {
                     <FormRemove
                         id={id}
                         handleRemoveExperience={handleRemoveExperience}
-                    />
-
-                    <FormSelect
-                        formData={formData}
-                        id={id}
-                        handleSelectChange={handleSelectChange}
                     />
 
                     <SelectSkill
