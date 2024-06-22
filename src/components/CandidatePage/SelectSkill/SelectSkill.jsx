@@ -52,51 +52,52 @@ const SelectSkill = ({ id, formData, handleSelectChange }) => {
 
   return (
     <div className='selectSkill'>
-    <label
-        htmlFor={`select-skill-${id}`}
-        className='selectSkill__label'
-    >
-        <PiStackBold
-          className='selectSkill__label--icon'
-        />
-        Select a skill
-    </label>
-
-    <div className='selectSkill__inner'>
-        <div
-            className={`selectSkill__chosen ${showOptions && `open`}`}
-            onClick={handleShowOptions}
+        <label
+            htmlFor={`select-skill-${id}`}
+            className='selectSkill__label'
         >
-            {formData[id]?.select || "Select"}
-        </div>
-        <div className='selectSkill__icon'>
-            <FaChevronDown
-                className={`selectSkill__icon-svg ${showOptions && `open`}`}
-                onClick={handleShowOptions}
+            <PiStackBold
+            className='selectSkill__label--icon'
             />
-        </div>
-        <div
-            className={`selectSkill__options ${showOptions && `open`}`}
-            id={`select-skill-${id}`}
-        >
-            {skillList.map((skill, index) => {
-                return (
-                    <button
-                        key={`selectSkill-${id}-button-${index}`}
-                        className='selectSkill__options-button'
-                        value={skill}
-                        onClick={(e) => {
-                            handleSelectChange(id, e.target.value);
-                        }}
-                    >
-                        {skill}
-                    </button>
-                );
-            })}
+            Select a skill
+        </label>
 
+        <div className='selectSkill__inner'>
+            <div
+                className={`selectSkill__chosen ${showOptions && `open`}`}
+                onClick={handleShowOptions}
+            >
+                {formData[id]?.select || "Select"}
+            </div>
+
+            <div className='selectSkill__icon'>
+                <FaChevronDown
+                    className={`selectSkill__icon-svg ${showOptions && `open`}`}
+                    onClick={handleShowOptions}
+                />
+            </div>
+
+            <div
+                className={`selectSkill__options ${showOptions && `open`}`}
+                id={`select-skill-${id}`}
+            >
+                {skillList.map((skill, index) => {
+                    return (
+                        <button
+                            key={`selectSkill-${id}-button-${index}`}
+                            className='selectSkill__options-button'
+                            value={skill}
+                            onClick={(e) => {
+                                handleSelectChange(id, e.target.value);
+                            }}
+                        >
+                            {skill}
+                        </button>
+                    );
+                })}
+            </div>
         </div>
     </div>
-</div>
   )
 }
 
