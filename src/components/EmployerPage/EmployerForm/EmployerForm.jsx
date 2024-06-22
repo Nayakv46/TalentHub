@@ -3,7 +3,6 @@ import { useEmployerContext } from '../../../context/EmployerContext';
 import EmployerSubmit from '../EmployerSubmit/EmployerSubmit';
 import CandidateCard from '../CandidateCard/CandidateCard';
 import { useState } from 'react';
-import FormSelect from '../FormSelect/FormSelect';
 import FormAddButton from '../FormAddButton/FormAddButton';
 import FormInput from '../FormInput/FormInput';
 import FormRemove from '../FormRemove/FormRemove';
@@ -27,12 +26,6 @@ const EmployerForm = () => {
                         setQueryCount={setQueryCount}
                         handleRemoveObject={handleRemoveObject}
                         id={id}
-                    />
-
-                    <FormSelect
-                        id={id}
-                        handleSelectChange={handleSelectChange}
-                        queryData={queryData}
                     />
 
                     <SelectSkill
