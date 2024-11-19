@@ -5,7 +5,7 @@ const FormAddButton = ({ handleInputAdd }) => {
         className='form__add'
         onClick={handleInputAdd}
     >
-        Add
+        Add Skill
     </button>
   )
 }
