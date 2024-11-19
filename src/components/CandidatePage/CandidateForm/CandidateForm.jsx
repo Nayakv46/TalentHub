@@ -8,6 +8,7 @@ import FormRemove from '../FormRemove/FormRemove';
 import FormRange from '../FormRange/FormRange';
 import FormPosition from '../FormPosition/FormPosition';
 import SelectSkill from '../SelectSkill/SelectSkill';
+import FormCV from '../FormCV/FormCV';
 
 const CandidateForm = () => {
 
@@ -55,7 +56,7 @@ const CandidateForm = () => {
     }
 
   return (
-    <div className='candidate_toDelete'>
+    <div className='candidate__wrapper'>
         <div className='candidate__position'>
             <p className='candidate__position-text'>Start by providing us with your present or desired position and how many years of experience you&apos;ve got.</p>
 
@@ -70,6 +71,8 @@ const CandidateForm = () => {
             />
 
         </div>
+
+        <FormCV />
 
         <div className='candidate__form'>
 
