@@ -10,9 +10,7 @@ const EmployerSubmit = ({ setShowResults }) => {
         className='form__submit'
         onClick={() => {
           handleFormSubmit();
-          setTimeout(() => {
             setShowResults(true);
-          }, 1000);
           }
         }
     >
