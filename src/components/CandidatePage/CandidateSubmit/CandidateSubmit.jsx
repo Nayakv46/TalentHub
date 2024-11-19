@@ -11,7 +11,7 @@ const CandidateSubmit = () => {
         className='form__submit'
         onClick={() => handleFormSubmit(experienceId)}
     >
-        Submit Form
+        Apply Changes
     </button>
   )
 }
