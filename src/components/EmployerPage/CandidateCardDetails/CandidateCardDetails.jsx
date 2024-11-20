@@ -2,9 +2,9 @@ import './candidateCardDetails.scss';
 import { IoClose } from 'react-icons/io5';
 import CandidateCardExperience from '../CandidateCardExperience/CandidateCardExperience';
 import CandidateCardHeader from '../CandidateCardHeader/CandidateCardHeader';
-import { FaClipboardCheck, FaRegEnvelope } from 'react-icons/fa';
-import { FaClipboardUser } from 'react-icons/fa6';
+import { FaRegEnvelope } from 'react-icons/fa';
 import { LuFileBadge } from 'react-icons/lu';
+import CCDetailsCV from '../CCDetailsCV/CCDetailsCV';
 
 const CandidateCardDetails = ({ hasTransitionedInDetails, showDetails, email, setShowDetails, experience, yearsOfExperience, position }) => {
 
@@ -24,7 +24,7 @@ const CandidateCardDetails = ({ hasTransitionedInDetails, showDetails, email, se
 
             <div className='candidateCardDetails__cv'>
                 <LuFileBadge className='icon--user' />
-                Here will be button for downloading CV
+                <CCDetailsCV email={email} />
             </div>
 
             <div className='candidateCardDetails-experience'>
