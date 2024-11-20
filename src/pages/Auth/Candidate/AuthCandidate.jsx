@@ -41,7 +41,7 @@ const AuthCandidate = () => {
             case 4:
                 return setToggleImage(loginPic5);
         }
-    });
+    }, [userLoggedIn, userType]);
 
   return (
     <div className='auth-candidate'>
