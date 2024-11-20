@@ -1,15 +1,16 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAJiDSWhyNAj8kOANdKmzTKxN4JKsTK2Ek",
-  authDomain: "talenthub-b2fc8.firebaseapp.com",
-  projectId: "talenthub-b2fc8",
-  storageBucket: "talenthub-b2fc8.appspot.com",
-  messagingSenderId: "196883685981",
-  appId: "1:196883685981:web:02cfdad57ce6081be523b4",
-  measurementId: "G-VCHPZ8602E"
+  apiKey: "AIzaSyCYej8hl4CzUYh3jym1zq4-81umz8n7OFc",
+  authDomain: "pwii-projekt.firebaseapp.com",
+  projectId: "pwii-projekt",
+  storageBucket: "pwii-projekt.appspot.com",
+  messagingSenderId: "575535727403",
+  appId: "1:575535727403:web:51fdfd2242e889a9ad7b6e",
+  measurementId: "G-PW8X4SX46G"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -17,3 +18,4 @@ export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 
 export const db = getFirestore(app);
+export const storage = getStorage(app);
