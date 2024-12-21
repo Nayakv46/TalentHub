@@ -94,6 +94,12 @@ const EmailRegister = ({ userType }) => {
         }
     }
 
+    const handleEnter = (e) => {
+        if (e.key === 'Enter') {
+            handleSignIn();
+        }
+    }
+
     return (
         <div className="email-register">
             <div className='input-wrapper'>
@@ -103,6 +109,7 @@ const EmailRegister = ({ userType }) => {
                     required
                     className={`email-register__input ${(emailExists || invalidEmail) && `email-register__input--error`}`}
                     onChange={(e) => setEmail(e.target.value)}
+                    onKeyDown={(e) => handleEnter(e)}
                 />
 
                 <label
@@ -132,6 +139,7 @@ const EmailRegister = ({ userType }) => {
                     required
                     className={`email-register__input ${(missingPassword || invalidPassword) && `email-register__input--error`}`}
                     onChange={(e) => setPassword(e.target.value)}
+                    onKeyDown={(e) => handleEnter(e)}
                 />
 
                 <label
